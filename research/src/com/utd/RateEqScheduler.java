@@ -52,6 +52,7 @@ public class RateEqScheduler {
         Utils.log("No New packets, ending the simulation");
         cleanup(Float.MAX_VALUE);
         Utils.log("The completed Packets are: \n", completed);
+        Collections.sort(breakingPoints);
         Utils.log("The breaking points are: \n", breakingPoints);
         System.exit(0);
     }
@@ -76,6 +77,8 @@ public class RateEqScheduler {
 
         //if system has no flows then return
         if (flows.size() == 0) {
+            Utils.debug("After adjusting rates are ", queues.keySet());
+            breakingPoints.add(currentTime);
             return;
         }
 
@@ -116,13 +119,13 @@ public class RateEqScheduler {
         while (extraBandwidth > 0 && index < flowList.size()) {
 
             //prev is the flow which has least allocation such that allocated rate = reserved rate
-            Flow prev = flowList.get(index);
+
 
             //least is the flow which belongs to the group with equal allocated B/W and highest minimum reserved bandwidth
-            Flow least = flowList.get(index - 1);
+
 
             //difference between the allocated B/Ws
-            float difference = prev.getAllocatedBandwidth() - least.getAllocatedBandwidth();
+            float difference = 0;
 
             Utils.debug("Difference ", difference);
             Utils.debug("Index ", index);
@@ -130,14 +133,22 @@ public class RateEqScheduler {
             //if the difference is 0 then it means that prev can be brought down in the common pool
             // so we first find the flow which has a positive difference and then
             // share the extra Bandwidth among all the  flows which are there in the common pool.
-            while (difference == 0 && index < flowList.size() - 1) {
-                index++;
-                prev = flowList.get(index);
+            while (difference == 0 && index < flowList.size()) {
+                Flow prev = flowList.get(index);
+                Flow least = flowList.get(index - 1);
                 difference = prev.getAllocatedBandwidth() - least.getAllocatedBandwidth();
+                index++;
             }
 
+            if(difference == 0 && index == flowList.size()){
+                float share = extraBandwidth / index;
+                for (int i = 0; i < index; i++) {
+                    flowList.get(i).setAllocatedBandwidth(flowList.get(i).getAllocatedBandwidth() + share);
+                    extraBandwidth -= share;
+                }
+            }
             //if the extra bandwidth can bring all the flows including the one at index in the common pool do that
-            if (extraBandwidth >= (index * difference)) {
+            else if (extraBandwidth >= (index * difference)) {
                 for (int i = 0; i < index; i++) {
                     flowList.get(i).setAllocatedBandwidth(flowList.get(i).getAllocatedBandwidth() + difference);
                     extraBandwidth -= difference;
@@ -156,6 +167,11 @@ public class RateEqScheduler {
         }
 
         Utils.debug("Final allocation: ", flowList);
+
+        //all the changes we made to the flows were done in a local copy flowList.
+        //now we need to copy the allocated bandwidth to actual flows.
+        //the reason is we cannot update the keys in the HashMap in Java directly.
+
         for (Flow f : flowList) {
             for (Flow f2 : flows) {
                 if (f2.getFlowId() == f.getFlowId()) {
@@ -215,6 +231,8 @@ public class RateEqScheduler {
             float lastFinishingTime = 0;
             while (true) {
                 Packet p = queues.get(f).peek();
+                if(p == null)
+                    continue;
                 float finishingTime = 0;
                 if (lastFinishingTime == 0) {
                     finishingTime = currentTime + ((p.getLength() - p.getTransmitted()) / f.getAllocatedBandwidth());
@@ -261,7 +279,6 @@ public class RateEqScheduler {
         for (Flow f : queues.keySet()) {
             total += f.getMinimumBandwidth();
         }
-
         return total;
     }
 }
