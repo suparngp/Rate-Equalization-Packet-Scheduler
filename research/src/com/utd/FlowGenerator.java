@@ -25,17 +25,19 @@ public class FlowGenerator extends Thread{
         float min = Float.MAX_VALUE;
         for(int i = 0; i < this.maxFlows; i++){
             float capacity = -1;
-            while(capacity <= 0){
-                capacity = (random.nextFloat() * 100) % this.maxReservation;
-                int temp = (int)(capacity * 100.0);
-                capacity = (float)((float)temp / 100.0);
-            }
-            capacity = 2;
 
-            if(capacity < min){
-                min = capacity;
+            if(Global.isEqualCapacity){
+                capacity = Global.equalCapacity;
             }
-            if(capacity < Global.availableCapacity){
+            else{
+                while(capacity <= 0){
+                    capacity = (random.nextFloat() * 100) % this.maxReservation;
+                    int temp = (int)(capacity * 100.0);
+                    capacity = (float)((float)temp / 100.0);
+                }
+            }
+
+            if(capacity <= Global.availableCapacity){
                 Utils.debug("Capacity allowed " + capacity);
                 float delay = random.nextFloat() % 10.0f;
                 int temp = (int)(delay * 100.0);
@@ -47,6 +49,7 @@ public class FlowGenerator extends Thread{
                 Global.addFlow(flow);
                 //Global.adjustWeights();
                 //Global.adjustBandwidth();
+                Global.availableCapacity -= capacity;
                 flow.run();
             }
 

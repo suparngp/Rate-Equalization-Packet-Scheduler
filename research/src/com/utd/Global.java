@@ -15,16 +15,22 @@ public class Global {
     static HashMap<Integer, LinkedBlockingQueue<Packet>> queuesMapRE = new HashMap<>();
     static ArrayList<Flow> flowsGPS = new ArrayList<>();
     static ArrayList<Flow> flowsRE = new ArrayList<>();
+    static boolean isEqualCapacity = false;
+    static float equalCapacity = 0;
+    static int maxPacketCount = 0;
     static float totalCapacity = 0;
     static float availableCapacity = 0;
     static float usedCapacity = 0;
     static float minimumReserved = 0;
-    public static void init(float tc) {
+    static float maxPacketLength = 80;
+    public static void init(float tc, int mpc, boolean iec, float ec, float mpl) {
         totalCapacity = tc;
         availableCapacity = totalCapacity;
         usedCapacity = 0;
-
-
+        maxPacketCount = ++mpc;
+        isEqualCapacity  = iec;
+        equalCapacity = ec;
+        maxPacketLength = mpl;
     }
 
     /*

@@ -29,7 +29,7 @@ public class Flow extends Thread implements Cloneable{
         //generate a limit of number of packets, this flow will generate. Using small numbers for simplicity.
         int maxPacketCount = 0;
         while(maxPacketCount < 1){
-            maxPacketCount = (new Random().nextInt() % 3) * 1;
+            maxPacketCount = (new Random().nextInt() % Global.maxPacketCount) * 1;
         }
 
         //create packets and add to the packet queue
@@ -40,7 +40,7 @@ public class Flow extends Thread implements Cloneable{
             currentPacketId++;
             float ts = offset + tsGenerator.generateTimestamp();
             p.setArrivalTime(ts);
-            p.setLength(80);
+            p.setLength(Global.maxPacketLength);
             p.setStartTime(0);
             p.setFinishTime(0);
             try{

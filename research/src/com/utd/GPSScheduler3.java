@@ -139,6 +139,9 @@ public class GPSScheduler3 {
             float lastFinishingTime = 0;
             while(true){
                 Packet p = queues.get(f).peek();
+                if(p == null){
+                    continue;
+                }
                 float finishingTime = 0;
                 if(lastFinishingTime == 0){
                     finishingTime = currentTime + ((p.getLength() - p.getTransmitted()) / f.getAllocatedBandwidth());
