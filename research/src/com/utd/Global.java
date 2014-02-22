@@ -10,11 +10,12 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Created by suparngupta on 1/23/14.
  */
 public class Global {
-
     static HashMap<Integer, LinkedBlockingQueue<Packet>> queuesMapGPS = new HashMap<>();
     static HashMap<Integer, LinkedBlockingQueue<Packet>> queuesMapRE = new HashMap<>();
+    static HashMap<Integer, LinkedBlockingQueue<Packet>> queuesMapVC2 = new HashMap<>();
     static ArrayList<Flow> flowsGPS = new ArrayList<>();
     static ArrayList<Flow> flowsRE = new ArrayList<>();
+    static ArrayList<Flow> flowsVC2 = new ArrayList<>();
     static boolean isEqualCapacity = false;
     static float equalCapacity = 0;
     static int maxPacketCount = 0;
@@ -23,7 +24,8 @@ public class Global {
     static float usedCapacity = 0;
     static float minimumReserved = 0;
     static float maxPacketLength = 80;
-    public static void init(float tc, int mpc, boolean iec, float ec, float mpl) {
+    static int flowsCount;
+    public static void init(float tc, int mpc, boolean iec, float ec, float mpl, int fCount) {
         totalCapacity = tc;
         availableCapacity = totalCapacity;
         usedCapacity = 0;
@@ -31,6 +33,7 @@ public class Global {
         isEqualCapacity  = iec;
         equalCapacity = ec;
         maxPacketLength = mpl;
+        flowsCount = fCount;
     }
 
     /*
@@ -213,18 +216,51 @@ public class Global {
         return result;
     }
 
+    public static Object[] pollPacketVC2(){
+        LinkedBlockingQueue<Packet> queue;
+        Flow flow = null;
+        float latest = Float.MAX_VALUE;
+        Packet packet = null;
+        Integer index = 0;
+        Utils.debug(queuesMapVC2.keySet());
+        for(int i: queuesMapVC2.keySet()){
+            if(queuesMapVC2.get(i).size() == 0)
+                continue;
+
+            if(queuesMapVC2.get(i).peek().getArrivalTime() < latest){
+                flow = flowsVC2.get(i - 1);
+                index = i;
+                queue = queuesMapVC2.get(i);
+                packet = queue.peek();
+                latest = packet.getArrivalTime();
+            }
+        }
+
+        if(packet == null){
+            return null;
+        }
+        queuesMapVC2.get(index).poll();
+        Object[] result = {flow, packet};
+        return result;
+    }
+
 
     public static void cloneTraffic() throws Exception{
         //clone the flows
         for(Flow f: flowsGPS){
             Flow flow = f.clone();
             flowsRE.add(flow);
-            LinkedBlockingQueue<Packet> q = new LinkedBlockingQueue<>();
+            flowsVC2.add(flow);
+            LinkedBlockingQueue<Packet> q1 = new LinkedBlockingQueue<>();
+            LinkedBlockingQueue<Packet> q2 = new LinkedBlockingQueue<>();
             for(Packet p: queuesMapGPS.get(f.getFlowId())){
-                Packet packet = p.clone();
-                q.put(packet);
+                Packet packet1 = p.clone();
+                q1.put(packet1);
+                Packet packet2 = p.clone();
+                q2.put(packet2);
             }
-            queuesMapRE.put(flow.getFlowId(), q);
+            queuesMapRE.put(flow.getFlowId(), q1);
+            queuesMapVC2.put(flow.getFlowId(), q2);
         }
     }
 }

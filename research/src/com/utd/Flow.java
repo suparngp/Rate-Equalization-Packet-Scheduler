@@ -14,6 +14,7 @@ public class Flow extends Thread implements Cloneable{
     private int currentPacketId = 1;
     private TSGenerator tsGenerator;
     private float allocatedBandwidth;
+    private float virtualClock = 0;
 
     public Flow(int id, float offset){
         this.flowId = id;
@@ -134,6 +135,15 @@ public class Flow extends Thread implements Cloneable{
         clone.offset = this.offset;
         clone.tsGenerator = this.tsGenerator.clone();
         clone.weight = this.weight;
+        clone.virtualClock = this.virtualClock;
         return clone;
+    }
+
+    public float getVirtualClock() {
+        return virtualClock;
+    }
+
+    public void setVirtualClock(float virtualClock) {
+        this.virtualClock = virtualClock;
     }
 }

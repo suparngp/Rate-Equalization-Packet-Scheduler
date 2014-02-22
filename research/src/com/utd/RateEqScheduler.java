@@ -54,7 +54,20 @@ public class RateEqScheduler {
         Utils.log("The completed Packets are: \n", completed);
         Collections.sort(breakingPoints);
         Utils.log("The breaking points are: \n", breakingPoints);
-        System.exit(0);
+
+        Utils.log("In packetized version the completed sequesnce will be");
+        List<Packet> packetizedCompleted = new ArrayList<>();
+        float finishingTime = 0;
+        for(Packet p: completed){
+            Packet clone = p.clone();
+            float startTime = Math.max(finishingTime, p.getArrivalTime());
+            finishingTime = startTime + p.getLength() / Global.totalCapacity;
+            p.setStartTime(startTime);
+            p.setFinishTime(finishingTime);
+            packetizedCompleted.add(p);
+        }
+        Utils.log(packetizedCompleted);
+//        System.exit(0);
     }
 
     public void addFlow(Flow flow, Packet packet) {
