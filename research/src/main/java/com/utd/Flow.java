@@ -1,6 +1,5 @@
 package com.utd;
 
-import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -15,31 +14,72 @@ public class Flow extends Thread implements Cloneable{
     private TSGenerator tsGenerator;
     private float allocatedBandwidth;
     private float virtualClock = 0;
+    private FlowType flowType;
+    private ExponentialRandom random;
 
-    public Flow(int id, float offset){
+    public Flow(int id, float offset, FlowType flowType){
         this.flowId = id;
         //this.offset = (new Random().nextFloat() * 1000) % 5;
         this.tsGenerator = new TSGenerator();
         this.offset = offset;
+        this.flowType = flowType;
+
     }
 
     @Override
     public void run(){
         LinkedBlockingQueue<Packet> queue = Global.getQueue(this.flowId);
 
-        //generate a limit of number of packets, this flow will generate. Using small numbers for simplicity.
-        int maxPacketCount = 0;
-        while(maxPacketCount < 1){
-            maxPacketCount = (new Random().nextInt() % Global.maxPacketCount) * 1;
+        double[] timestamps = null;
+
+        double rate = minimumBandwidth;
+
+        //if flow belongs to UA, group A and needs poisson arrival
+        switch(flowType){
+            case UA_A_PR:
+                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 1);
+
+                break;
+            case UA_A_CR:
+                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 1);
+                break;
+            case UU_A_CR:
+                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 1);
+                break;
+            case UU_A_PR:
+                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 1);
+                break;
+            case UU_B_CR:
+                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 0.5);
+                break;
+            case UU_B_PR:
+                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 0.5);
+                break;
+            case UU_UA_B_PR:
+                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 0.5);
+                break;
+            case UU_UA_B_CR:
+                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 0.5);
+                break;
+            case GREEDY:
+                timestamps = tsGenerator.generateGreedyTS(rate, Global.timeLimit, 10);
+                break;
         }
 
-        //create packets and add to the packet queue
-        for(int i = 0; i < maxPacketCount; i++){
+        Utils.log("Timestamps", timestamps.length);
+
+        //generate a limit of number of packets, this flow will generate. Using small numbers for simplicity.
+//        int maxPacketCount = 0;
+//        while(maxPacketCount < 1){
+//            maxPacketCount = (new Random().nextInt() % Global.maxPacketCount) * 1;
+//        }
+
+        for(double t : timestamps){
+            float ts = (float)t;
             Packet p = new Packet();
             p.setFlowId(this.flowId);
             p.setPacketId(currentPacketId);
             currentPacketId++;
-            float ts = offset + tsGenerator.generateTimestamp();
             p.setArrivalTime(ts);
             p.setLength(Global.maxPacketLength);
             p.setStartTime(0);
@@ -51,8 +91,29 @@ public class Flow extends Thread implements Cloneable{
             catch(InterruptedException ie){
                 Utils.error(ie);
             }
-
         }
+
+
+//        //create packets and add to the packet queue
+//        for(int i = 0; i < maxPacketCount; i++){
+//            Packet p = new Packet();
+//            p.setFlowId(this.flowId);
+//            p.setPacketId(currentPacketId);
+//            currentPacketId++;
+//            float ts = offset + tsGenerator.generateTimestamp();
+//            p.setArrivalTime(ts);
+//            p.setLength(Global.maxPacketLength);
+//            p.setStartTime(0);
+//            p.setFinishTime(0);
+//            try{
+//                queue.put(p);
+//            }
+//
+//            catch(InterruptedException ie){
+//                Utils.error(ie);
+//            }
+//
+//        }
     }
 
     public int getFlowId() {
@@ -85,6 +146,15 @@ public class Flow extends Thread implements Cloneable{
 
     public void setOffset(float offset) {
         this.offset = offset;
+    }
+
+
+    public FlowType getFlowType() {
+        return flowType;
+    }
+
+    public void setFlowType(FlowType flowType) {
+        this.flowType = flowType;
     }
 
     @Override
@@ -127,7 +197,7 @@ public class Flow extends Thread implements Cloneable{
 
     @Override
     public Flow clone(){
-        Flow clone = new Flow(this.flowId, this.offset);
+        Flow clone = new Flow(this.flowId, this.offset, this.flowType);
         clone.allocatedBandwidth = this.allocatedBandwidth;
         clone.currentPacketId = this.currentPacketId;
         clone.flowId = this.flowId;
@@ -136,6 +206,7 @@ public class Flow extends Thread implements Cloneable{
         clone.tsGenerator = this.tsGenerator.clone();
         clone.weight = this.weight;
         clone.virtualClock = this.virtualClock;
+        clone.flowType = this.flowType;
         return clone;
     }
 
@@ -146,4 +217,6 @@ public class Flow extends Thread implements Cloneable{
     public void setVirtualClock(float virtualClock) {
         this.virtualClock = virtualClock;
     }
+
+
 }

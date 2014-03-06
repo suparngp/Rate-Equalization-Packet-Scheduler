@@ -1,7 +1,5 @@
 package com.utd;
 
-import com.sun.org.apache.xerces.internal.util.Status;
-
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -51,11 +49,11 @@ public class RateEqScheduler {
         }
         Utils.log("No New packets, ending the simulation");
         cleanup(Float.MAX_VALUE);
-        Utils.log("The completed Packets are: \n", completed);
+        Utils.debug("The completed Packets are: \n", completed);
         Collections.sort(breakingPoints);
-        Utils.log("The breaking points are: \n", breakingPoints);
+        Utils.debug("The breaking points are: \n", breakingPoints);
 
-        Utils.log("In packetized version the completed sequesnce will be");
+        Utils.log("In packetized version the completed sequence will be");
         List<Packet> packetizedCompleted = new ArrayList<>();
         float finishingTime = 0;
         for(Packet p: completed){
@@ -66,7 +64,7 @@ public class RateEqScheduler {
             p.setFinishTime(finishingTime);
             packetizedCompleted.add(p);
         }
-        Utils.log(packetizedCompleted);
+        Utils.dumpCSV(packetizedCompleted, "rate-eq.csv");
 //        System.exit(0);
     }
 

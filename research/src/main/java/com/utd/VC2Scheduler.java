@@ -27,7 +27,7 @@ public class VC2Scheduler {
         }
 
         if(Global.totalCapacity - usedBandwidth > 0){
-            Flow padding = new Flow(-1, -1);
+            Flow padding = new Flow(-1, -1, FlowType.PADDING);
             padding.setMinimumBandwidth(Global.totalCapacity - usedBandwidth);
             padding.setVirtualClock(0);
             queues.put(padding, new LinkedBlockingQueue<Packet>());
@@ -74,7 +74,7 @@ public class VC2Scheduler {
                 cleanUp(Float.MAX_VALUE);
                 Utils.log("Simulation Completed. Exiting...");
                 Utils.log(completed);
-                System.exit(0);
+                break;
             }
 
             flow = (Flow)next[0];
@@ -82,6 +82,8 @@ public class VC2Scheduler {
             cleanUp(packet.getArrivalTime());
             addPacket(packet, flow);
         }
+
+        Utils.dumpCSV(completed, "vc2.csv");
     }
 
 

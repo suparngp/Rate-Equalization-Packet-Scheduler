@@ -1,7 +1,5 @@
 package com.utd;
 
-import com.sun.org.apache.xerces.internal.util.Status;
-
 import java.util.*;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -53,9 +51,21 @@ public class GPSScheduler3 {
         }
         Utils.log("No New packets, ending the simulation");
         cleanup(Float.MAX_VALUE);
-        Utils.log("The completed Packets are: \n", completed);
-        Utils.log("The breaking points are: \n", breakingPoints);
+        Utils.debug("The completed Packets are: \n", completed);
+        Utils.debug("The breaking points are: \n", breakingPoints);
         Utils.log("........WFQ GPS Simulation Completed.........");
+        Utils.log("In packetized version the completed sequesnce will be");
+        List<Packet> packetizedCompleted = new ArrayList<>();
+        float finishingTime = 0;
+        for(Packet p: completed){
+            Packet clone = p.clone();
+            float startTime = Math.max(finishingTime, p.getArrivalTime());
+            finishingTime = startTime + p.getLength() / Global.totalCapacity;
+            p.setStartTime(startTime);
+            p.setFinishTime(finishingTime);
+            packetizedCompleted.add(p);
+        }
+        Utils.dumpCSV(packetizedCompleted, "wfq.csv");
     }
 
     public void addFlow(Flow flow, Packet packet){
@@ -140,7 +150,7 @@ public class GPSScheduler3 {
             while(true){
                 Packet p = queues.get(f).peek();
                 if(p == null){
-                    continue;
+                    break;
                 }
                 float finishingTime = 0;
                 if(lastFinishingTime == 0){
