@@ -11,110 +11,40 @@ public class Flow extends Thread implements Cloneable{
     private float minimumBandwidth;
     private float offset;
     private int currentPacketId = 1;
+
+    private double currentTime;
+    public TSGenerator getTsGenerator() {
+        return tsGenerator;
+    }
+
+    public void setTsGenerator(TSGenerator tsGenerator) {
+        this.tsGenerator = tsGenerator;
+    }
+
+    public int getCurrentPacketId() {
+        return currentPacketId;
+    }
+
+    public void setCurrentPacketId(int currentPacketId) {
+        this.currentPacketId = currentPacketId;
+    }
+
     private TSGenerator tsGenerator;
     private float allocatedBandwidth;
     private float virtualClock = 0;
     private FlowType flowType;
-    private ExponentialRandom random;
 
-    public Flow(int id, float offset, FlowType flowType){
+
+    public Flow(int id, float minimumBw, FlowType flowType){
         this.flowId = id;
         //this.offset = (new Random().nextFloat() * 1000) % 5;
-        this.tsGenerator = new TSGenerator();
-        this.offset = offset;
+
+        this.offset = 0 ;
         this.flowType = flowType;
+        this.minimumBandwidth = minimumBw;
 
     }
 
-    @Override
-    public void run(){
-        LinkedBlockingQueue<Packet> queue = Global.getQueue(this.flowId);
-
-        double[] timestamps = null;
-
-        double rate = minimumBandwidth;
-
-        //if flow belongs to UA, group A and needs poisson arrival
-        switch(flowType){
-            case UA_A_PR:
-                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 1);
-
-                break;
-            case UA_A_CR:
-                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 1);
-                break;
-            case UU_A_CR:
-                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 1);
-                break;
-            case UU_A_PR:
-                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 1);
-                break;
-            case UU_B_CR:
-                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 0.5);
-                break;
-            case UU_B_PR:
-                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 0.5);
-                break;
-            case UU_UA_B_PR:
-                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 0.5);
-                break;
-            case UU_UA_B_CR:
-                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 0.5);
-                break;
-            case GREEDY:
-                timestamps = tsGenerator.generateGreedyTS(rate, Global.timeLimit, 10);
-                break;
-        }
-
-        Utils.log("Timestamps", timestamps.length);
-
-        //generate a limit of number of packets, this flow will generate. Using small numbers for simplicity.
-//        int maxPacketCount = 0;
-//        while(maxPacketCount < 1){
-//            maxPacketCount = (new Random().nextInt() % Global.maxPacketCount) * 1;
-//        }
-
-        for(double t : timestamps){
-            float ts = (float)t;
-            Packet p = new Packet();
-            p.setFlowId(this.flowId);
-            p.setPacketId(currentPacketId);
-            currentPacketId++;
-            p.setArrivalTime(ts);
-            p.setLength(Global.maxPacketLength);
-            p.setStartTime(0);
-            p.setFinishTime(0);
-            try{
-                queue.put(p);
-            }
-
-            catch(InterruptedException ie){
-                Utils.error(ie);
-            }
-        }
-
-
-//        //create packets and add to the packet queue
-//        for(int i = 0; i < maxPacketCount; i++){
-//            Packet p = new Packet();
-//            p.setFlowId(this.flowId);
-//            p.setPacketId(currentPacketId);
-//            currentPacketId++;
-//            float ts = offset + tsGenerator.generateTimestamp();
-//            p.setArrivalTime(ts);
-//            p.setLength(Global.maxPacketLength);
-//            p.setStartTime(0);
-//            p.setFinishTime(0);
-//            try{
-//                queue.put(p);
-//            }
-//
-//            catch(InterruptedException ie){
-//                Utils.error(ie);
-//            }
-//
-//        }
-    }
 
     public int getFlowId() {
         return flowId;
@@ -157,19 +87,6 @@ public class Flow extends Thread implements Cloneable{
         this.flowType = flowType;
     }
 
-    @Override
-    public String toString() {
-        return "Flow{" +
-                "flowId=" + flowId +
-                ", weight=" + weight +
-                ", minimumBandwidth=" + minimumBandwidth +
-                ", offset=" + offset +
-                ", currentPacketId=" + currentPacketId +
-                //", tsGenerator=" + tsGenerator +
-                ", allocatedBandwidth=" + allocatedBandwidth +
-                '}';
-    }
-
     public float getAllocatedBandwidth() {
         return allocatedBandwidth;
     }
@@ -207,6 +124,7 @@ public class Flow extends Thread implements Cloneable{
         clone.weight = this.weight;
         clone.virtualClock = this.virtualClock;
         clone.flowType = this.flowType;
+        clone.currentTime = this.currentTime;
         return clone;
     }
 
@@ -219,4 +137,183 @@ public class Flow extends Thread implements Cloneable{
     }
 
 
+    @Override
+    public String toString() {
+        return "Flow{" +
+                "flowId=" + flowId +
+                ", weight=" + weight +
+                ", minimumBandwidth=" + minimumBandwidth +
+                ", offset=" + offset +
+                ", currentPacketId=" + currentPacketId +
+                ", allocatedBandwidth=" + allocatedBandwidth +
+                ", virtualClock=" + virtualClock +
+                ", flowType=" + flowType +
+                '}';
+    }
+
+    @Override
+    public void run(){
+//        LinkedBlockingQueue<Packet> queue = Global.getQueue(this.flowId);
+//
+//        double[] timestamps = null;
+//
+//        double rate = minimumBandwidth;
+//
+//        //if flow belongs to UA, group A and needs poisson arrival
+//        switch(flowType){
+//            case UA_A_PR:
+//                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 1);
+//
+//                break;
+//            case UA_A_CR:
+//                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 1);
+//                break;
+//            case UU_A_CR:
+//                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 1);
+//                break;
+//            case UU_A_PR:
+//                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 1);
+//                break;
+//            case UU_B_CR:
+//                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 0.5);
+//                break;
+//            case UU_B_PR:
+//                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 0.5);
+//                break;
+//            case UU_UA_B_PR:
+//                timestamps = tsGenerator.generatePoissonTS(rate, Global.timeLimit, 0.5);
+//                break;
+//            case UU_UA_B_CR:
+//                timestamps = tsGenerator.generateConstantRateTS(rate, Global.timeLimit, 0.5);
+//                break;
+//            case GREEDY:
+//                timestamps = tsGenerator.generateGreedyTS(rate, Global.timeLimit, 10);
+//                break;
+//        }
+//
+//        Utils.log("Timestamps", timestamps.length);
+//
+//        //generate a limit of number of packets, this flow will generate. Using small numbers for simplicity.
+////        int maxPacketCount = 0;
+////        while(maxPacketCount < 1){
+////            maxPacketCount = (new Random().nextInt() % Global.maxPacketCount) * 1;
+////        }
+//
+//        for(double t : timestamps){
+//            float ts = (float)t;
+//            Packet p = new Packet();
+//            p.setFlowId(this.flowId);
+//            p.setPacketId(currentPacketId);
+//            currentPacketId++;
+//            p.setArrivalTime(ts);
+//            p.setLength(Global.maxPacketLength);
+//            p.setStartTime(0);
+//            p.setFinishTime(0);
+//            try{
+//                queue.put(p);
+//            }
+//
+//            catch(InterruptedException ie){
+//                Utils.error(ie);
+//            }
+//        }
+//
+//
+////        //create packets and add to the packet queue
+////        for(int i = 0; i < maxPacketCount; i++){
+////            Packet p = new Packet();
+////            p.setFlowId(this.flowId);
+////            p.setPacketId(currentPacketId);
+////            currentPacketId++;
+////            float ts = offset + tsGenerator.generateTimestamp();
+////            p.setArrivalTime(ts);
+////            p.setLength(Global.maxPacketLength);
+////            p.setStartTime(0);
+////            p.setFinishTime(0);
+////            try{
+////                queue.put(p);
+////            }
+////
+////            catch(InterruptedException ie){
+////                Utils.error(ie);
+////            }
+////
+////        }
+
+
+        //if flow belongs to UA, group A and needs poisson arrival
+
+        setupTS();
+
+
+        LinkedBlockingQueue<Packet> queue = Global.getQueue(this.flowId);
+        for(int i = 0; i < 100; i++){
+            try{
+                Packet p = createPacket();
+                queue.put(p);
+            }
+
+            catch(Exception e){
+                Utils.error("unable to generate initial packets", e);
+            }
+
+        }
+
+    }
+
+
+    public Packet createPacket(){
+        Packet p = new Packet();
+        p.setFlowId(this.flowId);
+        p.setPacketId(currentPacketId);
+        currentPacketId++;
+        float ts = (float)this.tsGenerator.generateTimestamp();
+        p.setArrivalTime(ts);
+        p.setLength(Global.maxPacketLength);
+        p.setStartTime(0);
+        p.setFinishTime(0);
+        return p;
+    }
+
+    public double getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(double currentTime) {
+        this.currentTime = currentTime;
+    }
+
+    public void setupTS(){
+        switch(flowType){
+            case UA_A_PR:
+                this.tsGenerator = new TSGenerator(this, 1);
+
+                break;
+            case UA_A_CR:
+                this.tsGenerator = new TSGenerator(this, 1);
+                break;
+            case UU_A_CR:
+                this.tsGenerator = new TSGenerator(this, 1);
+                break;
+            case UU_A_PR:
+                this.tsGenerator = new TSGenerator(this, 1);
+                break;
+            case UU_B_CR:
+                this.tsGenerator = new TSGenerator(this, 0.5);
+                break;
+            case UU_B_PR:
+                this.tsGenerator = new TSGenerator(this, 0.5);
+                break;
+            case UU_UA_B_PR:
+                this.tsGenerator = new TSGenerator(this, 0.5);
+                break;
+            case UU_UA_B_CR:
+                this.tsGenerator = new TSGenerator(this, 0.5);
+                break;
+            case GREEDY:
+                this.tsGenerator = new TSGenerator(this, 1);
+                break;
+        }
+
+    }
 }

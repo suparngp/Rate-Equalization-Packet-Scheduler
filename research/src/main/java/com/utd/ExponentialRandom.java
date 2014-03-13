@@ -11,7 +11,7 @@ public class ExponentialRandom {
     private double lambda;
 
     public ExponentialRandom(long seed, double lambda){
-        this.random = new Random(seed);
+        this.random = new Random(seed + 21474836);
         this.lambda = lambda;
     }
 

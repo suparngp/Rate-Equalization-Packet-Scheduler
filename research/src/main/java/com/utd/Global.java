@@ -25,13 +25,14 @@ public class Global {
     static float minimumReserved = 0;
     static float maxPacketLength = 80;
     static int flowsCount;
-    static double timeLimit = 0.06;
+    static double timeLimit = 0.2;
+
     public static void init(float tc, int mpc, boolean iec, float ec, float mpl, int fCount) {
         totalCapacity = tc;
         availableCapacity = totalCapacity;
         usedCapacity = 0;
         maxPacketCount = ++mpc;
-        isEqualCapacity  = iec;
+        isEqualCapacity = iec;
         equalCapacity = ec;
         maxPacketLength = mpl;
         flowsCount = fCount;
@@ -64,9 +65,9 @@ public class Global {
         }
     }
 
-    public static boolean packetsExist(){
-        for(int key: queuesMapGPS.keySet()){
-            if(queuesMapGPS.get(key).size() != 0){
+    public static boolean packetsExist() {
+        for (int key : queuesMapGPS.keySet()) {
+            if (queuesMapGPS.get(key).size() != 0) {
                 return false;
             }
         }
@@ -74,9 +75,9 @@ public class Global {
         return true;
     }
 
-    public static Flow getFlow(int id){
-        for(int i = 0; i < flowsGPS.size(); i++){
-            if(flowsGPS.get(i).getFlowId() == id){
+    public static Flow getFlow(int id) {
+        for (int i = 0; i < flowsGPS.size(); i++) {
+            if (flowsGPS.get(i).getFlowId() == id) {
                 return flowsGPS.get(i);
             }
         }
@@ -85,37 +86,37 @@ public class Global {
     }
 
 
-    public static void adjustWeights(){
+    public static void adjustWeights() {
         float min = Float.MAX_VALUE;
         minimumReserved = 0;
-        for(int i = 0; i < flowsGPS.size(); i++){
+        for (int i = 0; i < flowsGPS.size(); i++) {
             minimumReserved += flowsGPS.get(i).getMinimumBandwidth();
         }
 
         //update available capacity
         availableCapacity = totalCapacity - minimumReserved;
 
-        for(int i = 0; i < flowsGPS.size(); i++){
-            flowsGPS.get(i).setWeight(flowsGPS.get(i).getMinimumBandwidth()/minimumReserved);
+        for (int i = 0; i < flowsGPS.size(); i++) {
+            flowsGPS.get(i).setWeight(flowsGPS.get(i).getMinimumBandwidth() / minimumReserved);
         }
     }
 
-    public static void adjustBandwidth(){
-        for(int i = 0; i < flowsGPS.size(); i++){
+    public static void adjustBandwidth() {
+        for (int i = 0; i < flowsGPS.size(); i++) {
             Flow flow = flowsGPS.get(i);
             flow.setAllocatedBandwidth(totalCapacity * flow.getWeight());
         }
     }
 
-    public static HashMap<String,Object> getNextPacket(){
+    public static HashMap<String, Object> getNextPacket() {
         LinkedBlockingQueue<Packet> queue;
         Flow flow = null;
         float latest = Float.MAX_VALUE;
         Packet packet = null;
         Integer index = 0;
         Utils.debug(queuesMapGPS.keySet());
-        for(int i: queuesMapGPS.keySet()){
-            if(queuesMapGPS.get(i).peek().getArrivalTime() < latest){
+        for (int i : queuesMapGPS.keySet()) {
+            if (queuesMapGPS.get(i).peek().getArrivalTime() < latest) {
                 flow = flowsGPS.get(i - 1);
                 index = i;
                 queue = queuesMapGPS.get(i);
@@ -126,11 +127,11 @@ public class Global {
 
         //we have the latest packet now.
         //remove the packet and return the packet and flow.
-        if(packet == null){
+        if (packet == null) {
             return null;
         }
         queuesMapGPS.get(index).poll();
-        if(queuesMapGPS.get(index).size() == 0){
+        if (queuesMapGPS.get(index).size() == 0) {
             queuesMapGPS.remove(index);
         }
         HashMap<String, Object> result = new HashMap<>();
@@ -139,40 +140,40 @@ public class Global {
         return result;
     }
 
-    public static Object[] peekPacket(){
+    public static Object[] peekPacket() {
         LinkedBlockingQueue<Packet> queue;
         Flow flow = null;
         float latest = Float.MAX_VALUE;
         Packet packet = null;
         Integer index = 0;
         //Utils.debug(queuesMapGPS.keySet());
-        for(int i: queuesMapGPS.keySet()){
-            if(queuesMapGPS.get(i).peek().getArrivalTime() < latest){
+        for (int i : queuesMapGPS.keySet()) {
+            if (queuesMapGPS.get(i).peek().getArrivalTime() < latest) {
                 flow = flowsGPS.get(i - 1);
                 queue = queuesMapGPS.get(i);
                 packet = queue.peek();
                 latest = packet.getArrivalTime();
             }
         }
-        if(packet == null){
+        if (packet == null) {
             return null;
         }
         Object[] result = {flow, packet};
         return result;
     }
 
-    public static Object[] pollPacket(){
+    public static Object[] pollPacket() {
         LinkedBlockingQueue<Packet> queue;
         Flow flow = null;
         float latest = Float.MAX_VALUE;
         Packet packet = null;
         Integer index = 0;
         //Utils.debug(queuesMapGPS.keySet());
-        for(int i: queuesMapGPS.keySet()){
-            if(queuesMapGPS.get(i).size() == 0)
+        for (int i : queuesMapGPS.keySet()) {
+            if (queuesMapGPS.get(i).size() == 0)
                 continue;
 
-            if(queuesMapGPS.get(i).peek().getArrivalTime() < latest){
+            if (queuesMapGPS.get(i).peek().getArrivalTime() < latest) {
                 flow = flowsGPS.get(i - 1);
                 index = i;
                 queue = queuesMapGPS.get(i);
@@ -181,26 +182,38 @@ public class Global {
             }
         }
 
-        if(packet == null){
+        if (packet == null) {
             return null;
         }
         queuesMapGPS.get(index).poll();
         Object[] result = {flow, packet};
+
+        if (queuesMapGPS.get(index).size() < 10) {
+            Packet np = flow.createPacket();
+            try {
+                queuesMapGPS.get(index).put(np);
+            } catch (Exception e) {
+                Utils.error("Unable to add a new packet in simulation", e);
+
+            }
+        }
+
+
         return result;
     }
 
-    public static Object[] pollPacketRE(){
+    public static Object[] pollPacketRE() {
         LinkedBlockingQueue<Packet> queue;
         Flow flow = null;
         float latest = Float.MAX_VALUE;
         Packet packet = null;
         Integer index = 0;
         //Utils.debug(queuesMapGPS.keySet());
-        for(int i: queuesMapRE.keySet()){
-            if(queuesMapRE.get(i).size() == 0)
+        for (int i : queuesMapRE.keySet()) {
+            if (queuesMapRE.get(i).size() == 0)
                 continue;
 
-            if(queuesMapRE.get(i).peek().getArrivalTime() < latest){
+            if (queuesMapRE.get(i).peek().getArrivalTime() < latest) {
                 flow = flowsRE.get(i - 1);
                 index = i;
                 queue = queuesMapRE.get(i);
@@ -209,26 +222,29 @@ public class Global {
             }
         }
 
-        if(packet == null){
+        if (packet == null) {
             return null;
         }
         queuesMapRE.get(index).poll();
         Object[] result = {flow, packet};
+        Packet np = flow.createPacket();
+        addToRE(np, flow);
+
         return result;
     }
 
-    public static Object[] pollPacketVC2(){
+    public static Object[] pollPacketVC2() {
         LinkedBlockingQueue<Packet> queue;
         Flow flow = null;
         float latest = Float.MAX_VALUE;
         Packet packet = null;
         Integer index = 0;
         Utils.debug(queuesMapVC2.keySet());
-        for(int i: queuesMapVC2.keySet()){
-            if(queuesMapVC2.get(i).size() == 0)
+        for (int i : queuesMapVC2.keySet()) {
+            if (queuesMapVC2.get(i).size() == 0)
                 continue;
 
-            if(queuesMapVC2.get(i).peek().getArrivalTime() < latest){
+            if (queuesMapVC2.get(i).peek().getArrivalTime() < latest) {
                 flow = flowsVC2.get(i - 1);
                 index = i;
                 queue = queuesMapVC2.get(i);
@@ -237,24 +253,37 @@ public class Global {
             }
         }
 
-        if(packet == null){
+        if (packet == null) {
             return null;
         }
+//        if(queuesMapVC2.get(index).size() < 10){
+//            Packet np = flow.createPacket();
+//            try{
+//                queuesMapVC2.get(index).put(np);
+//            }
+//
+//            catch(Exception e){
+//                Utils.error("Unable to add a new packet in simulation", e);
+//
+//            }
+//        }
+
         queuesMapVC2.get(index).poll();
         Object[] result = {flow, packet};
+
         return result;
     }
 
 
-    public static void cloneTraffic() throws Exception{
+    public static void cloneTraffic() throws Exception {
         //clone the flows
-        for(Flow f: flowsGPS){
+        for (Flow f : flowsGPS) {
             Flow flow = f.clone();
             flowsRE.add(flow);
             flowsVC2.add(flow);
             LinkedBlockingQueue<Packet> q1 = new LinkedBlockingQueue<>();
             LinkedBlockingQueue<Packet> q2 = new LinkedBlockingQueue<>();
-            for(Packet p: queuesMapGPS.get(f.getFlowId())){
+            for (Packet p : queuesMapGPS.get(f.getFlowId())) {
                 Packet packet1 = p.clone();
                 q1.put(packet1);
                 Packet packet2 = p.clone();
@@ -262,6 +291,20 @@ public class Global {
             }
             queuesMapRE.put(flow.getFlowId(), q1);
             queuesMapVC2.put(flow.getFlowId(), q2);
+        }
+    }
+
+    public static void addToRE(Packet np, Flow flow){
+        //Packet np = flow.createPacket();
+        int index = flow.getFlowId();
+        try {
+//            if (flow.getFlowType() == FlowType.GREEDY && queuesMapRE.get(index).size() < 100)
+//                queuesMapRE.get(index).put(np);
+//            else if (flow.getFlowType() != FlowType.GREEDY)
+                queuesMapRE.get(index).put(np);
+        } catch (Exception e) {
+            Utils.error("Unable to add a new packet in simulation", e);
+
         }
     }
 }

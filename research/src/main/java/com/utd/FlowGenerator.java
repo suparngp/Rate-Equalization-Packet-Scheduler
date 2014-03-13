@@ -1,7 +1,5 @@
 package com.utd;
 
-import java.util.Random;
-
 /**
  * From the implementation point of view, we need an entity which generates flowsGPS at random times.
  * Now we are not performing something in real time. We generate time stamps based on a certain distribution.
@@ -65,7 +63,7 @@ public class FlowGenerator extends Thread{
     public void scenario1(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UA_A_PR);
+            Flow flow = new Flow(i, bw, FlowType.UA_A_PR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -75,7 +73,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 11; i <= 20; i++){
             float bw = (i - 10) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.GREEDY);
+            Flow flow = new Flow(i, bw, FlowType.GREEDY);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -83,14 +81,14 @@ public class FlowGenerator extends Thread{
             flow.run();
         }
 
-        Utils.log(Global.flowsGPS);
-      //Utils.log(Global.queuesMapGPS);
+        //Utils.log(Global.flowsGPS);
+      Utils.log(Global.queuesMapGPS);
     }
 
     public void scenario2(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UA_A_CR);
+            Flow flow = new Flow(i, bw, FlowType.UA_A_CR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -100,7 +98,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 11; i <= 20; i++){
             float bw = (i - 10) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.GREEDY);
+            Flow flow = new Flow(i, bw, FlowType.GREEDY);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -115,7 +113,7 @@ public class FlowGenerator extends Thread{
     public void scenario3(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UU_A_PR);
+            Flow flow = new Flow(i, bw, FlowType.UU_A_PR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -125,7 +123,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 11; i <= 20; i++){
             float bw = (i - 10) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UU_B_PR);
+            Flow flow = new Flow(i, bw, FlowType.UU_B_PR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -135,7 +133,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 21; i <= 30; i++){
             float bw = (i - 20) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.GREEDY);
+            Flow flow = new Flow(i, bw, FlowType.GREEDY);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -143,6 +141,7 @@ public class FlowGenerator extends Thread{
             flow.run();
         }
 
+        //Utils.error("Remaning BW: ", Global.totalCapacity);
         Utils.log(Global.flowsGPS);
         Utils.debug(Global.queuesMapGPS);
     }
@@ -150,7 +149,7 @@ public class FlowGenerator extends Thread{
     public void scenario4(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UU_A_CR);
+            Flow flow = new Flow(i, bw, FlowType.UU_A_CR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -160,7 +159,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 11; i <= 20; i++){
             float bw = (i - 10) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UU_B_CR);
+            Flow flow = new Flow(i, bw, FlowType.UU_B_CR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -170,7 +169,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 21; i <= 30; i++){
             float bw = (i - 20) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.GREEDY);
+            Flow flow = new Flow(i, bw, FlowType.GREEDY);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -185,7 +184,7 @@ public class FlowGenerator extends Thread{
     public void scenario5(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UU_UA_B_PR);
+            Flow flow = new Flow(i, bw, FlowType.UU_UA_B_PR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -195,7 +194,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 11; i <= 20; i++){
             float bw = (i - 10) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.GREEDY);
+            Flow flow = new Flow(i, bw, FlowType.GREEDY);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -210,7 +209,7 @@ public class FlowGenerator extends Thread{
     public void scenario6(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.UU_UA_B_CR);
+            Flow flow = new Flow(i, bw, FlowType.UU_UA_B_CR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -220,7 +219,7 @@ public class FlowGenerator extends Thread{
 
         for(int i = 11; i <= 20; i++){
             float bw = (i - 10) * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, 0, FlowType.GREEDY);
+            Flow flow = new Flow(i, bw, FlowType.GREEDY);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);

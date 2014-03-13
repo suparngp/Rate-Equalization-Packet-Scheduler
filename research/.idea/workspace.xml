@@ -2,40 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4434b37a-fe5a-44a7-81bf-241db2fe743a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/ExponentialRandom.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Flow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/FlowComparator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/FlowType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_supercsv_super_csv_2_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Packet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/RandomNumberGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Test.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Utils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/Flow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/FlowComparator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/FlowGenerator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/GPSScheduler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/GPSScheduler2.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/GPSScheduler3.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/Global.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/Packet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/RateEqScheduler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/TSGenerator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/Utils.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/utd/VC2Scheduler.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/TotalDataFr.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler2.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/ExponentialRandom.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/ExponentialRandom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Flow.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Flow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Global.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Test.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Utils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/research.iml" afterPath="$PROJECT_DIR$/research.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -93,7 +76,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" line="135" class="com.utd.VC2Scheduler" package="com.utd">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" line="395" class="com.utd.RateEqScheduler" package="com.utd">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -121,61 +104,34 @@
       <file leaf-file-name="GPSScheduler3.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3120">
+            <state line="84" column="41" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.0" vertical-offset="1260" max-vertical-offset="4020">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Flow.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
+      <file leaf-file-name="TotalDataFr.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TotalDataFr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="220" column="0" selection-start="6355" selection-end="6355" vertical-scroll-proportion="0.79695433" vertical-offset="2409" max-vertical-offset="3000">
+            <state line="80" column="0" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="1290">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RandomNumberGenerator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RandomNumberGenerator.java">
+      <file leaf-file-name="Global.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="19" selection-start="947" selection-end="980" vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="645">
+            <state line="303" column="44" selection-start="9642" selection-end="9642" vertical-scroll-proportion="0.0" vertical-offset="4545" max-vertical-offset="4740">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExponentialRandom.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/ExponentialRandom.java">
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="48" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="13" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="1320">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RateEqScheduler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="30" selection-start="879" selection-end="879" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="4500">
+            <state line="10" column="22" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
               <folding />
             </state>
           </provider>
@@ -184,25 +140,52 @@
       <file leaf-file-name="FlowGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="49" selection-start="2802" selection-end="2802" vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="3600">
+            <state line="151" column="50" selection-start="5439" selection-end="5439" vertical-scroll-proportion="0.0" vertical-offset="1968" max-vertical-offset="3585">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VC2Scheduler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java">
+      <file leaf-file-name="TSGenerator.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="0" selection-start="2897" selection-end="2897" vertical-scroll-proportion="0.0" vertical-offset="1260" max-vertical-offset="2235">
+            <state line="48" column="0" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.39252338" vertical-offset="594" max-vertical-offset="2325">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlowType.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowType.java">
+      <file leaf-file-name="Utils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="12" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="345">
+            <state line="13" column="35" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="3075">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExponentialRandom.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/ExponentialRandom.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="37" selection-start="308" selection-end="312" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="420">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="59" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="360">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="252" column="19" selection-start="7258" selection-end="7258" vertical-scroll-proportion="0.0" vertical-offset="3780" max-vertical-offset="4875">
               <folding />
             </state>
           </provider>
@@ -247,19 +230,22 @@
         <option value="$PROJECT_DIR$/src/com/utd/Flow.java" />
         <option value="$PROJECT_DIR$/src/com/utd/Global.java" />
         <option value="$PROJECT_DIR$/src/com/utd/TSGenerator.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/Utils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/FlowType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/RandomNumberGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/Test.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/ExponentialRandom.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/Flow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/TotalDataFr.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java" />
       </list>
     </option>
   </component>
@@ -270,10 +256,20 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="711" />
+    <option name="height" value="708" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -319,8 +315,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -399,6 +393,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -419,7 +415,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistory" value="" />
+    <property name="SearchEverywhereHistory" value="/" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
@@ -431,7 +427,7 @@
       <recent name="$PROJECT_DIR$/src/com/utd" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="com.utd.Main" />
@@ -511,8 +507,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Test" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Test" />
         <item index="2" class="java.lang.String" itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
@@ -536,21 +532,21 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="711" extended-state="0" />
+    <frame x="0" y="22" width="1280" height="708" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="480" y="171" width="320" height="412" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39875388" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28675282" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3961039" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3224299" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3961039" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -574,12 +570,41 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Added VC2 scheduler.&#10;&#10;- Missing constant factor W.&#10;- Need to check the getFromGroupB code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added VC2 scheduler.&#10;&#10;- Missing constant factor W.&#10;- Need to check the getFromGroupB code." />
+    <MESSAGE value="Just before updating the code to manage timestamps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Just before updating the code to manage timestamps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="68" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="4515">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="16" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="3570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="0" selection-start="2897" selection-end="2897" vertical-scroll-proportion="0.0" vertical-offset="1260" max-vertical-offset="2235">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="12" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Packet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="0" selection-start="600" selection-end="600" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="750">
@@ -592,11 +617,6 @@
         <state line="2" column="13" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="210">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="195" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
@@ -635,11 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="195" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="330" />
@@ -676,11 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="195" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="330" />
@@ -710,11 +720,6 @@
         <state line="2" column="13" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="195" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
@@ -756,64 +761,14 @@
         <state line="480" column="13" selection-start="15243" selection-end="15243" vertical-scroll-proportion="0.5276873" vertical-offset="6291" max-vertical-offset="13155" />
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/src.zip!/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="12" selection-start="5535" selection-end="5535" vertical-scroll-proportion="0.33260393" vertical-offset="1633" max-vertical-offset="8745" />
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="212" column="28" selection-start="9183" selection-end="9183" vertical-scroll-proportion="0.33333334" vertical-offset="2707" max-vertical-offset="8055" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="295" selection-end="295" vertical-scroll-proportion="0.4054054" vertical-offset="0" max-vertical-offset="407" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="14" selection-start="648" selection-end="648" vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="3420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="4" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Packet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="29" selection-start="323" selection-end="334" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="42" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="179415">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="0" selection-start="3975" selection-end="3975" vertical-scroll-proportion="0.0" vertical-offset="1740" max-vertical-offset="2985">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="2897" selection-end="2897" vertical-scroll-proportion="0.0" vertical-offset="906" max-vertical-offset="2220">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="13" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1320">
-          <folding />
-        </state>
+        <state line="3" column="42" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="179415" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowType.java">
@@ -823,72 +778,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="37" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="49" selection-start="2802" selection-end="2802" vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="3600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="30" selection-start="879" selection-end="879" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="4500">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="39" selection-start="6218" selection-end="6218" vertical-scroll-proportion="0.40947548" vertical-offset="2638" max-vertical-offset="4065">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="48" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RandomNumberGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="19" selection-start="947" selection-end="980" vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="645">
+        <state line="17" column="29" selection-start="513" selection-end="523" vertical-scroll-proportion="0.0" vertical-offset="9" max-vertical-offset="645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="30" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="660">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="8" selection-start="4519" selection-end="4519" vertical-scroll-proportion="0.33333334" vertical-offset="1297" max-vertical-offset="8745">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="470" selection-end="470" vertical-scroll-proportion="-5.5625" vertical-offset="2361" max-vertical-offset="2745">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="107" selection-end="107" vertical-scroll-proportion="0.29085872" vertical-offset="0" max-vertical-offset="405">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/ExponentialRandom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3120">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="32" selection-start="783" selection-end="783" vertical-scroll-proportion="0.20304568" vertical-offset="315" max-vertical-offset="1200">
+        <state line="13" column="37" selection-start="308" selection-end="312" vertical-scroll-proportion="0.0" vertical-offset="73" max-vertical-offset="420">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="220" column="0" selection-start="6355" selection-end="6355" vertical-scroll-proportion="0.79695433" vertical-offset="2409" max-vertical-offset="3000">
+        <state line="252" column="19" selection-start="7258" selection-end="7258" vertical-scroll-proportion="0.0" vertical-offset="3780" max-vertical-offset="4875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="41" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="3990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Packet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="22" selection-start="155" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TotalDataFr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="1290">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="59" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="35" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="2955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="303" column="44" selection-start="9642" selection-end="9642" vertical-scroll-proportion="0.0" vertical-offset="1303" max-vertical-offset="4710">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="379" column="34" selection-start="13791" selection-end="13791" vertical-scroll-proportion="0.0" vertical-offset="5236" max-vertical-offset="7035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="22" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="50" selection-start="5439" selection-end="5439" vertical-scroll-proportion="0.0" vertical-offset="1968" max-vertical-offset="3585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="0" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.39252338" vertical-offset="594" max-vertical-offset="2325">
           <folding />
         </state>
       </provider>

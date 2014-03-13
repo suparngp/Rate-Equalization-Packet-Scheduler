@@ -12,9 +12,13 @@ public class GPSScheduler3 {
     SortedSet<Packet> completed = new ConcurrentSkipListSet<>();
     List<Float> breakingPoints = new ArrayList<>();
     float currentTime = 0;
-
+    HashSet<Flow> trackedFlows = new HashSet<>();
+    HashMap<Float, HashSet<Flow>> tracker = new HashMap<>();
     public void run(){
 
+        trackedFlows.addAll(Global.flowsRE);
+        boolean create = true;
+        Utils.dumpCSV2(queues.keySet(), "wfq-bw.csv", true);
         //add the first packet to the queue.
         Object[] next = Global.pollPacket();
         if(next == null){
@@ -28,7 +32,8 @@ public class GPSScheduler3 {
         adjustRates();
 
         next = Global.pollPacket();
-        while(next != null){
+        while(currentTime < Global.timeLimit && next != null){
+            //Utils.log(currentTime);
             Flow f = (Flow)next[0];
             Packet p = (Packet)next[1];
 
@@ -47,8 +52,25 @@ public class GPSScheduler3 {
                 addFlow(f, p);
                 adjustRates();
             }
+
+//            if(completed.size() > 1000){
+//                List<Packet> packetizedCompleted = new ArrayList<>();
+//                float finishingTime = 0;
+//                for(Packet p1: completed){
+//
+//                    float startTime = Math.max(finishingTime, p1.getArrivalTime());
+//                    finishingTime = startTime + p1.getLength() / Global.totalCapacity;
+//                    p1.setStartTime(startTime);
+//                    p1.setFinishTime(finishingTime);
+//                    packetizedCompleted.add(p1);
+//                }
+//                Utils.log(packetizedCompleted.size());
+//                Utils.dumpCSV(packetizedCompleted, "wfq.csv", true);
+//            }
+
             next = Global.pollPacket();
         }
+        //Utils.log("Next is ", next);
         Utils.log("No New packets, ending the simulation");
         cleanup(Float.MAX_VALUE);
         Utils.debug("The completed Packets are: \n", completed);
@@ -60,12 +82,21 @@ public class GPSScheduler3 {
         for(Packet p: completed){
             Packet clone = p.clone();
             float startTime = Math.max(finishingTime, p.getArrivalTime());
-            finishingTime = startTime + p.getLength() / Global.totalCapacity;
+            finishingTime = startTime + 1 / Global.totalCapacity;
             p.setStartTime(startTime);
             p.setFinishTime(finishingTime);
             packetizedCompleted.add(p);
         }
-        Utils.dumpCSV(packetizedCompleted, "wfq.csv");
+        Utils.log(packetizedCompleted.size());
+        Utils.dumpCSV(packetizedCompleted, "wfq.csv", true);
+        List<Float> tss = new ArrayList<>();
+        tss.addAll(tracker.keySet());
+        Collections.sort(tss);
+        //Utils.log(tss);
+        for(Float ts: tss){
+            Utils.log(ts, tracker.get(ts));
+            Utils.dumpCSV2(tracker.get(ts), "wfq-bw.csv", false);
+        }
     }
 
     public void addFlow(Flow flow, Packet packet){
@@ -83,6 +114,12 @@ public class GPSScheduler3 {
     }
 
     public void adjustRates(){
+        for(Flow f: trackedFlows){
+            f.setCurrentTime(currentTime);
+            if(!queues.keySet().contains(f)){
+                f.setAllocatedBandwidth(0);
+            }
+        }
         Utils.debug("At time: ", currentTime);
         Utils.debug("Before adjusting rates are ", queues.keySet());
         Set<Flow> flows = queues.keySet();
@@ -99,6 +136,26 @@ public class GPSScheduler3 {
 
         Utils.debug("After adjusting rates are ", queues.keySet());
         breakingPoints.add(currentTime);
+
+        for(Flow f: trackedFlows){
+            //f.setAllocatedBandwidth(0);
+            for(Flow fl: queues.keySet()){
+                if(fl.getFlowId() == f.getFlowId()){
+                    f.setAllocatedBandwidth(fl.getAllocatedBandwidth());
+                    break;
+                }
+            }
+        }
+        HashSet<Flow> set = tracker.get(currentTime);
+        if(set == null){
+            set = new HashSet<>();
+        }
+        set.clear();
+        for(Flow f: trackedFlows){
+            Flow clone = f.clone();
+            set.add(clone);
+        }
+        tracker.put(currentTime, set);
     }
 
     public void cleanup(float limit){
@@ -145,6 +202,7 @@ public class GPSScheduler3 {
     }
 
     public void cleanupQueues(float limit){
+
         for(Flow f: queues.keySet()){
             float lastFinishingTime = 0;
             while(true){
