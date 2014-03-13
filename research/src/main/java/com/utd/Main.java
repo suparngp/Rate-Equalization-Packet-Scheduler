@@ -10,9 +10,9 @@ public class Main {
         FlowGenerator flowGen = new FlowGenerator(flowsCount);
         flowGen.scenario3();
         Global.cloneTraffic();
-        //new GPSScheduler3().run();
+        new GPSScheduler3().run();
         //Utils.log("Traffic for RE: ", Global.queuesMapRE);
-        new RateEqScheduler().run();
+        //new RateEqScheduler().run();
 //        Utils.debug("Traffic for VC2: ", Global.queuesMapVC2);
         //new VC2Scheduler().run();
     }

@@ -77,26 +77,27 @@ public class GPSScheduler3 {
         Utils.debug("The breaking points are: \n", breakingPoints);
         Utils.log("........WFQ GPS Simulation Completed.........");
         Utils.log("In packetized version the completed sequesnce will be");
-        List<Packet> packetizedCompleted = new ArrayList<>();
-        float finishingTime = 0;
-        for(Packet p: completed){
-            Packet clone = p.clone();
-            float startTime = Math.max(finishingTime, p.getArrivalTime());
-            finishingTime = startTime + 1 / Global.totalCapacity;
-            p.setStartTime(startTime);
-            p.setFinishTime(finishingTime);
-            packetizedCompleted.add(p);
-        }
-        Utils.log(packetizedCompleted.size());
-        Utils.dumpCSV(packetizedCompleted, "wfq.csv", true);
-        List<Float> tss = new ArrayList<>();
-        tss.addAll(tracker.keySet());
-        Collections.sort(tss);
-        //Utils.log(tss);
-        for(Float ts: tss){
-            Utils.log(ts, tracker.get(ts));
-            Utils.dumpCSV2(tracker.get(ts), "wfq-bw.csv", false);
-        }
+        processCompleted();
+//        List<Packet> packetizedCompleted = new ArrayList<>();
+//        float finishingTime = 0;
+//        for(Packet p: completed){
+//            Packet clone = p.clone();
+//            float startTime = Math.max(finishingTime, p.getArrivalTime());
+//            finishingTime = startTime + 1 / Global.totalCapacity;
+//            p.setStartTime(startTime);
+//            p.setFinishTime(finishingTime);
+//            packetizedCompleted.add(p);
+//        }
+//        Utils.log(packetizedCompleted.size());
+//        Utils.dumpCSV(packetizedCompleted, "wfq.csv", true);
+//        List<Float> tss = new ArrayList<>();
+//        tss.addAll(tracker.keySet());
+//        Collections.sort(tss);
+//        //Utils.log(tss);
+//        for(Float ts: tss){
+//            Utils.log(ts, tracker.get(ts));
+//            Utils.dumpCSV2(tracker.get(ts), "wfq-bw.csv", false);
+//        }
     }
 
     public void addFlow(Flow flow, Packet packet){
@@ -169,7 +170,7 @@ public class GPSScheduler3 {
                 LinkedBlockingQueue<Packet> q = queues.get(f);
                 float totalRem = 0;
                 for(Packet p: q){
-                    totalRem += (p.getLength() - p.getTransmitted());
+                    totalRem += 1;
                 }
 
                 float finishingTime = currentTime + (totalRem / f.getAllocatedBandwidth());
@@ -212,10 +213,10 @@ public class GPSScheduler3 {
                 }
                 float finishingTime = 0;
                 if(lastFinishingTime == 0){
-                    finishingTime = currentTime + ((p.getLength() - p.getTransmitted()) / f.getAllocatedBandwidth());
+                    finishingTime = currentTime + ((p.getLength() - p.getTransmitted()) / (f.getAllocatedBandwidth() * Global.maxPacketLength));
                 }
                 else{
-                    finishingTime = lastFinishingTime + ((p.getLength() - p.getTransmitted()) / f.getAllocatedBandwidth());
+                    finishingTime = lastFinishingTime + ((p.getLength() - p.getTransmitted()) / (f.getAllocatedBandwidth() * Global.maxPacketLength));
                 }
 
                 Utils.debug("finshing time == limit ", finishingTime == limit);
@@ -235,13 +236,13 @@ public class GPSScheduler3 {
                 }
                 else{
                     if(lastFinishingTime == 0){
-                        p.setTransmitted(p.getTransmitted() + (limit - currentTime) * f.getAllocatedBandwidth());
+                        p.setTransmitted(p.getTransmitted() + (limit - currentTime) * f.getAllocatedBandwidth() * Global.maxPacketLength);
                     }
                     else{
-                        p.setTransmitted(p.getTransmitted() + (limit - lastFinishingTime) * f.getAllocatedBandwidth());
+                        p.setTransmitted(p.getTransmitted() + (limit - lastFinishingTime) * f.getAllocatedBandwidth() * Global.maxPacketLength);
                     }
 
-                    p.setFinishTime(limit + (p.getLength() - p.getTransmitted()) / f.getAllocatedBandwidth());
+                    p.setFinishTime(limit + (p.getLength() - p.getTransmitted()) / (f.getAllocatedBandwidth() * Global.maxPacketLength));
                     break;
                 }
             }
@@ -257,6 +258,91 @@ public class GPSScheduler3 {
 
         catch(Exception e){
             Utils.error("Queues Overflowed, Simulation Failed");
+        }
+    }
+
+    public void processCompleted(){
+        List<Packet> packetizedCompleted = new ArrayList<>();
+        float finishingTime = 0;
+        for(Packet p: completed){
+            Packet clone = p.clone();
+            float startTime = Math.max(finishingTime, clone.getArrivalTime());
+            finishingTime = startTime + 1 / Global.totalCapacity;
+            //System.out.println(finishingTime);
+            clone.setStartTime(startTime);
+            clone.setFinishTime(finishingTime);
+            packetizedCompleted.add(clone);
+        }
+        Utils.log(packetizedCompleted.size());
+        Utils.dumpCSV(packetizedCompleted, "wfq.csv", true);
+        List<Float> tss = new ArrayList<>();
+        tss.addAll(tracker.keySet());
+        Collections.sort(tss);
+        //Utils.log(tss);
+        for(Float ts: tss){
+            Utils.log(ts, tracker.get(ts));
+            Utils.dumpCSV2(tracker.get(ts), "wfq-bw.csv", false);
+        }
+
+
+
+
+
+        double current = 0;
+        HashMap<Integer, TotalDataFr> totalDataTracker = new HashMap<>();
+        double incre = 0.02;
+        String fileName = "wfq-total.csv";
+
+        int index = 0;
+        List<Packet> removed = new ArrayList<>();
+        HashMap<Double, HashSet<TotalDataFr>> totalTracker = new HashMap<>();
+        boolean create = true;
+        for(Flow f: Global.flowsRE){
+            TotalDataFr fr = new TotalDataFr();
+            fr.setFlowId(f.getFlowId());
+            fr.setTimestamp(0);
+            fr.setTotalData(0);
+            fr.setTotalPackets(0);
+            totalDataTracker.put(f.getFlowId(), fr);
+        }
+        while (!packetizedCompleted.isEmpty()){
+            for(int flowId: totalDataTracker.keySet()){
+                totalDataTracker.get(flowId).setTimestamp(current);
+            }
+            HashSet<TotalDataFr> set = new HashSet<>();
+            for(index = 0; index < packetizedCompleted.size(); index++){
+                Packet p = packetizedCompleted.get(index);
+                if(p.getFinishTime() < current){
+                    removed.add(p);
+                    TotalDataFr frt = totalDataTracker.get(p.getFlowId());
+                    frt.setFlowId(p.getFlowId());
+                    frt.setTimestamp(current);
+                    frt.setTotalPackets(frt.getTotalPackets() + 1);
+                    frt.setTotalData(frt.getTotalData() + Global.maxPacketLength);
+                    totalDataTracker.put(p.getFlowId(), frt);
+
+
+                }
+                else{
+                    break;
+                }
+            }
+
+            for(TotalDataFr ftr: totalDataTracker.values()){
+                TotalDataFr clone = ftr.clone();
+                set.add(clone);
+            }
+
+            //System.out.println(set);
+            totalTracker.put(current, set);
+            Utils.dumpCSV3(set, fileName, create);
+            if(create)
+                create = false;
+            set.clear();
+            packetizedCompleted.removeAll(removed);
+            removed.clear();
+            current += incre;
+
         }
     }
 }

@@ -179,7 +179,7 @@ public class RateEqScheduler {
         //while extra bandwidth is there and index is within the flowList range.
         while (Math.floor(extraBandwidth) > 0) {
 
-            //System.out.println("Stuck Here " + extraBandwidth);
+            System.out.println("Stuck Here " + extraBandwidth);
             index = 1;
             //prev is the flow which has least allocation such that allocated rate = reserved rate
 
