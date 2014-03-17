@@ -46,7 +46,7 @@ public class TSGenerator implements Cloneable {
                 incre = 1 / rate;
                 break;
             case GREEDY:
-                incre = 1 / (Global.totalCapacity / 10);
+                incre = 1 / (Global.totalCapacity / 2);
                 break;
             case PADDING:
                 break;

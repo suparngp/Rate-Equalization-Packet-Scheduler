@@ -13,7 +13,7 @@ public class VC2Scheduler {
     List<Float> breakingPoints = new ArrayList<>();
     float currentTime = 0;
     HashMap<Flow, Float> groupAVC = new HashMap<>();
-
+    ResultsFileWriter output = new ResultsFileWriter();
 
     public VC2Scheduler() {
         float usedBandwidth = 0;
@@ -92,7 +92,7 @@ public class VC2Scheduler {
             addPacket(packet, flow);
 
             if(completed.size() > 1000){
-                Utils.dumpCSV(completed, "vc2.csv", create);
+                output.dumpCSV(completed, "vc2.csv", create);
                 create = false;
                 completed.clear();
                 System.exit(0);

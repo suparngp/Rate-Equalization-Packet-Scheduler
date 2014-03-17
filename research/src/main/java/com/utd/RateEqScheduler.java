@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * The original Rate Equalization Scheduler
  * Created by suparngupta on 2/12/14.
  */
-public class RateEqScheduler {
+public class RateEqScheduler extends Thread {
     HashMap<Flow, LinkedBlockingQueue<Packet>> queues = new HashMap<>();
     List<Packet> completed = new ArrayList<>();
     List<Float> breakingPoints = new ArrayList<>();
@@ -15,11 +15,18 @@ public class RateEqScheduler {
     HashSet<Flow> trackedFlows = new HashSet<>();
     HashMap<Float, HashSet<Flow>> tracker = new HashMap<>();
 
-    public void run() throws Exception{
+    ResultsFileWriter output = new ResultsFileWriter();
+    private int scenario = -1;
+
+    public RateEqScheduler(int scenario){
+        this.scenario = scenario;
+    }
+
+    public void run() {
 
         trackedFlows.addAll(Global.flowsRE);
         boolean create = true;
-        Utils.dumpCSV2(queues.keySet(), "rate-eq-bw.csv", true);
+        output.dumpCSV2(queues.keySet(), "rate-eq-bw-" + this.scenario + ".csv", true);
 
         //add the first packet to the queue.
         Object[] next = null;
@@ -69,7 +76,7 @@ public class RateEqScheduler {
 //                    p1.setFinishTime(finishingTime);
 //                    packetizedCompleted.add(p1);
 //                }
-//                Utils.dumpCSV(packetizedCompleted, "rate-eq.csv", create);
+//                output.dumpCSV(packetizedCompleted, "rate-eq.csv", create);
 //                create = false;
 //                packetizedCompleted.clear();
 //                completed.clear();
@@ -145,7 +152,7 @@ public class RateEqScheduler {
             tracker.put(currentTime, set);
 
             Utils.log("After adjusting rates are ", queues.keySet());
-            //Utils.dumpCSV2(trackedFlows, "rate-eq-bw.csv", false);
+            //output.dumpCSV2(trackedFlows, "rate-eq-bw.csv", false);
             breakingPoints.add(currentTime);
             return;
         }
@@ -179,7 +186,7 @@ public class RateEqScheduler {
         //while extra bandwidth is there and index is within the flowList range.
         while (Math.floor(extraBandwidth) > 0) {
 
-            System.out.println("Stuck Here " + extraBandwidth);
+            //System.out.println("Stuck Here " + extraBandwidth);
             index = 1;
             //prev is the flow which has least allocation such that allocated rate = reserved rate
 
@@ -253,7 +260,7 @@ public class RateEqScheduler {
         }
         tracker.put(currentTime, set);
         //System.out.println(tracker);
-        //Utils.dumpCSV2(trackedFlows, "rate-eq-bw.csv", false);
+        //output.dumpCSV2(trackedFlows, "rate-eq-bw.csv", false);
         Utils.log("Final allocation: ", flowList);
         //System.out.println(flowList);
         //all the changes we made to the flows were done in a local copy flowList.
@@ -273,7 +280,7 @@ public class RateEqScheduler {
         breakingPoints.add(currentTime);
     }
 
-    public void cleanup(float limit) throws Exception{
+    public void cleanup(float limit) {
 
         //find if any queue will become empty before this limit.
         //compute the finishing times of each queue
@@ -314,7 +321,7 @@ public class RateEqScheduler {
 
     }
 
-    public void cleanupQueues(float limit) throws Exception{
+    public void cleanupQueues(float limit) {
         for (Flow f : queues.keySet()) {
             float lastFinishingTime = 0;
             while (true) {
@@ -390,14 +397,14 @@ public class RateEqScheduler {
             packetizedCompleted.add(clone);
         }
         Utils.log(packetizedCompleted.size());
-        Utils.dumpCSV(packetizedCompleted, "rate-eq.csv", true);
+        output.dumpCSV(packetizedCompleted, "rate-eq-" + this.scenario + ".csv", true);
         List<Float> tss = new ArrayList<>();
         tss.addAll(tracker.keySet());
         Collections.sort(tss);
         //Utils.log(tss);
         for(Float ts: tss){
             Utils.log(ts, tracker.get(ts));
-            Utils.dumpCSV2(tracker.get(ts), "rate-eq-bw.csv", false);
+            output.dumpCSV2(tracker.get(ts), "rate-eq-bw-" + this.scenario + ".csv", false);
         }
 
 
@@ -407,7 +414,7 @@ public class RateEqScheduler {
         double current = 0;
         HashMap<Integer, TotalDataFr> totalDataTracker = new HashMap<>();
         double incre = 0.02;
-        String fileName = "rate-eq-total.csv";
+        String fileName = "rate-eq-total-" + this.scenario + ".csv";
 
         int index = 0;
         List<Packet> removed = new ArrayList<>();
@@ -451,7 +458,7 @@ public class RateEqScheduler {
 
             //System.out.println(set);
             totalTracker.put(current, set);
-            Utils.dumpCSV3(set, fileName, create);
+            output.dumpCSV3(set, fileName, create);
             if(create)
                 create = false;
             set.clear();

@@ -256,21 +256,11 @@ public class Global {
         if (packet == null) {
             return null;
         }
-//        if(queuesMapVC2.get(index).size() < 10){
-//            Packet np = flow.createPacket();
-//            try{
-//                queuesMapVC2.get(index).put(np);
-//            }
-//
-//            catch(Exception e){
-//                Utils.error("Unable to add a new packet in simulation", e);
-//
-//            }
-//        }
 
         queuesMapVC2.get(index).poll();
         Object[] result = {flow, packet};
-
+        Packet np = flow.createPacket();
+        addToRE(np, flow);
         return result;
     }
 
@@ -302,6 +292,16 @@ public class Global {
 //                queuesMapRE.get(index).put(np);
 //            else if (flow.getFlowType() != FlowType.GREEDY)
                 queuesMapRE.get(index).put(np);
+        } catch (Exception e) {
+            Utils.error("Unable to add a new packet in simulation", e);
+
+        }
+    }
+
+    public static void addToVC2(Packet np, Flow flow){
+        int index = flow.getFlowId();
+        try {
+            queuesMapVC2.get(index).put(np);
         } catch (Exception e) {
             Utils.error("Unable to add a new packet in simulation", e);
 

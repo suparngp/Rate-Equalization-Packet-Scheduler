@@ -8,12 +8,12 @@ public class Main {
         int flowsCount = 30;
         Global.init(totalCapacity, maxPacketCount, true, 2, maxPacketLength, flowsCount);
         FlowGenerator flowGen = new FlowGenerator(flowsCount);
-        flowGen.scenario3();
+        flowGen.scenario6();
         Global.cloneTraffic();
-        new GPSScheduler3().run();
+        //new GPSScheduler3(6).start();
         //Utils.log("Traffic for RE: ", Global.queuesMapRE);
-        //new RateEqScheduler().run();
+        new RateEqScheduler(6).start();
 //        Utils.debug("Traffic for VC2: ", Global.queuesMapVC2);
-        //new VC2Scheduler().run();
+        //new VC2Scheduler2().init().run();
     }
 }
