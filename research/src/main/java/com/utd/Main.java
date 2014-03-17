@@ -1,19 +1,39 @@
 package com.utd;
 
+/**
+ * Main Class to drive the program.
+ * Configuration parameters which can be setup are:
+ * 1. total capacity of the output channel.
+ * 2. Maximum packet length assuming constant packet size.
+ * 3. Maximum number of flows in the system.
+ * */
 public class Main {
     public static void main(String[] args) throws Exception{
+
+        //configuration parameters
         float totalCapacity = 165 * 1024 * 1024 / 1000;
-        int maxPacketCount = 2;
         float maxPacketLength = 1000;
         int flowsCount = 30;
-        Global.init(totalCapacity, maxPacketCount, true, 2, maxPacketLength, flowsCount);
+
+        //initialize the system.
+        Global.init(totalCapacity, maxPacketLength, flowsCount);
+
+        //generate all the flows
         FlowGenerator flowGen = new FlowGenerator(flowsCount);
-        flowGen.scenario6();
+
+        //select the simulation scenario
+        flowGen.scenario1();
+
+        //clone the initial traffic for all the three algorithms.
         Global.cloneTraffic();
-        //new GPSScheduler3(6).start();
-        //Utils.log("Traffic for RE: ", Global.queuesMapRE);
+
+        //Run the WFQ scehduler
+        new GPSScheduler3(6).start();
+
+        // Run the Rate equalization scheduler
         new RateEqScheduler(6).start();
-//        Utils.debug("Traffic for VC2: ", Global.queuesMapVC2);
-        //new VC2Scheduler2().init().run();
+
+        //Run the DualModeScehduler Scehduler
+        new DualModeScehduler().init().run();
     }
 }

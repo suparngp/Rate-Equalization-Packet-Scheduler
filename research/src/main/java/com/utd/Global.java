@@ -27,13 +27,10 @@ public class Global {
     static int flowsCount;
     static double timeLimit = 0.2;
 
-    public static void init(float tc, int mpc, boolean iec, float ec, float mpl, int fCount) {
+    public static void init(float tc, float mpl, int fCount) {
         totalCapacity = tc;
         availableCapacity = totalCapacity;
         usedCapacity = 0;
-        maxPacketCount = ++mpc;
-        isEqualCapacity = iec;
-        equalCapacity = ec;
         maxPacketLength = mpl;
         flowsCount = fCount;
     }

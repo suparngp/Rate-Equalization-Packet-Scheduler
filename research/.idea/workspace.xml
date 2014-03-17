@@ -2,151 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4434b37a-fe5a-44a7-81bf-241db2fe743a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/DMS Scenario 1 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/DMS Scenario 1 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/DMS Scenario 2 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/DMS Scenario 2 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/DMS Scenario 3 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/DMS Scenario 3 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/DMS Scenario 4 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/DMS Scenario 4 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/DMS Scenario 5 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/DMS Scenario 5 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/DMS Scenario 6 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/DMS Scenario 6 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/Data/Hardcover_bullet_black-13.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/Index.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/Metadata/Properties.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/Rate Equalization Scenario 1 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/Rate Equalization Scenario 1 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/Rate Equalization Scenario 2 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/Rate Equalization Scenario 2 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/Rate Equalization Scenario 3 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/Rate Equalization Scenario 3 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/Rate Equalization Scenario 4 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/Rate Equalization Scenario 4 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/Rate Equalization Scenario 5 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/Rate Equalization Scenario 5 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/Rate Equalization Scenario 6 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/Rate Equalization Scenario 6 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/WFQ Scenario 1 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/WFQ Scenario 1 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/WFQ Scenario 2 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/WFQ Scenario 2 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/WFQ Scenario 3 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/WFQ Scenario 3 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/WFQ Scenario 4 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/WFQ Scenario 4 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/WFQ Scenario 5 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/WFQ Scenario 5 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Final/WFQ Scenario 6 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/WFQ Scenario 6 Final.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/preview-micro.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/preview-web.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/rate-eq-total#csv (rate-eq-total.csv).tde" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/vc2-total#csv (vc2-total.csv).tde" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/Metadata/BuildVersionHistory.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenarios.pages/Metadata/DocumentIdentifier" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/Rate Equalization Scenario 1 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/Rate Equalization Scenario 3 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/Rate Equalization Scenario 4 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/Rate Equalization Scenario 5 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/Rate Equalization Scenario 6 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/Rate Equalization scenario 2-final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/utd/ResultsFileWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/VC2P Scenario 1 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/VC2P Scenario 2-final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/VC2P Scenario 3 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/VC2P Scenario 4 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/VC2P Scenario 5 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/VC2P Scenario 6 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/WFQ Scenario 1 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/WFQ Scenario 2-final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/WFQ Scenario 3 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/WFQ Scenario 4 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/WFQ Scenario 5 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/WFQ Scenario 6 Final.twb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/rate-eq-1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/rate-eq-2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/rate-eq-3.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/rate-eq-4.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/rate-eq-5.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/rate-eq-6.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/rate-eq-bw-1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/rate-eq-bw-2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/rate-eq-bw-3.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/rate-eq-bw-4.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/rate-eq-bw-5.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/rate-eq-bw-6.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/rate-eq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/rate-eq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/rate-eq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/rate-eq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/rate-eq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/rate-eq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/rate-eq-total-1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/rate-eq-total-2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/rate-eq-total-3.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/rate-eq-total-4.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/rate-eq-total-5.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/rate-eq-total-6.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/rate-eq-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/rate-eq-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/rate-eq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/rate-eq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/rate-eq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/rate-eq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/rate-eq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/rate-eq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/vc2-plus.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/vc2-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/vc2-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/vc2-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/vc2-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/vc2-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/vc2-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/wfq-1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/wfq-2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/wfq-3.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/wfq-4.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/wfq-5.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/wfq-6.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/wfq-bw-1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/wfq-bw-2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/wfq-bw-3.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/wfq-bw-4.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/wfq-bw-5.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/wfq-bw-6.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/wfq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/wfq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/wfq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/wfq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/wfq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/wfq-bw.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/wfq-total-1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/wfq-total-2.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/wfq-total-3.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/wfq-total-4.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/wfq-total-5.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/wfq-total-6.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/wfq-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/wfq-total.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 1/wfq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 2/wfq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 3/wfq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 4/wfq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 5/wfq.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scenario 6/wfq.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/DualModeScehduler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Global.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="research.iws" />
@@ -232,9 +90,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="4" selection-start="561" selection-end="612" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="5400">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -242,21 +98,17 @@
       <file leaf-file-name="VC2Scheduler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="27" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="2760">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="94" column="27" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.0" vertical-offset="1410" max-vertical-offset="2760">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VC2Scheduler2.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java">
+      <file leaf-file-name="DualModeScehduler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/DualModeScehduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4185">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="106" column="13" selection-start="3359" selection-end="3359" vertical-scroll-proportion="0.6694915" vertical-offset="1180" max-vertical-offset="4650">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -264,7 +116,7 @@
       <file leaf-file-name="Global.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="33" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0" vertical-offset="268" max-vertical-offset="4710">
+            <state line="34" column="28" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="4665">
               <folding />
             </state>
           </provider>
@@ -273,16 +125,16 @@
       <file leaf-file-name="Utils.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="5" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0" vertical-offset="222" max-vertical-offset="585">
+            <state line="31" column="5" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="585">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="36" selection-start="543" selection-end="543" vertical-scroll-proportion="0.5051814" vertical-offset="0" max-vertical-offset="386">
+            <state line="36" column="19" selection-start="1094" selection-end="1094" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
               <folding />
             </state>
           </provider>
@@ -345,6 +197,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/utd/ResultsFileWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/DualModeScehduler.java" />
       </list>
     </option>
   </component>
@@ -414,8 +267,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -487,9 +338,15 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -500,7 +357,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settings.project.maven.repository.indices" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.33613446" />
     <property name="options.searchVisible" value="true" />
@@ -510,7 +367,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistory" value="&#10;/" />
+    <property name="SearchEverywhereHistory" value="//&#10;/" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
@@ -630,23 +487,23 @@
     <frame x="0" y="22" width="1280" height="708" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3961039" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="480" y="171" width="320" height="412" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28836834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3961039" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32792208" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -670,12 +527,20 @@
     <MESSAGE value="Just before updating the code to manage timestamps" />
     <MESSAGE value="Rate Eq is working perfect" />
     <MESSAGE value="GPS is working perfect" />
-    <option name="LAST_COMMIT_MESSAGE" value="GPS is working perfect" />
+    <MESSAGE value="Final Checkin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Checkin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="36" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="330" />
@@ -857,9 +722,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="59" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <folding />
-        </state>
+        <state line="7" column="59" selection-start="186" selection-end="186" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
@@ -923,47 +786,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="41" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.0" vertical-offset="866" max-vertical-offset="4275">
-          <folding />
-        </state>
+        <state line="104" column="41" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.0" vertical-offset="866" max-vertical-offset="4275" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="5" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2340">
-          <folding />
-        </state>
+        <state line="53" column="5" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2340" />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/net/sf/supercsv/super-csv/2.1.0/super-csv-2.1.0.jar!/org/supercsv/io/ICsvWriter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="9" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
+        <state line="13" column="9" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285" />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/net/sf/supercsv/super-csv/2.1.0/super-csv-2.1.0-sources.jar!/org/supercsv/io/ICsvWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="9" selection-start="2129" selection-end="2129" vertical-scroll-proportion="0.0" vertical-offset="652" max-vertical-offset="960">
-          <folding>
-            <element signature="e#0#2183#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="71" column="9" selection-start="2129" selection-end="2129" vertical-scroll-proportion="0.0" vertical-offset="652" max-vertical-offset="960" />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/net/sf/supercsv/super-csv/2.1.0/super-csv-2.1.0-sources.jar!/org/supercsv/io/AbstractCsvWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="0" selection-start="3296" selection-end="3296" vertical-scroll-proportion="0.0" vertical-offset="1083" max-vertical-offset="3165">
-          <folding>
-            <element signature="e#0#6937#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4120#4121#0" expanded="false" />
-            <element signature="e#4144#4145#0" expanded="false" />
-            <element signature="e#4203#4204#0" expanded="false" />
-            <element signature="e#4226#4227#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="101" column="0" selection-start="3296" selection-end="3296" vertical-scroll-proportion="0.0" vertical-offset="1083" max-vertical-offset="3165" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Utils.java">
@@ -976,27 +819,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="4" selection-start="561" selection-end="612" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="5400">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4185">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="94" column="27" selection-start="3313" selection-end="3313" vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="2760">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1011,26 +841,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/ResultsFileWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="13" selection-start="1988" selection-end="1988" vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="1245">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#dumpCSV#0;class#ResultsFileWriter#0" expanded="false" />
-            <element signature="method#getProcessors#0;class#ResultsFileWriter#0" expanded="false" />
-            <element signature="method#dumpCSV3#0;class#ResultsFileWriter#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="70" column="13" selection-start="1988" selection-end="1988" vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="1245" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="33" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0" vertical-offset="268" max-vertical-offset="4710">
+        <state line="34" column="28" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="4665">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="543" selection-end="543" vertical-scroll-proportion="0.5051814" vertical-offset="0" max-vertical-offset="386">
+        <state line="36" column="19" selection-start="1094" selection-end="1094" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/DualModeScehduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="106" column="13" selection-start="3359" selection-end="3359" vertical-scroll-proportion="0.6694915" vertical-offset="1180" max-vertical-offset="4650">
           <folding />
         </state>
       </provider>

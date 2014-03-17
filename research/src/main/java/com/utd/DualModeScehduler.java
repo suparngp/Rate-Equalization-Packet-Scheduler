@@ -4,20 +4,51 @@ import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
+ * Class to simulate Dual Mode Scheduler
  * Created by suparngupta on 3/7/14.
  */
-public class VC2Scheduler2 {
+public class DualModeScehduler {
 
-    HashMap<Flow, LinkedBlockingQueue<Packet>>groupA = new HashMap<>();
-    List<Flow> groupB = new ArrayList<>();
-    HashMap<Flow, Float> virtualClocks = new HashMap<>();
+//    map to hold flows and respective queues.
+    private HashMap<Flow, LinkedBlockingQueue<Packet>>groupA = new HashMap<>();
+
+    //list of flows in group B
+    private List<Flow> groupB = new ArrayList<>();
+
+    //Map to hold the virtual clocks
+    private HashMap<Flow, Float> virtualClocks = new HashMap<>();
+
+    //current time of the scehuler
     private float currentTime;
-    private List<Packet> completed = new ArrayList<>();
-    HashMap<Flow, Integer> packetCount = new HashMap<>();
-    ResultsFileWriter output = new ResultsFileWriter();
 
-    public VC2Scheduler2 init(){
+    //list to hold completed packets
+    private List<Packet> completed = new ArrayList<>();
+
+    //map to maintain the transmitted packet count for each flow
+    private HashMap<Flow, Integer> packetCount = new HashMap<>();
+
+    //output file writer
+    private ResultsFileWriter output = new ResultsFileWriter();
+
+    //scenario number
+    private int scenario;
+
+
+    /*
+    * Initialize the scheduler with the scenarion number.
+    * */
+    public DualModeScehduler(int scenario){
+        this.scenario = scenario;
+    }
+
+
+    /**
+     * Configures the scheduler with the initial configuration.
+     * */
+    public DualModeScehduler init(){
         double usedCapacity = 0;
+
+        //assign the minimum capacity to each flow.
         for(int i = 0; i < Global.flowsVC2.size(); i++){
             LinkedBlockingQueue<Packet> q = new LinkedBlockingQueue<>();
             Flow f = Global.flowsVC2.get(i);
@@ -26,6 +57,8 @@ public class VC2Scheduler2 {
             packetCount.put(f, 0);
             usedCapacity += f.getMinimumBandwidth();
         }
+
+        //add the initial t = 0 to the flow queues
         Object[] next;
         for(int i = 0; i < groupA.size(); i++){
             next = Global.pollPacketVC2();
@@ -36,6 +69,7 @@ public class VC2Scheduler2 {
             virtualClocks.put(f, p.getArrivalTime());
         }
 
+        //of there is unused capacity, create a padding flow with flow ID -1
         if(usedCapacity < Global.totalCapacity){
             float extra = (float)(Global.totalCapacity - usedCapacity);
             Flow padding = new Flow(-1, extra, FlowType.PADDING);
@@ -44,15 +78,15 @@ public class VC2Scheduler2 {
             virtualClocks.put(padding, 1 / padding.getMinimumBandwidth());
         }
 
-        //add one packet for each Flow.
-
-
-        System.out.println(groupA);
-        System.out.println(groupB);
         return this;
     }
 
+    /*
+    * Driver method to run the scheduler.
+    * */
     public void run(){
+
+        //run the scheduler till current time reaches a limit.
         while(currentTime < Global.timeLimit){
             Object[] next = Global.pollPacketVC2();
             if(next == null){
@@ -65,10 +99,8 @@ public class VC2Scheduler2 {
 
             cleanUp(p.getArrivalTime());
 
+            //if the new packet introduces a new flow, then add it to group B as well.
             if(!groupB.contains(f)){
-//                System.out.println("Group B does not have this flow" + f);
-//                System.out.println(virtualClocks.get(f));
-//                System.out.println(getMinimumVCFromB());
                 float currentVC = Math.max(getMinimumVCFromB(), virtualClocks.get(f));
                 virtualClocks.put(f, currentVC);
                 groupB.add(f);
@@ -206,7 +238,7 @@ public class VC2Scheduler2 {
         double current = 0;
         HashMap<Integer, TotalDataFr> totalDataTracker = new HashMap<>();
         double incre = 0.02;
-        String fileName = "vc2-total.csv";
+        String fileName = "vc2-total-" + this.scenario + ".csv";
 
         int index = 0;
         List<Packet> removed = new ArrayList<>();
