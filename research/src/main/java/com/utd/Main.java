@@ -22,7 +22,7 @@ public class Main {
         FlowGenerator flowGen = new FlowGenerator(flowsCount);
 
         //select the simulation scenario
-        flowGen.scenario4();
+        flowGen.scenario6();
 
         //clone the initial traffic for all the three algorithms.
         Global.cloneTraffic();
