@@ -25,7 +25,7 @@ public class Global {
     static float minimumReserved = 0;
     static float maxPacketLength = 80;
     static int flowsCount;
-    static double timeLimit = 0.28;
+    static double timeLimit = 10;
 
     public static void init(float tc, float mpl, int fCount) {
         totalCapacity = tc;
@@ -283,11 +283,11 @@ public class Global {
 
     public static void addToRE(Packet np, Flow flow){
         //Packet np = flow.createPacket();
+        if(queuesMapRE.get(flow.getFlowId()).size() > 10)
+            return;
+
         int index = flow.getFlowId();
         try {
-//            if (flow.getFlowType() == FlowType.GREEDY && queuesMapRE.get(index).size() < 100)
-//                queuesMapRE.get(index).put(np);
-//            else if (flow.getFlowType() != FlowType.GREEDY)
                 queuesMapRE.get(index).put(np);
         } catch (Exception e) {
             Utils.error("Unable to add a new packet in simulation", e);

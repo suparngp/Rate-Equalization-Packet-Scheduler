@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * The original Rate Equalization Scheduler
  * Created by suparngupta on 2/12/14.
  */
-public class RateEqScheduler extends Thread {
+public class WFQScheduler2 extends Thread {
     HashMap<Flow, LinkedBlockingQueue<Packet>> queues = new HashMap<>();
     List<Packet> completed = new ArrayList<>();
     List<Float> breakingPoints = new ArrayList<>();
@@ -15,73 +15,132 @@ public class RateEqScheduler extends Thread {
     HashSet<Flow> trackedFlows = new HashSet<>();
     HashMap<Float, HashSet<Flow>> tracker = new HashMap<>();
 
-    double realTime = 0;
     ResultsFileWriter output = new ResultsFileWriter();
     private int scenario = -1;
-
-    public RateEqScheduler(int scenario){
+    List<Packet> packetizedCompleted = new ArrayList<>();
+    public WFQScheduler2(int scenario){
         this.scenario = scenario;
     }
 
     public void run() {
 
-        trackedFlows.addAll(Global.flowsRE);
-        boolean create = true;
-        output.dumpCSV2(queues.keySet(), "rate-eq-bw-" + this.scenario + ".csv", true);
-
-        //add the first packet to the queue.
-        Object[] next = null;
-        for(int i = 0; i < Global.flowsRE.size(); i++){
-            next = Global.pollPacketRE();
-
-            if (next == null) {
-                Utils.error("No traffic available to start the simulation");
-                System.exit(0);
-            }
-
-            //add this new flow.
-            //((Packet)next[1]).setStartTime(((Packet)next[1]).getArrivalTime());
-
-            addFlow((Flow) next[0], (Packet) next[1]);
-
+        for(Flow f: Global.flowsRE){
+            LinkedBlockingQueue<Packet> q = new LinkedBlockingQueue<>();
+            queues.put(f, q);
         }
 
-        adjustRates();
-        next = Global.pollPacketRE();
-        while (currentTime < Global.timeLimit && next != null) {
-            Flow f = (Flow) next[0];
-            Packet p = (Packet) next[1];
 
-            //clean up the queues till this arrival.
-            //check if this packet adds a new flow.
-            //if yes, then add this flow, adjust the rates
-            //else simply add this packet to the flow's queue
-
-            HashMap<String, Object> res = latestEndingQueue(p.getArrivalTime());
-
-
-            if (queues.keySet().contains(f)) {
-                if(res.get("flow") != null){
-                    cleanup(p.getArrivalTime());
+        if(scenario == 1 || scenario == 2){
+            double used = 0;
+            double totalGreedy = 0;
+            for(Flow f: queues.keySet()){
+                if(f.getFlowType() != FlowType.GREEDY){
+                    used += f.getMinimumBandwidth();
                 }
-                currentTime = p.getArrivalTime();
-                addPacket(f, p);
-            } else {
-                cleanup(p.getArrivalTime());
-                addFlow(f, p);
-                adjustRates();
+                else{
+                    totalGreedy += f.getMinimumBandwidth();
+                }
             }
 
-            next = Global.pollPacketRE();
-            //System.out.println(currentTime);
-        }
-        Utils.log("No New packets, ending the simulation");
-        cleanup(Float.MAX_VALUE);
-        Utils.debug("The completed Packets are: \n", completed);
-        Collections.sort(breakingPoints);
-        Utils.debug("The breaking points are: \n", breakingPoints);
+            double unused = Global.totalCapacity - used;
 
-        Utils.log("In packetized version the completed sequence will be");
+            for(Flow f: queues.keySet()){
+                if(f.getFlowType() == FlowType.GREEDY){
+                    double bw = unused * f.getMinimumBandwidth() / totalGreedy;
+                    f.setMinimumBandwidth((float)bw);
+                    f.setAllocatedBandwidth(f.getMinimumBandwidth());
+
+                }
+                else{
+                    f.setAllocatedBandwidth(f.getMinimumBandwidth());
+                }
+                f.setupTS();
+            }
+        }
+
+        else if(scenario == 3 || scenario == 4){
+
+            double used = 0;
+            double totalGreedy = 0;
+            for(Flow f: queues.keySet()){
+
+                if(f.getFlowType() == FlowType.UU_B_PR || f.getFlowType() == FlowType.UU_B_CR){
+                    used += f.getMinimumBandwidth() / 2;
+                }
+                else if(f.getFlowType() != FlowType.GREEDY){
+                    used += f.getMinimumBandwidth();
+                }
+                else{
+                    totalGreedy += f.getMinimumBandwidth();
+                }
+            }
+
+            double unused = Global.totalCapacity - used;
+
+            for(Flow f: queues.keySet()){
+                if(f.getFlowType() == FlowType.GREEDY){
+                    double bw = unused * f.getMinimumBandwidth() / totalGreedy;
+                    f.setMinimumBandwidth((float)bw);
+                    f.setAllocatedBandwidth(f.getMinimumBandwidth());
+
+                }
+                else{
+                    f.setAllocatedBandwidth(f.getMinimumBandwidth());
+                }
+                f.setupTS();
+            }
+        }
+        else if(scenario == 5 || scenario == 6){
+            double used = 0;
+            double totalGreedy = 0;
+            for(Flow f: queues.keySet()){
+
+                if(f.getFlowType() != FlowType.GREEDY){
+                    used += f.getMinimumBandwidth() / 2;
+                }
+                else{
+                    totalGreedy += f.getMinimumBandwidth();
+                }
+            }
+            double unused = Global.totalCapacity - used;
+
+            for(Flow f: queues.keySet()){
+                if(f.getFlowType() == FlowType.GREEDY){
+                    double bw = unused * f.getMinimumBandwidth() / totalGreedy;
+                    f.setMinimumBandwidth((float)bw);
+                    f.setAllocatedBandwidth(f.getMinimumBandwidth());
+
+                }
+                else{
+                    f.setAllocatedBandwidth(f.getMinimumBandwidth());
+                }
+                f.setupTS();
+            }
+        }
+
+        System.out.println(queues);
+
+        for(Flow f: queues.keySet()){
+            double time = 0;
+
+            while(time < Global.timeLimit){
+                Packet p = f.createPacket();
+//                System.out.println(p);
+//                System.exit(0);
+                if(p.getArrivalTime() > Global.timeLimit){
+                    break;
+                }
+                p.setStartTime((float) Math.max(time, p.getArrivalTime()));
+                float finishing = p.getStartTime() + 1 / f.getAllocatedBandwidth();
+                p.setFinishTime(finishing);
+
+                packetizedCompleted.add(p);
+                time = finishing;
+            }
+        }
+        Collections.sort(packetizedCompleted);
+
+
         processCompleted();
 //        System.exit(0);
     }
@@ -143,7 +202,7 @@ public class RateEqScheduler extends Thread {
             tracker.put(currentTime, set);
 
             Utils.log("After adjusting rates are ", queues.keySet());
-            //output.dumpCSV2(trackedFlows, "rate-eq-bw.csv", false);
+            //output.dumpCSV2(trackedFlows, "wfq-bw.csv", false);
             breakingPoints.add(currentTime);
             return;
         }
@@ -251,8 +310,8 @@ public class RateEqScheduler extends Thread {
         }
         tracker.put(currentTime, set);
         //System.out.println(tracker);
-        //output.dumpCSV2(trackedFlows, "rate-eq-bw.csv", false);
-        //System.out.println("Final allocation: " +  flowList);
+        //output.dumpCSV2(trackedFlows, "wfq-bw.csv", false);
+        Utils.log("Final allocation: ", flowList);
         //System.out.println(flowList);
         //all the changes we made to the flows were done in a local copy flowList.
         //now we need to copy the allocated bandwidth to actual flows.
@@ -276,30 +335,25 @@ public class RateEqScheduler extends Thread {
         //find if any queue will become empty before this limit.
         //compute the finishing times of each queue
         while (true) {
-            if(currentTime >= Global.timeLimit)
-                return;
+            Flow flow = null;
+            float earliest = Float.MAX_VALUE;
+            for (Flow f : queues.keySet()) {
+                LinkedBlockingQueue<Packet> q = queues.get(f);
+                float totalRem = 0;
+                for (Packet p : q) {
+                    totalRem += 1;
+                }
 
-            HashMap<String, Object> res = latestEndingQueue(limit);
-            Flow flow = (Flow)res.get("flow");
-            float earliest = (float) res.get("earliest");
-//            float earliest = Float.MAX_VALUE;
-//            for (Flow f : queues.keySet()) {
-//                LinkedBlockingQueue<Packet> q = queues.get(f);
-//                float totalRem = 0;
-//                for (Packet p : q) {
-//                    totalRem += 1;
-//                }
-//
-//                float finishingTime = currentTime + (totalRem / f.getAllocatedBandwidth());
-//
-//                //if this is a breaking point
-//                if (finishingTime < limit && finishingTime < earliest) {
-//                    flow = f;
-//                    earliest = finishingTime;
-//                }
-//            }
-//
-//            Utils.debug("Earliest finishing queue before ", limit, " is ", flow, " at ", earliest);
+                float finishingTime = currentTime + (totalRem / f.getAllocatedBandwidth());
+
+                //if this is a breaking point
+                if (finishingTime < limit && finishingTime < earliest) {
+                    flow = f;
+                    earliest = finishingTime;
+                }
+            }
+
+            Utils.debug("Earliest finishing queue before ", limit, " is ", flow, " at ", earliest);
             //no queues will become empty by this limit
             //so simply clear the queues till this limit
             if (flow == null) {
@@ -318,9 +372,6 @@ public class RateEqScheduler extends Thread {
     }
 
     public void cleanupQueues(float limit) {
-//        for(Flow f: queues.keySet()){
-//            addNewPackets(f, limit);
-//        }
         for (Flow f : queues.keySet()) {
             float lastFinishingTime = 0;
             while (true) {
@@ -341,15 +392,11 @@ public class RateEqScheduler extends Thread {
                     p.setTransmitted(p.getLength());
                     p.setFinishTime(finishingTime);
                     completed.add(p);
-                    realTime += 1 / Global.totalCapacity;
-                    if(realTime >= Global.totalCapacity){
-                        currentTime = (float)realTime;
-                        return;
-                    }
+
                     //add a new packet of the same flow
 //                    Packet newP = f.createPacket();
 //                    Global.addToRE(newP, f);
-                    //addNewPackets(f, finishingTime);
+                    addNewPackets(f);
 
 //                    addPacket(f, p);
                     //get the next packet
@@ -388,38 +435,11 @@ public class RateEqScheduler extends Thread {
     }
 
     public void processCompleted(){
-        List<Packet> packetizedCompleted = new ArrayList<>();
-        float finishingTime = 0;
-        for(Packet p: completed){
-            Packet clone = p.clone();
-            float startTime = Math.max(finishingTime, clone.getArrivalTime());
-            finishingTime = startTime + 1 / Global.totalCapacity;
-            if(finishingTime > Global.timeLimit)
-                break;
-            //System.out.println(finishingTime);
-            clone.setStartTime(startTime);
-            clone.setFinishTime(finishingTime);
-            packetizedCompleted.add(clone);
-        }
-        Utils.log(packetizedCompleted.size());
-        output.dumpCSV(packetizedCompleted, "rate-eq-" + this.scenario + ".csv", true);
-        List<Float> tss = new ArrayList<>();
-        tss.addAll(tracker.keySet());
-        Collections.sort(tss);
-        //Utils.log(tss);
-        for(Float ts: tss){
-            Utils.log(ts, tracker.get(ts));
-            output.dumpCSV2(tracker.get(ts), "rate-eq-bw-" + this.scenario + ".csv", false);
-        }
-
-
-
-
 
         double current = 0;
         HashMap<Integer, TotalDataFr> totalDataTracker = new HashMap<>();
         double incre = 0.02;
-        String fileName = "rate-eq-total-" + this.scenario + ".csv";
+        String fileName = "wfq-total-" + this.scenario + ".csv";
 
         int index = 0;
         List<Packet> removed = new ArrayList<>();
@@ -434,7 +454,6 @@ public class RateEqScheduler extends Thread {
             totalDataTracker.put(f.getFlowId(), fr);
         }
         while (!packetizedCompleted.isEmpty()){
-            System.out.println(packetizedCompleted.size());
             for(int flowId: totalDataTracker.keySet()){
                 totalDataTracker.get(flowId).setTimestamp(current);
             }
@@ -476,14 +495,14 @@ public class RateEqScheduler extends Thread {
     }
 
 
-    public void addNewPackets(Flow f, double limit) {
+    public void addNewPackets(Flow f) {
 
         while(true){
             if(Global.queuesMapRE.get(f.getFlowId()) != null && !Global.queuesMapRE.get(f.getFlowId()).isEmpty()
-                    && Global.queuesMapRE.get(f.getFlowId()).peek().getArrivalTime() <= limit){
+                    && Global.queuesMapRE.get(f.getFlowId()).peek().getArrivalTime() <= currentTime){
                 try{
                     Packet p = Global.queuesMapRE.get(f.getFlowId()).poll();
-                    if(p.getArrivalTime() > limit){
+                    if(p.getArrivalTime() > currentTime){
                         System.out.println("Error future packet in add packet " + currentTime);
                         System.out.println(p);
                         System.exit(0);
@@ -504,7 +523,7 @@ public class RateEqScheduler extends Thread {
 
         while(true){
             Packet p = f.createPacket();
-            if(p.getArrivalTime() > limit){
+            if(p.getArrivalTime() > currentTime){
                 Global.addToRE(p, f);
                 break;
             }
@@ -528,30 +547,5 @@ public class RateEqScheduler extends Thread {
 //            System.out.println("Unable to add new packets on departure");
 //            e.printStackTrace();
 //        }
-    }
-
-
-    public HashMap<String, Object> latestEndingQueue(double limit){
-        Flow flow = null;
-        float earliest = Float.MAX_VALUE;
-        for (Flow f : queues.keySet()) {
-            LinkedBlockingQueue<Packet> q = queues.get(f);
-            float totalRem = 0;
-            for (Packet p : q) {
-                totalRem += 1;
-            }
-
-            float finishingTime = currentTime + (totalRem / f.getAllocatedBandwidth());
-
-            //if this is a breaking point
-            if (finishingTime < limit && finishingTime < earliest) {
-                flow = f;
-                earliest = finishingTime;
-            }
-        }
-        HashMap<String, Object> res = new HashMap<>();
-        res.put("flow", flow);
-        res.put("earliest", earliest);
-        return res;
     }
 }
