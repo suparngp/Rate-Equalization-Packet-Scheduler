@@ -257,7 +257,7 @@ public class Global {
         queuesMapVC2.get(index).poll();
         Object[] result = {flow, packet};
         Packet np = flow.createPacket();
-        addToRE(np, flow);
+        addToVC2(np, flow);
         return result;
     }
 

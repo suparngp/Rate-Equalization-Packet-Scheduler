@@ -75,7 +75,6 @@ public class DualModeScheduler {
             groupA.put(f, q);
             packetCount.put(f, 0);
             usedCapacity += f.getMinimumBandwidth();
-
         }
 
         //add the initial t = 0 to the flow queues
@@ -99,7 +98,6 @@ public class DualModeScheduler {
             virtualClocks.put(padding, 0.0f);
         }
 
-        System.out.println(groupA.keySet());
         return this;
     }
 
@@ -123,8 +121,9 @@ public class DualModeScheduler {
 
             //if the new packet introduces a new flow, then add it to group B as well.
             if (!groupB.contains(f)) {
-
                 float currentVC = Math.max(getMinimumVCFromB(), virtualClocks.get(f));
+                //int round = Math.max(getMinPacketCountFromB(), packetCount.get(f));
+                //packetCount.put(f, round);
                 virtualClocks.put(f, currentVC);
                 groupB.add(f);
             }
@@ -135,12 +134,12 @@ public class DualModeScheduler {
         System.out.println(completed.size());
         processCompleted();
         try{
-            for(Flow f: groupA.keySet()){
-                if(f.getFlowId() == 10){
-                    System.out.println(groupA.get(f));
-                    break;
-                }
-            }
+//            for(Flow f: groupA.keySet()){
+//                if(f.getFlowId() == 20){
+//                    System.out.println(groupA.get(f));
+//                    break;
+//                }
+//            }
             System.out.println(last);
             System.out.println(count);
             br.close();
@@ -222,10 +221,11 @@ public class DualModeScheduler {
 
             boolean fromB = false;
             if (groupA.get(f).isEmpty()) {
-                //updateVC(f);
+                updateVC(f);
                 f = getFromGroupB();
                 fromB = true;
-                //System.out.println("Giving extra to " + f.getFlowId());
+                System.out.println("Giving extra to " + f.getFlowId());
+                //System.out.println(packetCount);
             }
 
             if (groupA.get(f) == null) {
@@ -238,7 +238,7 @@ public class DualModeScheduler {
             float finishingTime = currentTime + 1 / Global.totalCapacity;
             p.setStartTime(currentTime);
             p.setFinishTime(finishingTime);
-            if(p.getFlowId() == 10){
+            if(p.getFlowId() == 20){
                 last = p.getArrivalTime();
                 count ++;
             }
@@ -249,7 +249,7 @@ public class DualModeScheduler {
             //Global.addToVC2(p, f);
 
             if(fromB){
-                int finalCount = Math.min(packetCount.get(f) + 1, getMinPacketCountFromB() + 100);
+                int finalCount = Math.min(packetCount.get(f) + 1, getMinPacketCountFromB() + 10);
                 packetCount.put(f, finalCount);
             }
 
@@ -368,10 +368,8 @@ public class DualModeScheduler {
 
     public void addNewPackets(Flow f, double time) {
 
-
         while(true){
-            if(Global.queuesMapVC2.get(f.getFlowId()).peek() != null &&
-                    Global.queuesMapVC2.get(f.getFlowId()).peek().getArrivalTime() <= time){
+            if(Global.queuesMapVC2.get(f.getFlowId()) == null && Global.queuesMapVC2.get(f.getFlowId()).peek().getArrivalTime() <= time){
                 try{
                     groupA.get(f).put(Global.queuesMapVC2.get(f.getFlowId()).poll());
                 }
@@ -387,24 +385,24 @@ public class DualModeScheduler {
         }
 
 
-        while(true){
-            Packet p = f.createPacket();
-            if(p.getArrivalTime() > time){
-                Global.addToVC2(p, f);
-                break;
-            }
-
-            else{
-                try{
-                    groupA.get(f).put(p);
-                }
-                catch(Exception e){
-                    System.out.println("Unable to add new packets on departure");
-                    e.printStackTrace();
-                }
-
-            }
-        }
+//        while(true){
+//            Packet p = f.createPacket();
+//            if(p.getArrivalTime() > time){
+//                Global.addToVC2(p, f);
+//                break;
+//            }
+//
+//            else{
+//                try{
+//                    groupA.get(f).put(p);
+//                }
+//                catch(Exception e){
+//                    System.out.println("Unable to add new packets on departure");
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }
 
 //        try {
 //            Packet p = f.createPacket();

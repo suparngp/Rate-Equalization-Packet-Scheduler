@@ -247,7 +247,7 @@ public class Flow extends Thread implements Cloneable{
 
 
         LinkedBlockingQueue<Packet> queue = Global.getQueue(this.flowId);
-        for(int i = 0; i < 1; i++){
+        for(int i = 0; i < 100; i++){
             try{
                 Packet p = createPacket();
                 queue.put(p);
