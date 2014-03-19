@@ -25,7 +25,7 @@ public class Global {
     static float minimumReserved = 0;
     static float maxPacketLength = 80;
     static int flowsCount;
-    static double timeLimit = 0.2;
+    static double timeLimit = 0.28;
 
     public static void init(float tc, float mpl, int fCount) {
         totalCapacity = tc;

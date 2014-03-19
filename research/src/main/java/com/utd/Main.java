@@ -22,18 +22,18 @@ public class Main {
         FlowGenerator flowGen = new FlowGenerator(flowsCount);
 
         //select the simulation scenario
-        flowGen.scenario1();
+        flowGen.scenario2();
 
         //clone the initial traffic for all the three algorithms.
         Global.cloneTraffic();
 
         //Run the WFQ scehduler
-        new GPSScheduler3(6).start();
+        //new GPSScheduler3(6).start();
 
         // Run the Rate equalization scheduler
-        new RateEqScheduler(6).start();
+        //new RateEqScheduler(6).start();
 
-        //Run the DualModeScehduler Scehduler
-        new DualModeScehduler().init().run();
+        //Run the DualModeScheduler Scehduler
+        new DualModeScheduler(1).init().run();
     }
 }
