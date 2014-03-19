@@ -95,9 +95,10 @@ public class DualModeScheduler {
             Flow padding = new Flow(-1, extra, FlowType.PADDING);
             LinkedBlockingQueue<Packet> q = new LinkedBlockingQueue<>();
             groupA.put(padding, q);
-            virtualClocks.put(padding, 0.0f);
+            virtualClocks.put(padding, 1 / padding.getMinimumBandwidth());
         }
 
+        System.out.println(groupA.keySet());
         return this;
     }
 
@@ -114,16 +115,18 @@ public class DualModeScheduler {
                 System.exit(0);
             }
 
+
             Flow f = (Flow) next[0];
             Packet p = (Packet) next[1];
-
+            //System.out.println("Before " + currentTime);
             cleanUp(p.getArrivalTime());
-
+            currentTime = Math.max(p.getArrivalTime(), currentTime);
+            //System.out.println("After " + currentTime);
             //if the new packet introduces a new flow, then add it to group B as well.
             if (!groupB.contains(f)) {
                 float currentVC = Math.max(getMinimumVCFromB(), virtualClocks.get(f));
-                //int round = Math.max(getMinPacketCountFromB(), packetCount.get(f));
-                //packetCount.put(f, round);
+                int round = Math.max(getMinPacketCountFromB(), packetCount.get(f));
+                packetCount.put(f, round);
                 virtualClocks.put(f, currentVC);
                 groupB.add(f);
             }
@@ -179,18 +182,6 @@ public class DualModeScheduler {
         return flow;
     }
 
-//    public Flow getFromGroupB() {
-//        Flow flow = null;
-//        double vc = Double.MAX_VALUE;
-//        for(Flow f: groupB){
-//            if(virtualClocks.get(f) < vc){
-//                flow = f;
-//                vc = virtualClocks.get(f);
-//            }
-//        }
-//        return flow;
-//    }
-
     public Flow getFromGroupB() {
         Flow flow = null;
         int max = Integer.MAX_VALUE;
@@ -201,26 +192,44 @@ public class DualModeScheduler {
             }
         }
         return flow;
+//        Flow flow = null;
+//
+//            int count = Integer.MAX_VALUE;
+//
+//            for(Flow f: packetCount.keySet()){
+//                if(f.getFlowType() != FlowType.GREEDY){
+//                    continue;
+//                }
+//                if(packetCount.get(f) < count){
+//                    count = packetCount.get(f);
+//                    flow = f;
+//                }
+//            }
+//        return flow;
     }
 
     public void cleanUp(double limit) {
         while (currentTime < limit) {
+            //System.out.println("here");
             if (groupB.size() < 10) {
-                System.out.println("Greedy flows become emoty");
+                System.out.println("Greedy flows become empty");
                 System.exit(0);
             }
 
 
-            Flow f = null;
-            while (f == null) {
-                f = getNextFlow();
-                if (f == null) {
-                    currentTime = getMinimumVCFromA();
-                }
-            }
+            Flow f = getNextFlow();
+
+            //Why the fuck are we resetting the current time??
+//            while (f == null) {
+//                f = getNextFlow();
+//                if (f == null) {
+//                    currentTime = getMinimumVCFromA();
+//                }
+//            }
 
             boolean fromB = false;
             if (groupA.get(f).isEmpty()) {
+                //System.out.println("Missing slot " + f.getFlowId());
                 updateVC(f);
                 f = getFromGroupB();
                 fromB = true;
@@ -236,30 +245,42 @@ public class DualModeScheduler {
 
             Packet p = groupA.get(f).poll();
             float finishingTime = currentTime + 1 / Global.totalCapacity;
+
+            if(p.getArrivalTime() > currentTime){
+                System.out.println("Error future packet " + currentTime );
+                System.out.println(p);
+                System.exit(0);
+            }
             p.setStartTime(currentTime);
             p.setFinishTime(finishingTime);
             if(p.getFlowId() == 20){
-                last = p.getArrivalTime();
+                last = p.getFinishTime();
                 count ++;
             }
             completed.add(p);
             //packetCount.put(f, packetCount.get(f) + 1);
             //p = f.createPacket();
-            addNewPackets(f, finishingTime);
+            currentTime = finishingTime;
+
+            addNewPackets(f);
             //Global.addToVC2(p, f);
 
-            if(fromB){
-                int finalCount = Math.min(packetCount.get(f) + 1, getMinPacketCountFromB() + 10);
+            if(!fromB){
+                int finalCount = Math.min(packetCount.get(f) + 1, getMinPacketCountFromB() + 100000);
                 packetCount.put(f, finalCount);
+                updateVC(f);
+//                if (packetCount.get(f) - getMinPacketCountFromB() < 1000000)
+//                    packetCount.put(f, packetCount.get(f) + 1);
             }
 
             else{
                 packetCount.put(f, packetCount.get(f) + 1);
+
             }
 //            if (packetCount.get(f) - getMinPacketCountFromB() < 100)
 //                packetCount.put(f, packetCount.get(f) + 1);
 
-            updateVC(f);
+
             if (groupA.get(f).isEmpty()) {
                 boolean remove = groupB.remove(f);
                 if (!remove) {
@@ -267,8 +288,11 @@ public class DualModeScheduler {
                     System.exit(0);
                 }
             }
-            currentTime = finishingTime;
+
+            //System.out.println(currentTime);
         }
+
+
     }
 
     public void updateVC(Flow flow) {
@@ -363,15 +387,25 @@ public class DualModeScheduler {
                 min = packetCount.get(f);
             }
         }
+
         return min;
     }
 
-    public void addNewPackets(Flow f, double time) {
+    public void addNewPackets(Flow f) {
 
         while(true){
-            if(Global.queuesMapVC2.get(f.getFlowId()) == null && Global.queuesMapVC2.get(f.getFlowId()).peek().getArrivalTime() <= time){
+            if(f == null)
+                System.err.println("Flow null");
+            if(Global.queuesMapVC2.get(f.getFlowId()) != null && !Global.queuesMapVC2.get(f.getFlowId()).isEmpty()
+                    && Global.queuesMapVC2.get(f.getFlowId()).peek().getArrivalTime() <= currentTime){
                 try{
-                    groupA.get(f).put(Global.queuesMapVC2.get(f.getFlowId()).poll());
+                    Packet p = Global.queuesMapVC2.get(f.getFlowId()).poll();
+                    if(p.getArrivalTime() > currentTime){
+                        System.out.println("Error future packet in add packet " + currentTime);
+                        System.out.println(p);
+                        System.exit(0);
+                    }
+                    groupA.get(f).put(p);
                 }
                 catch(Exception e){
                     System.out.println("Unable to add new packets on departure");
@@ -385,24 +419,28 @@ public class DualModeScheduler {
         }
 
 
-//        while(true){
-//            Packet p = f.createPacket();
-//            if(p.getArrivalTime() > time){
-//                Global.addToVC2(p, f);
-//                break;
-//            }
-//
-//            else{
-//                try{
-//                    groupA.get(f).put(p);
-//                }
-//                catch(Exception e){
-//                    System.out.println("Unable to add new packets on departure");
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }
+
+        while(true){
+            Packet p = f.createPacket();
+            if(p.getArrivalTime() > currentTime){
+                Global.addToVC2(p, f);
+                break;
+            }
+
+            else{
+                try{
+                    groupA.get(f).put(p);
+                    if(groupA.get(f).size() > 100){
+                        break;
+                    }
+                }
+                catch(Exception e){
+                    System.out.println("Unable to add new packets on departure");
+                    e.printStackTrace();
+                }
+
+            }
+        }
 
 //        try {
 //            Packet p = f.createPacket();

@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4434b37a-fe5a-44a7-81bf-241db2fe743a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/DualModeScheduler.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/DualModeScheduler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Flow.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Flow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Global.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" afterPath="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="research.iws" />
@@ -97,10 +96,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DualModeScheduler.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DualModeScheduler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/DualModeScheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="0" selection-start="5372" selection-end="5372" vertical-scroll-proportion="0.9398281" vertical-offset="2372" max-vertical-offset="6315">
+            <state line="166" column="24" selection-start="5111" selection-end="5111" vertical-scroll-proportion="0.0" vertical-offset="2473" max-vertical-offset="6885">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RateEqScheduler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="473" column="0" selection-start="17118" selection-end="17118" vertical-scroll-proportion="0.0" vertical-offset="7009" max-vertical-offset="7980">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,7 +121,7 @@
       <file leaf-file-name="Global.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="297" column="23" selection-start="9407" selection-end="9407" vertical-scroll-proportion="0.0" vertical-offset="4303" max-vertical-offset="4665">
+            <state line="105" column="5" selection-start="3340" selection-end="3340" vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="4665">
               <folding />
             </state>
           </provider>
@@ -126,10 +136,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="25" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="675">
+            <state line="24" column="25" selection-start="767" selection-end="767" vertical-scroll-proportion="0.33701658" vertical-offset="238" max-vertical-offset="675">
               <folding />
             </state>
           </provider>
@@ -138,7 +148,7 @@
       <file leaf-file-name="Test.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="59" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+            <state line="15" column="59" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -147,7 +157,7 @@
       <file leaf-file-name="TSGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="55" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0" vertical-offset="177" max-vertical-offset="2340">
+            <state line="48" column="55" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="2340">
               <folding />
             </state>
           </provider>
@@ -156,7 +166,7 @@
       <file leaf-file-name="FlowGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="41" selection-start="4215" selection-end="4215" vertical-scroll-proportion="-4.6923075" vertical-offset="1618" max-vertical-offset="3585">
+            <state line="65" column="56" selection-start="2487" selection-end="2487" vertical-scroll-proportion="0.0" vertical-offset="934" max-vertical-offset="3585">
               <folding />
             </state>
           </provider>
@@ -165,7 +175,7 @@
       <file leaf-file-name="Flow.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="285" column="16" selection-start="7995" selection-end="7995" vertical-scroll-proportion="0.0" vertical-offset="3810" max-vertical-offset="4275">
+            <state line="309" column="28" selection-start="8840" selection-end="8840" vertical-scroll-proportion="0.0" vertical-offset="3568" max-vertical-offset="4275">
               <folding />
             </state>
           </provider>
@@ -219,17 +229,17 @@
         <option value="$PROJECT_DIR$/src/main/java/com/utd/FileWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/GPSScheduler3.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/VC2Scheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/ResultsFileWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/DualModeScehduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/Flow.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/Global.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/utd/DualModeScheduler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/utd/Main.java" />
       </list>
     </option>
   </component>
@@ -299,8 +309,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -519,22 +529,22 @@
     <frame x="0" y="22" width="1280" height="708" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3961039" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="480" y="171" width="320" height="412" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28836834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28836834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3961039" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -562,7 +572,8 @@
     <MESSAGE value="Final Checkin" />
     <MESSAGE value="Final Checkin&#10;" />
     <MESSAGE value="Flows ID 10 sends only 1560 packets." />
-    <option name="LAST_COMMIT_MESSAGE" value="Flows ID 10 sends only 1560 packets." />
+    <MESSAGE value="Fixing why top 3 flows are not getting grouped" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing why top 3 flows are not getting grouped" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -775,8 +786,8 @@
             <node x="241.0" y="375.0">com.utd.Main</node>
             <node x="311.0" y="300.0">com.utd.FlowType</node>
             <node x="0.0" y="225.0">com.utd.FlowGenerator</node>
-            <node x="108.0" y="450.0">com.utd.Test</node>
             <node x="0.0" y="150.0">com.utd.VC2Scheduler2</node>
+            <node x="108.0" y="450.0">com.utd.Test</node>
           </nodes>
           <notes />
           <edges />
@@ -844,15 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="19" selection-start="827" selection-end="827" vertical-scroll-proportion="0.0" vertical-offset="199" max-vertical-offset="7155">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/ResultsFileWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="13" selection-start="1988" selection-end="1988" vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="1245" />
@@ -865,27 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="297" column="23" selection-start="9407" selection-end="9407" vertical-scroll-proportion="0.0" vertical-offset="4303" max-vertical-offset="4665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="41" selection-start="4215" selection-end="4215" vertical-scroll-proportion="-4.6923075" vertical-offset="1618" max-vertical-offset="3585">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="25" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="675">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/TSGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="55" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.0" vertical-offset="267" max-vertical-offset="2340">
@@ -893,19 +874,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/RateEqScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="473" column="0" selection-start="17118" selection-end="17118" vertical-scroll-proportion="0.0" vertical-offset="7009" max-vertical-offset="7980">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Flow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="285" column="16" selection-start="7995" selection-end="7995" vertical-scroll-proportion="0.0" vertical-offset="3810" max-vertical-offset="4275">
+        <state line="309" column="28" selection-start="8840" selection-end="8840" vertical-scroll-proportion="0.0" vertical-offset="3568" max-vertical-offset="4275">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Global.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="5" selection-start="3340" selection-end="3340" vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="4665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/FlowGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="56" selection-start="2487" selection-end="2487" vertical-scroll-proportion="0.0" vertical-offset="934" max-vertical-offset="3585">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/DualModeScheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="0" selection-start="5372" selection-end="5372" vertical-scroll-proportion="0.9398281" vertical-offset="2372" max-vertical-offset="6315">
+        <state line="166" column="24" selection-start="5111" selection-end="5111" vertical-scroll-proportion="0.0" vertical-offset="2473" max-vertical-offset="6885">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/utd/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="25" selection-start="767" selection-end="767" vertical-scroll-proportion="0.33701658" vertical-offset="238" max-vertical-offset="675">
+          <folding />
         </state>
       </provider>
     </entry>

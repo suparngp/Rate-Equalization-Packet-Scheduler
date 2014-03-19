@@ -344,9 +344,9 @@ public class RateEqScheduler extends Thread {
                     completed.add(p);
 
                     //add a new packet of the same flow
-                    Packet newP = f.createPacket();
-                    Global.addToRE(newP, f);
-
+//                    Packet newP = f.createPacket();
+//                    Global.addToRE(newP, f);
+                    addNewPackets(f);
 
 //                    addPacket(f, p);
                     //get the next packet
@@ -467,5 +467,60 @@ public class RateEqScheduler extends Thread {
             current += incre;
 
         }
+    }
+
+
+    public void addNewPackets(Flow f) {
+
+        while(true){
+            if(Global.queuesMapRE.get(f.getFlowId()) != null
+                    && Global.queuesMapRE.get(f.getFlowId()).peek().getArrivalTime() <= currentTime){
+                try{
+                    Packet p = Global.queuesMapRE.get(f.getFlowId()).poll();
+                    if(p.getArrivalTime() > currentTime){
+                        System.out.println("Error future packet in add packet " + currentTime);
+                        System.out.println(p);
+                        System.exit(0);
+                    }
+                    queues.get(f).put(p);
+                }
+                catch(Exception e){
+                    System.out.println("Unable to add new packets on departure");
+                    e.printStackTrace();
+                }
+            }
+
+            else{
+                break;
+            }
+        }
+
+
+        while(true){
+            Packet p = f.createPacket();
+            if(p.getArrivalTime() > currentTime){
+                Global.addToRE(p, f);
+                break;
+            }
+
+            else{
+                try{
+                    queues.get(f).put(p);
+                }
+                catch(Exception e){
+                    System.out.println("Unable to add new packets on departure");
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
+//        try {
+//            Packet p = f.createPacket();
+//            groupA.get(f).put(p);
+//        } catch (Exception e) {
+//            System.out.println("Unable to add new packets on departure");
+//            e.printStackTrace();
+//        }
     }
 }

@@ -63,7 +63,7 @@ public class FlowGenerator extends Thread{
     public void scenario1(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, bw, FlowType.UU_A_PR);
+            Flow flow = new Flow(i, bw, FlowType.UA_A_PR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
@@ -88,7 +88,7 @@ public class FlowGenerator extends Thread{
     public void scenario2(){
         for(int i = 1; i <= 10; i++){
             float bw = i * 1024 * 1024 / Global.maxPacketLength;
-            Flow flow = new Flow(i, bw, FlowType.UA_A_CR);
+            Flow flow = new Flow(i, bw, FlowType.UU_A_CR);
             flow.setMinimumBandwidth(bw);
             flow.setAllocatedBandwidth(bw);
             Global.addFlow(flow);
