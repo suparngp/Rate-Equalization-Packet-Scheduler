@@ -10,7 +10,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Class to simulate Dual Mode Scheduler
  * Created by suparngupta on 3/7/14.
  */
-public class DualModeScheduler {
+public class DualModeScheduler extends Thread{
 
     //    map to hold flows and respective queues.
     private HashMap<Flow, LinkedBlockingQueue<Packet>> groupA = new HashMap<>();

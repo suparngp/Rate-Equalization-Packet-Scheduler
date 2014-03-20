@@ -19,6 +19,7 @@ public class WFQScheduler2 extends Thread {
     private int scenario = -1;
     List<Packet> packetizedCompleted = new ArrayList<>();
     public WFQScheduler2(int scenario){
+        System.out.println("WFQ-" + scenario);
         this.scenario = scenario;
     }
 
@@ -118,7 +119,7 @@ public class WFQScheduler2 extends Thread {
             }
         }
 
-        System.out.println(queues);
+        //System.out.println(queues);
 
         for(Flow f: queues.keySet()){
             double time = 0;
