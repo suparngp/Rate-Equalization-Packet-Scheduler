@@ -1,0 +1,22 @@
+\begin{figure}
+\noindent
+\rule{\columnwidth}{0.5mm}
+\centerline{\bf PCR Scheduler}
+\begin{tabbing}
+\settabs
+%Let $B(t)$ be the set of backlogged flows at time $t$.\\
+upon receiving a packet $p_{f,i}$,\\
+%\tea $S_{f,i,CR} = \mbox{max}(A_{f,i},F_{f,i,CR})$;\\
+\tea $D_{f,i,PCR} = F_{f,i,CR}$;\\
+\\
+if output channel is idle at time $t$,\\
+\tea let $p_{f,i} \in \mbox{Active}(t)$ iff $t \geq S_{f,i,CR}$;\\
+\tea if $\mbox{Active}(t) \neq \emptyset$ then\\
+\teb let $D_{g,j,PCR} = \mbox{min}\{D_{f,i,PCR}\,\,|\,\, p_{f,i} \in 
+\mbox{Active}(t)\}$;\\
+\teb forward $p_{g,j}$ to the output channel.  \end{tabbing}
+\caption{Packetized constant-rate scheduler}
+\label{fig:PCR}
+\rule{\columnwidth}{0.5mm}
+\end{figure}
+

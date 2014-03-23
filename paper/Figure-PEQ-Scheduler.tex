@@ -1,0 +1,23 @@
+
+\begin{figure}
+\noindent
+\rule{\columnwidth}{0.5mm}
+\centerline{\bf PEQ Scheduler}
+\begin{tabbing}
+\settabs
+upon receiving a packet $p_{f,i}$,\\
+\tea $D_{f,i,PEQ} = \infty$;\\
+\\
+if output channel is idle at time $t$,\\
+\tea model the behavior of $EQ$ up to time $t$;\\
+\tea let $p_{f,i} \in \mbox{Active}(t)$ iff $t \geq S_{f,i,EQ}$;\\
+\tea for each $p_{f,i} \in \mbox{Active}(t)$,\\
+\teb     $D_{f,i,PEQ} = S_{f,i,EQ} + L_{f,i}/R_f$;\\
+\tea let $D_{g,j,PEQ} = \mbox{min}\{D_{f,i,PEQ}\,\,|\,\, p_{f,i} \in 
+\mbox{Active}(t)\}$;\\
+\tea forward $p_{g,j}$ to the output channel.
+\end{tabbing}
+\caption{Packetized rate equalization scheduler}
+\label{fig:PEQ-scheduler}
+\rule{\columnwidth}{0.5mm}
+\end{figure}

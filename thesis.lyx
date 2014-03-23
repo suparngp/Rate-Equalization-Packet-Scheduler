@@ -1,0 +1,5350 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass amsbook
+\begin_preamble
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{graphicx}
+%\usepackage{epsfig}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{eepicemu}
+\titlespacing*{\chapter}{0pt}{0.45in}{20pt}
+\titleformat{\chapter}[display]
+{\normalfont\bfseries\normalsize\centering}{\MakeUppercase{\chaptertitlename}\ \thechapter}{0pt}{\normalsize\bfseries\MakeUppercase}
+\titleformat{\section}
+  {\normalfont\normalsize\MakeUppercase}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize}
+  {\thesubsection}{1em}{}
+\newcommand{\taba}{\hspace*{2em}}
+\newcommand{\tabb}{\hspace*{4em}}
+\newcommand{\tabc}{\hspace*{6em}}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_numerical
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1.25in
+\rightmargin 0.75in
+\bottommargin 1.25in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter*
+AN APPROXIMATION TO RATE-EQUALIZATION FAIRNESS WITH LOGARITHMIC COMPLEXITY
+\end_layout
+
+\begin_layout Standard
+\align center
+Suparn Gupta, Masters
+\end_layout
+
+\begin_layout Standard
+\align center
+The University of Texas at Dallas, 2014
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Supervising Professor: Jorge Arturo Cobb
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Scheduling protocols that provide both rate and fairness guarantees, such
+ as Weighted Fair Queuing (WFQ) distributes the unused bandwith among flows
+ in proportion to their reserved rate.
+ Flows with higher reservation rate thus receive a larger share of bandwith
+ than those with lesser reserved rates.
+\end_layout
+
+\begin_layout Standard
+\noindent
+In an earlier work 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-REQ"
+
+\end_inset
+
+, a new approach to allocate unused bandwidth known as rate-equalization
+ (REQ) was proposed, in which the unused bandwidth is first given to the
+ flows with least reserved rates.
+ However, this algorithm has a per-packet complexity of 
+\emph on
+O(n)
+\emph default
+ where 
+\emph on
+n
+\emph default
+ is the number of flows.
+\end_layout
+
+\begin_layout Standard
+\noindent
+The present study proposes a new algorithm, which is an approximation of
+ REQ fairness with logarithmic per-packet complexity.
+ The simulation results endorse than in different practical scenarios, the
+ behavior of the new algorithm is quite similar to that of pure REQ fairness.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Chapter 1 Here I need to discuss about 
+\end_layout
+
+\begin_layout Plain Layout
+rate and fairness
+\end_layout
+
+\begin_layout Plain Layout
+work conserving schedulers
+\end_layout
+
+\begin_layout Plain Layout
+non work conserving schedulers
+\end_layout
+
+\begin_layout Plain Layout
+why fairness is important
+\end_layout
+
+\begin_layout Plain Layout
+What happens if the firewall is broken
+\end_layout
+
+\begin_layout Plain Layout
+Talk about the algorithms GPS, WFQ, WFQ2, Virtual Clock.
+\end_layout
+
+\begin_layout Plain Layout
+Which algorithms provide fairness and which provide rates
+\end_layout
+
+\begin_layout Plain Layout
+Then talk about the new way of REQ.
+\end_layout
+
+\begin_layout Plain Layout
+Chapter 2 Make a separate chapter where you discuss REQ in details and compare
+ it with the other algorithms
+\end_layout
+
+\begin_layout Plain Layout
+Talk about the complexities, when does the packet get out etc etc.
+\end_layout
+
+\begin_layout Plain Layout
+Towards the end, write why REQ implementation is expensive.
+ How does it differ from the claims of Paulo D Valente and why can't you
+ implement it in log(n).
+\end_layout
+
+\begin_layout Plain Layout
+In chapter 3 have the material of the original paper.
+\end_layout
+
+\begin_layout Plain Layout
+In chapter 4 add all the simulations
+\end_layout
+
+\begin_layout Plain Layout
+In chapter 5 add the conclusions, why the results are important.
+ whats the future.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+In a network of various interconnected nodes which provides QoS, a certain
+ amount of bandwidth is reserved for each flow.
+ A scheduling protocol is implemented to make decisions about the packet
+ transmission from each backlogged flow.
+ Selection of such protocol is a crucial decision because of the complexity
+ and execution cost.
+ Any such scheduling protocol can be analyzed on the basis of different
+ kinds of guarantees it provides.
+ Two such metrics of analysis are rate and fairness guarantees.
+\end_layout
+
+\begin_layout Subsubsection*
+Rate Guarantee:
+\end_layout
+
+\begin_layout Standard
+A flow requests for a certain amount of bandwidth (rate) in the network
+ before it begins transmitting packets.
+ If the network has enough bandwidth available, it grants the reservation
+ request.
+ Otherwise, the request is denied.
+ A scheduling protocol which provides rate guarantee assures that a flow
+ gets atleast its reserved bandwidth at all times while it is active.
+ A flow may receive more bandwidth than what it originally requested for,
+ if bandwidth gets available.
+ Such a guarantee thus ensures that any flow gets atleast a certain amount
+ of service in the scheduler.
+\end_layout
+
+\begin_layout Subsubsection*
+Fairness:
+\end_layout
+
+\begin_layout Standard
+If the network is not congested, it might be possible that a part of bandwidth
+ is unused.
+ It may happen for two reasons:
+\end_layout
+
+\begin_layout Enumerate
+There is some unallocated bandwidth available in the network.
+\end_layout
+
+\begin_layout Enumerate
+A set of flows are not fully utilizing their share of allocated bandwidth
+ by transmitting packets at a slower rate than their service rate.
+\end_layout
+
+\begin_layout Standard
+To use the resources efficiently, a scheduler thus distributes the unused
+ bandwidth among the flows fairly while maintaining firewalls between them
+ so that the allocation is followed strictly by all the flows.
+ Fairness means a flow should not be “punished” (temporarily denied service)
+ if it exceeds its reserved rate to take advantage of unused bandwidth in
+ the channel.
+ The way in which each protocol distributes the unused bandwidth is different.
+ 
+\end_layout
+
+\begin_layout Standard
+If a flow gets empty, the scheduler starts serving the packets from the
+ next non empty flow.
+ Such a scheduler will be work-conserving since it doesn't let resources
+ go to waste.
+ In certain scenarios, a scheduler may decide not to distribute the unused
+ bandwidth.
+ Such a scheduler is non-work conserving.
+ In the next few sections, a number of well known scheduling protocols are
+ described.
+\end_layout
+
+\begin_layout Section
+Scheduling Protocols
+\end_layout
+
+\begin_layout Standard
+Real-time applications, such as interactive audio and video, require from
+ the network an assurance that their packets will be forwarded with a lower
+ bound on the forwarding rate and also with a bounded end-to-end delay.
+ Rate-guaranteed schedulers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-Flow-Theory-ToN"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "leaveintime"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NOSSDAV-95-Vin"
+
+\end_inset
+
+ is a family of protocols that is able to provide this assurance.
+ Iconic examples of this protocol family include Virtual Clock (VC) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lam"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lixia"
+
+\end_inset
+
+ and Weighted Fair Queuing (WFQ) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+, plus their many variations.
+ One desirable property of a rate-guaranteed scheduler is fairness.
+ Some protocols, such as Virtual Clock, are unfair, while others, like WFQ,
+ are fair.
+ Being able to provide fairness is desirable for some applications whose
+ can adapt to changes in the bandwidth provided by the network.
+ Examples of such flows are file transfers and multi-resolution video 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hopbyhop"
+
+\end_inset
+
+.
+ The sources of these flows will likely reserve from the network the smallest
+ packet rate necessary to receive a minimum quality of service.
+ The source is then able to detect that additional bandwidth is available
+ due to side-effects observed in the network, such as a smaller end-to-end
+ delay, and increase its packet-generation rate accordingly.
+ Speaking generally of scheduling protocols, rate guarantee and fairness
+ can be considered as two extreme ends between which various rate guaranteed
+ scheduling algorithms fit in.
+ 
+\end_layout
+
+\begin_layout Standard
+Prior to begining the discussion about scheduling protocols, it is important
+ to establish a formal notion of a flow.
+ A flow :
+\end_layout
+
+\begin_layout Enumerate
+is a stream of packets where each packet follows the same path in the network.
+\end_layout
+
+\begin_layout Enumerate
+avails a certain minimum amount of service in the network.
+\end_layout
+
+\begin_layout Standard
+Each packet is uniquely bound to a particular flow which can be identified
+ by analysing the headers in the packet.
+ At any given time 
+\emph on
+t
+\emph default
+, if a flow has packets in its queue, it is known as a 
+\emph on
+backlogged
+\emph default
+ flow.
+ Otherwise, a flow with empty queue at any given time t is 
+\emph on
+idle
+\emph default
+.
+ Consider a set of all the flows represented by 
+\emph on
+W
+\emph default
+.
+ Then at any given time 
+\emph on
+t
+\emph default
+, the set of backlogged flows given by 
+\emph on
+B
+\emph default
+ satisfies 
+\emph on
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$B 
+\backslash
+subseteq
+\backslash
+ W$
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the following sections, consider an output channel with a capacity 
+\emph on
+C
+\emph default
+ and a set of flows 
+\emph on
+W
+\emph default
+ in the fluid server such that each flow is represented by 
+\emph on
+f
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+i 
+\end_layout
+
+\end_inset
+
+
+\emph default
+
+\begin_inset Formula $\mathcal{\epsilon}$
+\end_inset
+
+
+\emph on
+ W, where 
+\begin_inset Formula $1\leq i\leq n$
+\end_inset
+
+.
+ 
+\emph default
+Let 
+\emph on
+B 
+\emph default
+represent the set of backlogged flows in the fluid server.
+\end_layout
+
+\begin_layout Subsection
+Weighted Fair Queuing (WFQ)
+\end_layout
+
+\begin_layout Standard
+A Generalized Processor Sharing (GPS) discipline provides rate and fairness
+ guarantees.
+ However, since it models a fluid server, it assumes that the scheduler
+ can serve all the flows.
+ However, a real scehduler has to transmit a packet from one flow at any
+ given time and thus, it is impossible to practically realize a GPS system.
+ Several packetized approximations which follow the footsteps of GPS have
+ been proposed in past many years.
+ Out of such known algorithms, Weighted Fair Queuing is well known to provide
+ both rate and fairness guarantees
+\emph on
+.
+
+\emph default
+ It assures that 
+\emph on
+(a)
+\emph default
+ each flow gets atleast the amount of bandwidth it reserved and 
+\emph on
+(b)
+\emph default
+ the unused bandwith is allocated among the flows in proportion of their
+ reserved rates.
+ Thus the flows with higher reserved rates get the larger share of unused
+ bandwidth than those with smaller reserved rates.
+ 
+\end_layout
+
+\begin_layout Standard
+Each flow 
+\emph on
+
+\begin_inset Formula $f_{i}\;\epsilon\; B$
+\end_inset
+
+
+\emph default
+ is assigned a weight 
+\emph on
+w
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\emph on
+i
+\end_layout
+
+\end_inset
+
+ 
+\emph default
+and gets the bandwidth 
+\emph on
+
+\begin_inset Formula $c_{i}$
+\end_inset
+
+
+\emph default
+ allocated as per the following rule:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+c_{i}=\frac{w_{i}}{\sum_{x}w_{x}},\;\;\;\; f_{x}\;\epsilon\; B
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+There are two schedulers (servers) in the system:
+\end_layout
+
+\begin_layout Enumerate
+Fake or bit-by-bit scheduler, which forwards a few bits of each flow at
+ a time (i.e.
+ fractions of a packet)
+\end_layout
+
+\begin_layout Enumerate
+Real scheduler, which
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+assigns timestamps to packets.
+\end_layout
+
+\begin_layout Itemize
+sends out packets in non-decreasing order of timestamp.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+The timestamp is the “virtual” finishing time of the packet at the fake
+ server.
+ The virtual time 
+\emph on
+V(t)
+\emph default
+ at real time t is the “bit number” or “round-number” in the fake bit-by-bit
+ server at real time 
+\emph on
+t
+\emph default
+.
+ In case of fair queuing, 
+\emph on
+V(t)
+\emph default
+ is increased by 1 every time one bit is forwarded from all the flows in
+ the fake server.
+ In case of WFQ, 
+\emph on
+V(t)
+\emph default
+ is increased by 1 every time when for each flow 
+\begin_inset Formula $f_{i}\;\epsilon\; B$
+\end_inset
+
+, 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ bits are forwarded from all the flows in the fake server.
+ If there are fewer number of flows in the server, the 
+\emph on
+virtual time
+\emph default
+ will run faster.
+ Also, for each tick in 
+\emph on
+virtual 
+\emph default
+time, the number of bits forwarded for flows with higher weights is more
+ than those with lower weights.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $F_{f,i}$
+\end_inset
+
+ be the virtual time when the 
+\emph on
+i-th
+\emph default
+ packet of flow 
+\emph on
+f
+\emph default
+ exits the bit-by-bit server, 
+\begin_inset Formula $A_{f,i}$
+\end_inset
+
+ be the virtual time when the 
+\emph on
+i-th
+\emph default
+ packet of flow 
+\emph on
+f
+\emph default
+ exits the bit-by-bit server.
+ Then following relation can be established.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{f,i}=max(V(A_{f,i}),\; F_{f,i-1})+\frac{L_{f,i}}{w_{f}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+where 
+\begin_inset Formula $L_{f,i}$
+\end_inset
+
+ is the length of 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+i-th
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ packet of flow f
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+, it has been proven that if the rate admission control is maintained using
+ the leaky bucket, end to end delay guarantee can be achieved.
+ A packet gets out of the real server by the time it gets out of the fake
+ server plus a constant.
+ Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Finishing\; time=F_{f,i}+\frac{L_{max}}{C}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+where 
+\begin_inset Formula $L_{max}$
+\end_inset
+
+ is the maximum length of the packet.
+\end_layout
+
+\begin_layout Standard
+It was long known that the WFQ can be implemented with a per-packet complexity
+ of 
+\emph on
+O(n)
+\emph default
+, until Valente 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WFQlogN"
+
+\end_inset
+
+ proposed a way to implement WFQ in 
+\emph on
+O(log(n))
+\emph default
+ per-packet complexity.
+ He uses a complex scheme to organize the breaking points in a search tree
+ to optimize searches.
+ 
+\end_layout
+
+\begin_layout Subsection
+Worst-case Fair Weighted Fair Queueing (WF
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Q)
+\end_layout
+
+\begin_layout Standard
+In 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+, Parekh stated a number of relationships between a GPS and a packetized
+ approximation of GPS, which he called as PGPS (identical to WFQ).
+ Two main claims were as follows:
+\end_layout
+
+\begin_layout Enumerate
+A packet gets out of a PGPS scheduler no later than it gets out of GPS scheduler
+ with a delay of atmost one packet transmission time.
+\end_layout
+
+\begin_layout Enumerate
+PGPS cannot lag behind the GPS scheduler by more than one packet transmission.
+\end_layout
+
+\begin_layout Standard
+From above two claims, one may deduce that a PGPS scheduler offers a service
+ which is almost identical to a GPS scheduler with a variation of atmost
+ one packet transmission time, which was once a popular belief until Bennet
+ et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hui-WF2Q"
+
+\end_inset
+
+ proved that there can be significant discrepances between a PGPS and a
+ GPS scheduler.
+ They claim that the PGPS scheduler can be far ahead of GPS in terms of
+ service given to a session leading to an unfair behavior of the protocol
+ towards other sessions.
+\end_layout
+
+\begin_layout Standard
+In PGPS or WFQ approximation of GPS, packets are transmitted according to
+ the order of their timestamps.
+ It might happen that a packet may get transmitted in the PGPS before it
+ exits the GPS scheduler.
+ In this case, the next packet of the session might start receiving service
+ even before the first packet finishes in GPS.
+ This may lead WFQ to run ahead of GPS thus favoring a particular flow.
+ In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hui-WF2Q"
+
+\end_inset
+
+, a modified policy for selecting packets for transmission has been proposed
+ which is called WF
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Q.
+ According to this policy, when a WFQ scheduler selects the next packet
+ for transmission, it choses a packet among those, which have already started
+ receiving service in corresponding GPS system.
+ Also, it has been established that with WF
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Q policy, the system offers service almost identical to GPS with a maximum
+ difference of one packet transmission.
+ Also, WF
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Q scheduler is proven to be work conserving.
+\end_layout
+
+\begin_layout Subsection
+Virtual Clock (VC)
+\end_layout
+
+\begin_layout Standard
+Another packet service discipline has been proposed in by Zhang 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lixia"
+
+\end_inset
+
+ which is known as Virtual Clock algorithm.
+ The basic concept of this algorithm is somewhat similar to Time Division
+ Multiplexing (TDM), which maintains a perfect firewall among various sessions.
+ In TDM, each session can transmit data only in a particular time slot.
+ However, this turns out to be inefficient on resource utilization as a
+ time slot may get wasted if the session doesn't have any packet to transmit.
+ Virtual Clock preserves the firewall property of a TDM and ensures work
+ conserving nature of the scheduler.
+ 
+\end_layout
+
+\begin_layout Standard
+In VC algorithm, two clocks are implemented, a real clock and a virtual
+ clock.
+ Whenever, a packet is received at the queuing node, it is timestamped with
+ a virtual clock value.
+ The packets are served in non-decreasing order of virtual clock timestamps
+ of each packet.
+ Suppose that a session 
+\emph on
+f
+\emph default
+ has a reserved bandwidth of 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+.
+ Then for each such flow a value known as 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $Vtick_{f}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lixia"
+
+\end_inset
+
+is calculated according to the following relationship:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Vtick_{f}=\frac{1}{R_{f}}\label{eq:1.1.4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now consider the 
+\emph on
+i-th
+\emph default
+ packet of flow 
+\emph on
+f
+\emph default
+ represented by 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+.
+ Using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1.1.4"
+
+\end_inset
+
+, the Virtual Clock value 
+\begin_inset Formula $VC_{f,i}$
+\end_inset
+
+ for 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ can be calculated using the following equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+VC_{f,i}=VC_{f,i-1}+Vtick_{f}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One important point to note here is that, flows which generate packets at
+ a slower rate may accumulate credits over the time and thus create unfairness
+ in the system towards other flows.
+ This is taken care of by periodically synchronizing the Virtual Clock values
+ with the real time so that VC values don't fall far behind of real time.
+ In
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lam"
+
+\end_inset
+
+, it has been proven that Virtual Clock Algorithm has delay bound which
+ is identical to that of WFQ.
+ However, VC is not a fair scheduling policy.
+ Flows which transmit data at a speed higher than their reserved rates may
+ get extra bandwidth for sometime if its available.
+ But in later time, since their VC values will be far ahead of slower flows,
+ they will get punished.
+ This behavior has been modified in a scheme proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "leapforward"
+
+\end_inset
+
+.
+ This scheme gives an end-to-end delay guarantee similar to WFQ and also
+ exhibits throughput fairness.
+\end_layout
+
+\begin_layout Chapter
+QoS Model
+\end_layout
+
+\begin_layout Standard
+In all the previously discussed algorithms, the rate guarantee is always
+ ensured by providing atleast the reserved rate of service to a session.
+ The way fairness is ensured varies with different protocols.
+ Algorithms, which follow the GPS discipline exhibit fairness by distributing
+ the unused bandwidth in proportion to the reserved rates of flows.
+ Algorithms like Leap Forward Virtual Clock 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "leapforward"
+
+\end_inset
+
+ maintain fairness by moving misbehaved sessions to a separate queue while
+ keeping the well-behaved flows together.
+ 
+\end_layout
+
+\begin_layout Standard
+The QoS model presented here is based on the models of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-Flow-Theory-ToN"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "leaveintime"
+
+\end_inset
+
+.
+ A 
+\emph on
+network 
+\emph default
+is a set of computers connected via point-to-point communication channels.
+ A flow
+\emph on
+ 
+\emph default
+is a sequence of packets, all of which originate at the same source computer
+ and are destined to the same computer.
+ All packets of a flow must traverse the network along a fixed path.
+\end_layout
+
+\begin_layout Standard
+Each flow is characterized by its data rate and an upper bound on its end-to-end
+ delay.
+ Before a source introduces a new flow to the network, enough network resources
+ are reserved to ensure the flow's delay bound is not violated.
+ If enough resources are not available, the flow is rejected.
+\end_layout
+
+\begin_layout Standard
+Each output channel of a computer is equipped with a packet scheduler (see
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:fig1"
+
+\end_inset
+
+).
+ A scheduler receives packets from flows whose path traverses its output
+ channel.
+ Whenever its output channel becomes idle, the scheduler chooses a received
+ packet and forwards it over the output channel.
+ A packet
+\emph on
+ exits
+\emph default
+ a scheduler when its last bit packet is transmitted by the output channel.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement tb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename paper/Fig1.pdf
+	scale 80
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Schedulers and Channels
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fig1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We adopt the following notation for each flow 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{f}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+data rate reserved for flow 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ packet of 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula $i\geq1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L_{f,i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+length of packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L_{f}^{max}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maximum packet length of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L^{max}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+maximum packet length of all flows.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $A_{f,i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+arrival time of 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{f,i}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+exit time of 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bandwidth of the output channel.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider a constant-rate (CR) fluid server
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Fluid servers can forward, during any time interval, an arbitray number
+ of bits from any subset of its input flows.
+ They are for reference only and cannot be implemented.
+ This is in contrast to packet schedulers which are used in practice and
+ can only forward one packet at a time.
+\end_layout
+
+\end_inset
+
+ whose input is a set of flows, among them 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Let this server forward the bits of each input flow 
+\begin_inset Formula $f$
+\end_inset
+
+ at exactly its reserved rate 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+.
+ Such a fluid server is defined in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CR"
+
+\end_inset
+
+, where 
+\begin_inset Formula $B(t)$
+\end_inset
+
+ are the 
+\emph on
+backlogged flows
+\emph default
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+, i.e., flows with bits remaining to be forwarded, and 
+\begin_inset Formula $\psi_{f,CR}(t)$
+\end_inset
+
+ is the bit rate given to flow 
+\begin_inset Formula $f$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+
+\series bold
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+ CR Server
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabbing}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+let 
+\begin_inset Formula $B(t)$
+\end_inset
+
+ be the set of backlogged flows at time 
+\begin_inset Formula $t$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+for every flow 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Formula $f\in B(t)$
+\end_inset
+
+, then
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\psi_{f,CR}(t)=R_{f}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ else
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\psi_{f,CR}(t)=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabbing}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Constant-rate fluid server
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CR"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us define 
+\begin_inset Formula $S_{f,i,CR}$
+\end_inset
+
+ as the 
+\emph on
+start-time
+\emph default
+ of packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ at the constant-rate server and 
+\begin_inset Formula $F_{f,i,CR}$
+\end_inset
+
+ as the 
+\emph on
+finishing time
+\emph default
+.
+ They can be computed recursively as follows, where 
+\begin_inset Formula $S_{f,1,CR}=A_{f,1}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+S_{f,i,CR} & = & \mbox{max}(A_{f,i},\ F_{f,i-1,CR})\ \ \mbox{\ensuremath{i>1}}\nonumber \\
+F_{f,i,CR} & = & S_{f,i,CR}+\frac{L_{f,i}}{R_{f}}\ \ \mbox{\ensuremath{i\geq1}}\label{eq:F-def}
+\end{eqnarray}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $F_{f,i,CR}$
+\end_inset
+
+ is the value used by the Virtual Clock scheduling protocol to assign priorities
+ to its packets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lam, VC-Lixia"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Assume that a packet scheduler 
+\begin_inset Formula $s$
+\end_inset
+
+ forwards the packets of an input flow 
+\begin_inset Formula $f$
+\end_inset
+
+ at a rate of at least 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+.
+ Then, each packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ exits scheduler 
+\begin_inset Formula $s$
+\end_inset
+
+ not much later than its finishing time at 
+\begin_inset Formula $CR$
+\end_inset
+
+, i.e., 
+\begin_inset Formula $F_{f,i,CR}$
+\end_inset
+
+.
+ These packet schedulers are referred to as 
+\emph on
+rate-guaranteed schedulers
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-Flow-Theory-ToN,leaveintime,NOSSDAV-95-Vin"
+
+\end_inset
+
+.
+ More formally, a scheduler 
+\begin_inset Formula $s$
+\end_inset
+
+ is a rate-guaranteed scheduler iff, for every input flow 
+\begin_inset Formula $f$
+\end_inset
+
+ of 
+\begin_inset Formula $s$
+\end_inset
+
+ and every 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $i\geq1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+E_{f,i,s}\leq F_{f,i,CR}+\delta_{f,s}\label{eq:E-e2e}
+\end{equation}
+
+\end_inset
+
+for some constant 
+\begin_inset Formula $\delta_{f,s}$
+\end_inset
+
+.
+ For many protocols, such as Virtual Clock 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lam, VC-Lixia"
+
+\end_inset
+
+ and Weighted Fair Queuing 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+ (and their many variations), 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta_{f,s}=L_{s}^{max}/C_{s}
+\end{equation}
+
+\end_inset
+
+i.e., packets exit by their finishing time in 
+\begin_inset Formula $CR$
+\end_inset
+
+ plus at most the time to transmit the largest packet size.
+ In this case, admission control is simple
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Other protocols have a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ rate-independent delay
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "leaveintime,KGShin94"
+
+\end_inset
+
+: where 
+\begin_inset Formula $\delta_{f,s}$
+\end_inset
+
+ could be negative.
+ This allows for a smaller per-hop delay, but makes the admission control
+ test quite complex.
+ Such protocols are outside the scope of this paper.
+ 
+\end_layout
+
+\end_inset
+
+, the sum of the reserved rates of all the flows through 
+\begin_inset Formula $s$
+\end_inset
+
+ must be at most 
+\begin_inset Formula $C$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Rate Equalization
+\end_layout
+
+\begin_layout Standard
+In this section, the Rate-Equalization fairness which was presented in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Cobb-REQ"
+
+\end_inset
+
+ is discussed.
+ On occasions, the bandwidth of a channel is not fully utilized.
+ This occurs either because existing flows are transmitting at a rate that
+ is below their reserved rate, or because the sum of the reserved rates
+ of the flows is less than the output channel's bandwidth.
+ Under these conditions, it is possible for a flow to temporarily exceed
+ its reserved rate, in an attempt to take advantage of bandwidth that is
+ not being used by other flows.
+ The source of the flow can determine if there is unused bandwidth by receiving
+ implicit feedback from the network, in particular, that its packets are
+ experiencing an end-to-end delay that is smaller than expected.
+\end_layout
+
+\begin_layout Standard
+The manner in which unallocated bandwidth is distributed among flows varies
+ from one scheduling protocol to another.
+ We refer to this distribution of unallocated bandwidth as the 
+\emph on
+fairness
+\emph default
+ method of the protocol, and it is the main focus of this paper.
+\end_layout
+
+\begin_layout Standard
+Some protocols, like Virtual Clock (VC) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lixia"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lam"
+
+\end_inset
+
+, do not address fairness.
+ In VC, each packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ is labeled with its virtual finishing time, 
+\begin_inset Formula $F_{f,i,CR}$
+\end_inset
+
+ (see (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:F-def"
+
+\end_inset
+
+)), and packets are forwarded by the scheduler in order of increasing labels.
+ A consequence of this is that, if a flow exceeds its reserved rate, it
+ may later be denied service by the scheduler, for a duration proportional
+ to the time the flow exceeded its rate 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-TS-Scheduling-ToN"
+
+\end_inset
+
+.
+ This is potentially unbounded.
+ The exit bound in Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:E-e2e"
+
+\end_inset
+
+ still holds, however, because VC is a rate-guaranteed scheduler.
+\end_layout
+
+\begin_layout Standard
+Other rate-guaranteed protocols, such as Weighted Fair Queuing (WFQ) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+ and its variants 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hui-Hierarchical-WFQ"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-TS-Scheduling-ToN"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SCFQ-Golestani"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hui-WF2Q"
+
+\end_inset
+
+, distribute the unallocated bandwidth among flows in proportion to their
+ reserved rate.
+ Specifically, the effective rate 
+\begin_inset Formula $\psi_{f}$
+\end_inset
+
+ that is given to flow 
+\begin_inset Formula $f$
+\end_inset
+
+ (i.e., the rate at which the scheduler actually forwards the packets of flow
+ 
+\begin_inset Formula $f$
+\end_inset
+
+) is 
+\begin_inset Formula 
+\begin{equation}
+\psi_{f}(t)=\frac{C}{\left(\sum_{g\in B(t)}R_{g}\right)}\cdot R_{f}\geq R_{f}\label{eq:WFQ-Share}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $B(t)$
+\end_inset
+
+ are the backlogged flows at time 
+\begin_inset Formula $t$
+\end_inset
+
+ (i.e., those flows with a non-empty queue) and 
+\begin_inset Formula $C$
+\end_inset
+
+ is the capacity of the output channel of the scheduler.
+\end_layout
+
+\begin_layout Standard
+Consider another flow 
+\begin_inset Formula $g$
+\end_inset
+
+ with lesser reserved bandwidth, e.g., 
+\begin_inset Formula $R_{f}=2\cdot R_{g}$
+\end_inset
+
+.
+ From (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:WFQ-Share"
+
+\end_inset
+
+), it can be easily shown that 
+\begin_inset Formula 
+\[
+(\psi_{f}-R_{f})=2\cdot(\psi_{g}-R_{g})
+\]
+
+\end_inset
+
+That is, the manner in which unused bandwidth is allocated to backlogged
+ flows is proportional to the reserved rate of the flow.
+ Hence, the fairness method of WFQ favors flows with a higher reserved rate.
+\end_layout
+
+\begin_layout Standard
+\noindent
+The intuition behind WFQ's fairness method is as follows.
+ If a flow has a reserved rate that is greater than that of other flows,
+ it implies that the user who generates the flow is paying a greater price
+ for the network service, and thus, should receive a greater share of the
+ unallocated bandwidth.
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-REQ"
+
+\end_inset
+
+, we presented an alternative fairness method in which the overall objective
+ is to give every flow the same effective rate, provided enough unallocated
+ bandwidth is available.
+ This will result in a value for the effective rate 
+\begin_inset Formula $\psi_{f}$
+\end_inset
+
+ that is different from the one given in Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:WFQ-Share"
+
+\end_inset
+
+.
+ The intuition behind it is the following.
+ Every flow will be guaranteed its reserved rate 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+.
+ However, flows whose applications are rate-adaptive could reserve the minimum
+ rate possible to satisfy their QoS requirements, and thus minimize expense.
+ Any additional bandwidth is given to those flows that need it the most,
+ i.e., those with the least reserved rate.
+\end_layout
+
+\begin_layout Standard
+A more detaied description is as follows.
+ First, at all times, the effective rate of any flow 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula $\psi_{f}$
+\end_inset
+
+, is at least its reserved rate, 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+.
+ I.e., 
+\begin_inset Formula $R_{f}\leq\psi_{f}$
+\end_inset
+
+.
+ Next, consider another flow 
+\begin_inset Formula $g$
+\end_inset
+
+, where 
+\begin_inset Formula $R_{f}<R_{g}$
+\end_inset
+
+.
+ By definition, 
+\begin_inset Formula $R_{g}\leq\psi_{g}$
+\end_inset
+
+.
+ In our method, if enough unallocated bandwidth is available, 
+\begin_inset Formula $\psi_{f}$
+\end_inset
+
+ will increase until it becomes equal to 
+\begin_inset Formula $R_{g}$
+\end_inset
+
+, and thus, 
+\begin_inset Formula $\psi_{f}$
+\end_inset
+
+ will become equal to 
+\begin_inset Formula $\psi_{g}$
+\end_inset
+
+.
+ Thus, flows with lower reserved rates will 
+\begin_inset Quotes eld
+\end_inset
+
+catch up
+\begin_inset Quotes erd
+\end_inset
+
+ to flows with larger reserved rates.
+\end_layout
+
+\begin_layout Standard
+Assume that more unallocated bandwidth remains.
+ In this case, the remaining unallocated bandwidth will be distributed equally
+ between 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+, maintaining the relationship 
+\begin_inset Formula $\psi_{f}=\psi_{g}$
+\end_inset
+
+.
+ If there exists another flow 
+\begin_inset Formula $h$
+\end_inset
+
+, where 
+\begin_inset Formula $R_{h}>R_{g}$
+\end_inset
+
+, then 
+\begin_inset Formula $\psi_{f}$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi_{g}$
+\end_inset
+
+ increase equally until they reach 
+\begin_inset Formula $R_{h}$
+\end_inset
+
+ (assuming enough bandwidth remains), and hence, 
+\begin_inset Formula $\psi_{f}=\psi_{g}=\psi_{h}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To summarize, our fairness method attempts to give all flows the same effective
+ rate.
+ However, in doing so, the requirement of 
+\begin_inset Formula $R_{f}\leq\psi_{f}$
+\end_inset
+
+ for all 
+\begin_inset Formula $f$
+\end_inset
+
+ must be preserved at all times.
+\end_layout
+
+\begin_layout Standard
+We next describe our fairness method in a more formal way by introducing
+ a rate equalization fluid server, which will then be emulated as close
+ as possible by a packet scheduler.
+\end_layout
+
+\begin_layout Section
+Rate-Equalization Server and Scheduler
+\end_layout
+
+\begin_layout Standard
+Packet scheduling algorithms that provide fairness, such as WFQ and some
+ of its variants, describe their fairness method via a virtual fluid server.
+ The packet scheduler then mimics the fluid server as much as possible.
+ The fluid server and the packet scheduler have the same input flows.
+ Both have an output channel, and both of these channels have equal capacity.
+\end_layout
+
+\begin_layout Standard
+What distinguishes the fluid server from the packet scheduler is the manner
+ in which it forwards bits.
+ Once the packet scheduler begins to transmit a packet, the transmission
+ of the packet cannot be preempted.
+ The fluid server, on the other hand, can concurrently forward an arbitrary
+ number of bits from a group of flows.
+ This, of course, is bounded by the capacity (bits/sec.) of the output channel.
+\end_layout
+
+\begin_layout Subsection
+Fluid Server
+\end_layout
+
+\begin_layout Standard
+In light of our earlier discussion on fairness, we define the rate-equalization
+ (EQ) fluid server as follows.
+ Let 
+\begin_inset Formula $\psi_{f,EQ}(t)$
+\end_inset
+
+ be the instantaneous bit rate given to flow 
+\begin_inset Formula $f$
+\end_inset
+
+ by the fluid server.
+ This value is computed as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EQ-server"
+
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\psi_{f,EQ}(t)$
+\end_inset
+
+ does not change during an interval 
+\begin_inset Formula $[t_{1},t_{2}]$
+\end_inset
+
+, then the total number of bits of 
+\begin_inset Formula $f$
+\end_inset
+
+ forwarded during this interval is 
+\begin_inset Formula $\psi_{f,EQ}(t_{1})\cdot(t_{2}-t_{1})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The steps shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EQ-server"
+
+\end_inset
+
+ are as follows.
+ First, the set 
+\begin_inset Formula $B(t)$
+\end_inset
+
+ of backlogged flows (i.e., with bits remaining to be forwarded) is determined.
+ Obviously, a non-backlogged flow receives a rate of zero.
+ All other flows are then arranged in increasing order of their reserved
+ rate.
+ Then, the index 
+\begin_inset Formula $j$
+\end_inset
+
+ is found such that 
+\begin_inset Formula 
+\[
+R_{b_{j}}\leq\frac{C-\sum_{k=j+1}^{m}R_{b_{k}}}{j}<R_{b_{j+1}}
+\]
+
+\end_inset
+
+In this manner, if the higher rate flows 
+\begin_inset Formula $b_{j+1},\ldots,b_{m}$
+\end_inset
+
+ receive exactly their reserved rate, then there is enough remaining bandwidth
+ that can be equally shared among the lower rate flows 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\series bold
+EQ Server
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabbing}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Let 
+\begin_inset Formula $B(t)$
+\end_inset
+
+ be the set of backlogged flows at time 
+\begin_inset Formula $t$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+for every flow 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Formula $f\notin B(t)$
+\end_inset
+
+, then
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\psi_{f,EQ}(t)=0$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ else
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $b_{1},b_{2},\ldots,b_{m}$
+\end_inset
+
+ be the flows of 
+\begin_inset Formula $B(t)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+ordered by increasing 
+\begin_inset Formula $R$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $j$
+\end_inset
+
+, 
+\begin_inset Formula $1\leq j\leq m$
+\end_inset
+
+, be the largest index such that
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabc
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula ${\displaystyle R_{b_{j}}\leq\frac{C-\sum_{k=j+1}^{m}R_{b_{k}}}{j}<R_{b_{j+1}}}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula ${\displaystyle R_{EQ}=\frac{C-\sum_{k=j+1}^{m}R_{b_{k}}}{j}}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ for each 
+\begin_inset Formula $k$
+\end_inset
+
+, 
+\begin_inset Formula $1\leq k\leq j$
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabc
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\psi_{f,EQ}(t)=R_{EQ}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ for each 
+\begin_inset Formula $k$
+\end_inset
+
+, 
+\begin_inset Formula $j+1\leq k\leq m$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabc
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\psi_{f,EQ}(t)=R_{b_{k}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabbing}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Rate equalization fluid server
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:EQ-server"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "paper/Figure-EQ-Example.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider the following example, which is illustrated in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Fluid-Example"
+
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $C=120$
+\end_inset
+
+ bits/sec..
+ There are four flows, 
+\begin_inset Formula $f_{1}\ldots f_{4}$
+\end_inset
+
+, and all packets are 100 bits long.
+ Let 
+\begin_inset Formula $R_{f_{1}}=10$
+\end_inset
+
+ bits/sec., 
+\begin_inset Formula $R_{f_{2}}=20$
+\end_inset
+
+ bits/sec., 
+\begin_inset Formula $R_{f_{3}}=30$
+\end_inset
+
+ bits/sec., and 
+\begin_inset Formula $R_{f_{4}}=40$
+\end_inset
+
+ bits/sec..
+ Note that 
+\begin_inset Formula $\sum_{i=1}^{4}R_{f_{i}}=100$
+\end_inset
+
+ bits/sec., leaving 20 bits/sec.
+ unallocated.
+\end_layout
+
+\begin_layout Standard
+Assume that at time 0, one packet of 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ arrives, two packets of 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ arrive, and two packets of 
+\begin_inset Formula $f_{3}$
+\end_inset
+
+ arrive.
+ At time 2 secs., one packet of 
+\begin_inset Formula $f_{4}$
+\end_inset
+
+ arrives.
+\end_layout
+
+\begin_layout Standard
+At time zero, flows 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $f_{3}$
+\end_inset
+
+ have bits in their queues.
+ Since 
+\begin_inset Formula $C=120$
+\end_inset
+
+, there is enough capacity for all three flows to receive the same effective
+ bandwidth of 
+\begin_inset Formula $\psi=40$
+\end_inset
+
+ bits/sec..
+ At time 2, a packet from 
+\begin_inset Formula $f_{4}$
+\end_inset
+
+ arrives.
+ The total reserved rates of the flows is 100 bits/sec., leaving only 20
+ bits/sec.
+ to equalize the rates among the flows.
+ Equalizing 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ to 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ requires 10 bits/sec..
+ The remaining 10 bits/sec.
+ are distributed equally between 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+, but are not enough to increase their effective rates up 
+\begin_inset Formula $R_{f_{3}}$
+\end_inset
+
+.
+ We thus end with 
+\begin_inset Formula $\psi_{f_{1}}=\psi_{f_{2}}=25$
+\end_inset
+
+ bits/sec.
+ This leaves 
+\begin_inset Formula $\psi_{f_{3}}=R_{f_{3}}=30$
+\end_inset
+
+ bits/sec., and 
+\begin_inset Formula $\psi_{f_{4}}=R_{f_{4}}=40$
+\end_inset
+
+ bits sec.
+\end_layout
+
+\begin_layout Standard
+At time 
+\begin_inset Formula $2\frac{4}{5}$
+\end_inset
+
+, the last bit of the packet of 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+ exits, so only three flows have a non-empty queue.
+ Again, all remaining flows are given an effective bandwidth of 40 bits/sec.
+ In the similar fashion one can compute the remainder of the example.
+\end_layout
+
+\begin_layout Chapter
+Logarithmic Rate Equalization Scheduler
+\end_layout
+
+\begin_layout Standard
+We next overview the packet scheduler for rate-equalization which we presented
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-REQ"
+
+\end_inset
+
+, where more details can be found.
+\end_layout
+
+\begin_layout Standard
+In general, the purpose of a fluid server is to guide the packet scheduler
+ in the order it chooses to forward packets.
+ Typically, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-Universal-Timestamp-CN"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RP-Fair-Servers-ToN"
+
+\end_inset
+
+, for every pair of packets, 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+, if 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+ finishes service in the fluid server before 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+ finishes service, then the packet scheduler will forward 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+ before 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+.
+ I.e., the packet scheduler tries to emulate the behavior of the fluid server
+ as much as possible.
+ This emulation, of course, is not perfect, because the packet scheduler
+ can only forward one packet at a time, while the fluid server can forward
+ bits of multiple flows (and hence multiple packets) at once.
+\end_layout
+
+\begin_layout Section
+Packet Scheduler
+\end_layout
+
+\begin_layout Standard
+For most fluid servers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-Universal-Timestamp-CN"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "RP-Fair-Servers-ToN"
+
+\end_inset
+
+, at the moment a packet arrives, the exit time that this packet will have
+ from the fluid server is unknown.
+ This is because the bit rate at which the packet will be served depends
+ not only on the packets currently in the system, but also on packets that
+ are yet to arrive.
+\end_layout
+
+\begin_layout Standard
+In consequence, when a packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ arrives into a packet scheduler, the scheduler assigns to the packet a
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ virtual exit time
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $T_{f,i}$
+\end_inset
+
+ (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GPS-Parekh"
+
+\end_inset
+
+ for details on computing this value), such that, for any other packet 
+\begin_inset Formula $p_{g,j}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{f,i}\leq T_{g,j}$
+\end_inset
+
+ iff the exit time of 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ from the fluid server is at most the exit time of 
+\begin_inset Formula $p_{g,j}$
+\end_inset
+
+.
+ Packets are then forwarded in order of their virtual exit times.
+ Thus, the packet scheduler forwards packets in the same order in which
+ they are forwarded by the fluid server.
+\end_layout
+
+\begin_layout Standard
+A rate-equalizing fluid server, however, does not have this order-preserving
+ property.
+ That is, if two packets 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{g,j}$
+\end_inset
+
+ are received, not only can't their exit time from the fluid server be determine
+d, but also their relative exit times cannot be determined.
+ I.e., which of 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ or 
+\begin_inset Formula $p_{g,j}$
+\end_inset
+
+ exits first depends on the future arrival of packets.
+\end_layout
+
+\begin_layout Standard
+The reason for not having this property is that the relative effective bandwidth
+, 
+\begin_inset Formula $\psi_{g}/\psi_{f}$
+\end_inset
+
+, does not remain constant in rate-equalization.
+ Actually, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ not
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ preserving this ratio is one of the objectives of rate-equalization.
+ Hence, when packets 
+\begin_inset Formula $p_{g,j}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ arrive, the scheduler is unable to determine which one will exit the fluid
+ server first.
+\end_layout
+
+\begin_layout Standard
+From the above, the rate equalization packet scheduler (PEQ) cannot assign
+ a virtual exit time 
+\begin_inset Formula $T$
+\end_inset
+
+ to each packet.
+ Instead, we opted in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-REQ"
+
+\end_inset
+
+ to assign a real-time deadline, 
+\begin_inset Formula $D_{f,i,PEQ}$
+\end_inset
+
+, to each packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+.
+ The deadline is an 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ upper bound
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ on the exit time of 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ from the fluid server.
+ To obtain this upper bound, we take advantage of the fact that both the
+ fluid server and the packet scheduler have the same input flows and the
+ same output channel capacity.
+ This allows the packet scheduler to keep track of the behavior of the fluid
+ server.
+ The upper bound is as follows.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $S_{f,i,EQ}$
+\end_inset
+
+ be the starting time of 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ in the fluid server, i.e., when its first bit begins service.
+ Note that scheduler PEQ cannot compute this value when 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ arrives.
+ However, at time 
+\begin_inset Formula $t$
+\end_inset
+
+, where 
+\begin_inset Formula $t\geq S_{f,i,EQ}$
+\end_inset
+
+, PEQ is aware of this value, because it can keep track of the behavior
+ of the server.
+ Thus, the deadline of 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ is set to 
+\begin_inset Formula 
+\[
+D_{f,i,PEQ}=S_{f,i,EQ}+\frac{L_{f,i}}{R_{f}}.
+\]
+
+\end_inset
+
+Then, packets are forwarded in order of this deadline.
+\end_layout
+
+\begin_layout Standard
+Note that since 
+\begin_inset Formula $\psi_{f}\geq R_{f}$
+\end_inset
+
+, the above is a true upper bound on the exit time from the fluid server.
+ Furthermore, since scheduler 
+\begin_inset Formula $PEQ$
+\end_inset
+
+ cannot compute this value until time 
+\begin_inset Formula $S_{f,i,EQ}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ is not added to the queue of schedulable packets until this time.
+\end_layout
+
+\begin_layout Standard
+The detailed behavior of the scheduler is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PEQ-scheduler"
+
+\end_inset
+
+.
+ More detais can be found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-REQ"
+
+\end_inset
+
+, including bounds on the difference between a packet's exit time from the
+ scheduler and from the fluid server.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\series bold
+PEQ Scheduler
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabbing}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+upon receiving a packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $D_{f,i,PEQ}=\infty$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+  if output channel is idle at time 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ model the behavior of 
+\begin_inset Formula $EQ$
+\end_inset
+
+ up to time 
+\begin_inset Formula $t$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $p_{f,i}\in\mbox{Active}(t)$
+\end_inset
+
+ iff 
+\begin_inset Formula $t\geq S_{f,i,EQ}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ for each 
+\begin_inset Formula $p_{f,i}\in\mbox{Active}(t)$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $D_{f,i,PEQ}=S_{f,i,EQ}+L_{f,i}/R_{f}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $D_{g,j,PEQ}=\mbox{min}\{D_{f,i,PEQ}\,\,|\,\, p_{f,i}\in\mbox{Active}(t)\}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ forward 
+\begin_inset Formula $p_{g,j}$
+\end_inset
+
+ to the output channel.
+ 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabbing}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PEQ-scheduler"
+
+\end_inset
+
+ 
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Packetized rate equalization scheduler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Roadblocks to Efficient Implementation
+\end_layout
+
+\begin_layout Standard
+Recall that our objective is to find an approximation algorithm that will
+ require 
+\begin_inset Formula $O(\log(n))$
+\end_inset
+
+ processing for receiving and transmitting a packet, where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of flows in the system.
+ Our scheduling protocol resembles WFQ in the sense that we also have a
+ fluid server, and the packet scheduler attempts to emulate it as close
+ as possible.
+\end_layout
+
+\begin_layout Standard
+For many years, the best implementation of WFQ had 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ complexity.
+ This was due to the overhead of computing the virtual time associated with
+ the arrival time of a packet.
+ The virtual time grows inversely proportional to the number of flows backlogged
+ in the fluid server.
+ The 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ complexity arises because many flows could become not backlogged in a very
+ short period of time.
+\end_layout
+
+\begin_layout Standard
+Several approximations with 
+\begin_inset Formula $O(\log(n))$
+\end_inset
+
+ complexity, such as Leap-Forward-VC 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "leapforward"
+
+\end_inset
+
+, Time-Shift Scheduling 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Cobb-TS-Scheduling-ToN"
+
+\end_inset
+
+, and WFQ+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hui-WF2Q"
+
+\end_inset
+
+, provided a rough approximation of the virtual time.
+ Other approaches reduced the complexity even further to 
+\begin_inset Formula $O(1)$
+\end_inset
+
+ by sophisticated variations on the classical round-robin algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SRR"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "G-3"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Stratified"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FRR"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GRR"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VWQGRR"
+
+\end_inset
+
+.
+ All of these provided the same type of fairness as WFQ, i.e., extra bandwidth
+ is allocated in proportional to the reserved rate.
+\end_layout
+
+\begin_layout Standard
+After many years of only having an 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ implementation, an 
+\begin_inset Formula $O(\log(n))$
+\end_inset
+
+ implementation of WFQ was presented in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WFQlogN"
+
+\end_inset
+
+.
+ This required the introduction of a complex search structure that organized
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+breaking points
+\begin_inset Quotes erd
+\end_inset
+
+ in the virtual time into a search tree.
+ Crucial to making this implementation possible is that the ratio of the
+ effective rates, 
+\begin_inset Formula $\psi_{g}/\psi_{f}$
+\end_inset
+
+ for any pair of backlogged flows, remained the same regardless of the arrival
+ or departure of packets from other flows.
+\end_layout
+
+\begin_layout Standard
+However, the ratio mentioned above is not constant in rate-equalization
+ scheduling.
+ In fact, it can vary significantly.
+ To see this, consider again Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EQ-server"
+
+\end_inset
+
+.
+ You can consider the set of backlogged flows to always be divided into
+ two subsets: those flows whose effective rate is their reserved rate, and
+ those flows whose effective rates are all the same due to unused bandwidth.
+ The amount of unused bandwidth in turn depends on how many flows are backlogged
+, which, like in WFQ, can vary signnificantly in a very short period of
+ time.
+ This causes many flows to change from one of these two subsets to another,
+ which in turn drastically changes the ration of effective rates.
+\end_layout
+
+\begin_layout Standard
+For these reasons, a technique similar to the one in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WFQlogN"
+
+\end_inset
+
+ is not directly applicable.
+ Although we have not proven a lower bound, we speculate that a precise
+ implementation cannot be done in 
+\begin_inset Formula $O(\log(n))$
+\end_inset
+
+ time.
+ We thus search for an approximation to the fluid server of rate-equalization
+ that runs in 
+\begin_inset Formula $O(\log(n))$
+\end_inset
+
+ time.
+ Our approximation, presented below, is quite different from that of earlier
+ works mentioned above due to our significantly different method of defining
+ fairness.
+\end_layout
+
+\begin_layout Section
+Dual-Mode Scheduling
+\end_layout
+
+\begin_layout Standard
+From the above discussion, backlogged flows in the fluid server can be cosidered
+ to be in one of two disjoint subsets: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ enhanced flows
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, whose effective rate is greater than their reserved rate and all members
+ have the same effective rate, and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ unenhanced flows
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, whose effective rate is simply their reserved rate.
+ This motivates our first packet scheduler design, presented in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Flow-Migration-Scheduler"
+
+\end_inset
+
+.
+ Although intuitive, this first attempt is not efficient.
+ We then present our final scheduler design in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Static-Flow-Scheduler"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Flow-Migration Scheduler
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Flow-Migration-Scheduler"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename paper/FigDual.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dual-Mode Scheduling
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Dual-Mode"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\series default
+PCR Scheduler
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabbing}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+Let $B(t)$ be the set of backlogged flows at time 
+\series default
+
+\begin_inset Formula $t$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+upon receiving a packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+tea $S_{f,i,CR} = 
+\backslash
+mbox{max}(A_{f,i},F_{f,i,CR})$;
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $D_{f,i,PCR}=F_{f,i,CR}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ if output channel is idle at time 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $p_{f,i}\in\mbox{Active}(t)$
+\end_inset
+
+ iff 
+\begin_inset Formula $t\geq S_{f,i,CR}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Formula $\mbox{Active}(t)\neq\emptyset$
+\end_inset
+
+ then
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $D_{g,j,PCR}=\mbox{min}\{D_{f,i,PCR}\,\,|\,\, p_{f,i}\in\mbox{Active}(t)\}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ forward 
+\begin_inset Formula $p_{g,j}$
+\end_inset
+
+ to the output channel.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabbing}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Packetized constant-rate scheduler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PCR"
+
+\end_inset
+
+ 
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dual-Mode"
+
+\end_inset
+
+(a).
+ The service required for an unenhanced flow 
+\begin_inset Formula $f$
+\end_inset
+
+ is simply a constant rate 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+.
+ This is provided by a packetized constant rate scheduler (PCR), which is
+ described in more detail in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PCR"
+
+\end_inset
+
+.
+ It is similat to the Virtual Clock protocol 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "VC-Lam"
+
+\end_inset
+
+, except that it does not allow flows to exceed their reserved rate.
+ Note that this scheduler is non-work-conserving, i.e., there are times when
+ its queues are non-empty yet it does not have any packets considered 'active',
+ so it remains idle.
+ Enhanced flows, on the other hand, have to be served in an equal manner.
+ This is best accomplished by a fair-queuing (FQ) scheduler, also shown
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dual-Mode"
+
+\end_inset
+
+(a).
+\end_layout
+
+\begin_layout Standard
+We thus have two schedulers, one for each type of flow.
+ Priority is given to the PCR scheduler.
+ I.e., when the output channel becomes idle, the PCR scheduler is queried
+ for the next packet to be transmitted.
+ Only if the PCR scheduler is unable to provide a packet (due to its queues
+ being empty or all packets being 'inactive'), then the packet transmitted
+ is chosen from the FQ scheduler.
+ Both of these schedulers can be implemented in 
+\begin_inset Formula $O(\log(n))$
+\end_inset
+
+ time per packet arrival/departure (FQ using the method of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WFQlogN"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The above method should work, provided the membership in the enhanced and
+ unenhanced flow sets remains constant.
+ However, their membership depends on unallocated bandwidth.
+ An increase in unallocated bandwidth enhances more flows, and a decrease
+ unenhances some flows.
+\end_layout
+
+\begin_layout Standard
+Unallocated bandwidth comes from two sources: from bandwidth that is not
+ reserved by any flow, and from flows that have temporarilly stopped creating
+ packets (empty queues).
+ The former is relatively stable, and changes are predictable (when flows
+ are added or removed).
+ In this case, the appropriate movement of flows between the schedulers
+ can be done before a new flow is accepted or removed from the system.
+ The latter, i.e., queues becoming empty, cannot be predicted, and may cause
+ large changes in flow assignments to the two schedulers.
+ This is particularly true if the flows whose queue becomes empty have a
+ large reserved bandwidth.
+ Thus, moving flows from one scheduler to the other is not efficient, which
+ prompts us to present below our final version of the scheduler.
+\end_layout
+
+\begin_layout Subsection
+Static-Flow-Assignment Scheduler
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Static-Flow-Scheduler"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\series bold
+A-PEQ Scheduler
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabbing}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+upon receiving a packet 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ add 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ to the queue of 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula $Q_{f}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ if output channel is idle at time 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+ 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+model the behavior of 
+\begin_inset Formula $PCR^{*}$
+\end_inset
+
+ to dequeue a packet; 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $p_{f,i}$
+\end_inset
+
+ be the packet chosen by 
+\begin_inset Formula $\femph{PCR}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $\rho_{min}=\mbox{min}\{\rho_{g}\,\,|\,\, Q_{g}\neq\emptyset\}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ if 
+\begin_inset Formula $Q_{f}\neq\emptyset$
+\end_inset
+
+ then
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ dequeue and forward a packet from flow 
+\begin_inset Formula $f$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\rho_{f}=\mbox{min}(\rho_{f}+1,\rho_{min}+\Delta)$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+taba
+\end_layout
+
+\end_inset
+
+ else
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ let 
+\begin_inset Formula $g$
+\end_inset
+
+ satisfy 
+\begin_inset Formula $\rho_{g}=\rho_{min}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ forward the next packet of flow 
+\begin_inset Formula $g$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tabb
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\rho_{g}=\rho_{g}+1$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+par 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabbing}
+\end_layout
+
+\end_inset
+
+
+\series bold
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Approximate packetized rate equalization scheduler
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:A-PEQ-Scheduler"
+
+\end_inset
+
+ 
+\begin_inset CommandInset line
+LatexCommand rule
+width "100col%"
+height "0.5mm"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our final protocol, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ Approximate Packetized rate Equalization
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ (A-PEQ), is shown in detail in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:A-PEQ-Scheduler"
+
+\end_inset
+
+, with an abstract view in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dual-Mode"
+
+\end_inset
+
+(b).
+ For this implementation, we make the simplifying assumption that all packets
+ of all flows have an equal size, L.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+We will investigate eliminating this restriction in future work.
+\end_layout
+
+\end_inset
+
+ There are three major differences from the previous scheduler.
+\end_layout
+
+\begin_layout Standard
+First, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ all flows take part in both schedulers
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+ This solves the problem of having to move a large number of flows between
+ the schedulers in a short period of time.
+\end_layout
+
+\begin_layout Standard
+Second, the scheduler PCR* differs from PCR as follows.
+ PCR* assumes that every flow always has packets available (even if its
+ queue is empty).
+ When it chooses a packet from flow 
+\begin_inset Formula $f$
+\end_inset
+
+ for transmission, it checks the queue of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ If it is empty, then the packet transmitted is instead a packet chosen
+ by 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR.
+ Eventhough 
+\begin_inset Formula $f$
+\end_inset
+
+ did not transmit a packet, PCR* updates its state about 
+\begin_inset Formula $f$
+\end_inset
+
+ as if indeed it had transmitted a packet from 
+\begin_inset Formula $f$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Third, instead of FQ, we have a modified round-robin scheduling, which we
+ denote 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR.
+ Each flow 
+\begin_inset Formula $f$
+\end_inset
+
+ has a round number 
+\begin_inset Formula $\rho_{f}$
+\end_inset
+
+ in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR.
+ When 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR is asked to forward a packet, it chooses it as follows.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR is called because PCR* is unable to transmit a packet, then 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR chooses a packet from the backlogged flow 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ with the least round-number
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, and increases the flow's round number by one.
+ 
+\end_layout
+
+\begin_layout Itemize
+If PCR* is able to transmit a packet from a flow 
+\begin_inset Formula $f$
+\end_inset
+
+, then the round-number of 
+\begin_inset Formula $f$
+\end_inset
+
+ is increased by one, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ even though
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ did not output a packet
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The motivation for the above choices is as follows.
+ Consider two flows 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+, where 
+\begin_inset Formula $f$
+\end_inset
+
+ has a large reserved rate (always unenhanced in the fluid server) and 
+\begin_inset Formula $g$
+\end_inset
+
+ a small reserved rate (always enhanced in the fluid server).
+ All unenhanced flows, such as 
+\begin_inset Formula $f$
+\end_inset
+
+, transmit packets from PCR* at a high rate, so their round numbers in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR are higher than those of other flows.
+ The slower flows, such as 
+\begin_inset Formula $g$
+\end_inset
+
+, are served in round-robin order, and thus receive the same bandwidth.
+\end_layout
+
+\begin_layout Standard
+Consider now two slow flows 
+\begin_inset Formula $g$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+, with 
+\begin_inset Formula $g$
+\end_inset
+
+ having a greater reserved rate than 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ Note that through their respective packet transmissions at PCR*, the round
+ number of 
+\begin_inset Formula $g$
+\end_inset
+
+ grows faster than 
+\begin_inset Formula $h$
+\end_inset
+
+'s.
+ Nonetheless, both flows receive about the same behavior from 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR.
+ This is because the unused bandwidth at PCR* causes 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR to serve the slowest flows, such as 
+\begin_inset Formula $h$
+\end_inset
+
+, first, which allows these flows to reach the same round numbers as other
+ flows, such as 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+One final detail remains.
+ Assume the round number of flow 
+\begin_inset Formula $f$
+\end_inset
+
+, due to its large reserved rate, grows much larger than that of other flows.
+ Then, assume enough bandwidth becomes available to make 
+\begin_inset Formula $f$
+\end_inset
+
+ an enhanced flow in the fluid server.
+ However, due its large round number, 
+\begin_inset Formula $f$
+\end_inset
+
+ will not receive service in 
+\begin_inset Formula $\Delta$
+\end_inset
+
+-RR for a long time.
+ To avoid this, we place a bound, 
+\begin_inset Formula $\Delta$
+\end_inset
+
+, on the difference between the round number of any flow and the minimum
+ round number of any backlogged flow, as indicated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:A-PEQ-Scheduler"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The bound 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is a tunable parameter of the system.
+ If it is too large, enhanced flows may not receive their due bandwith,
+ and if it is too small, bandwidth may be wasted on unenhanced flows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "/Users/suparngupta/Downloads/REQ-Log-N/bibliography,IEEEabrv"
+options "bibtotoc,plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

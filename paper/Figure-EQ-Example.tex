@@ -1,0 +1,75 @@
+
+\begin{figure}[t]
+\centerline{
+\setlength{\unitlength}{0.75in}
+\begin{picture}(4,2.6)(-0.25,-0.25)
+%(x,y)(x0,y0)  x,y size of box x0y0 coordinate of botton left corner
+%axis
+\linethickness{1pt}
+\put(0,0){\line(1,0){3.5}}
+\put(0,0){\line(0,1){2.4}}
+\put(0,-0.25){0}
+\put(0.95,-0.25){1}
+\put(1.95,-0.25){2}
+\put(2.95,-0.25){3}
+\put(-0.3,0.75){40}
+\put(-0.3,1.55){80}
+\put(-0.35,2.35){120}
+%ticks horizontal
+\put(1,0){\line(0,1){0.1}}
+\put(1,0){\line(0,-1){0.1}}
+\put(2,0){\line(0,1){0.1}}
+\put(2,0){\line(0,-1){0.1}}
+\put(3,0){\line(0,1){0.1}}
+\put(3,0){\line(0,-1){0.1}}
+%ticks vertical
+\multiput(-0.15,0.2)(0,0.2){12}{
+\line(1,0){0.2}
+}
+%draw lines for the first two seconds
+%only three flows
+\put(0,0.8){\line(1,0){2}}
+\put(0.8,0.4){$\psi_{f_1} = 40$}
+%
+\put(0,1.6){\line(1,0){2}}
+\put(0.8,1.2){$\psi_{f_2} = 40$}
+%
+\put(0,2.4){\line(1,0){2}}
+\put(0.8,2){$\psi_{f_3} = 40$}
+%
+%dotted line at 2
+\linethickness{0.5pt}
+\multiput(2,0)(0,0.2){12}{\line(0,1){0.12}}
+\linethickness{1pt}
+%
+%draw lines after the first two seconds
+\put(2,0.5){\line(1,0){0.8}}
+\put(2.05,0.2){$\psi_{f_1} = 25$}
+%
+\put(2,1){\line(1,0){0.8}}
+\put(2.05,0.7){$\psi_{f_2} = 25$}
+%
+\put(2,1.6){\line(1,0){0.8}}
+\put(2.05,1.25){$\psi_{f_3} = 30$}
+%
+\put(2,2.4){\line(1,0){0.8}}
+\put(2.05,1.95){$\psi_{f_4} = 40$}
+%
+%dotted line at 2.8
+\linethickness{0.5pt}
+\multiput(2.8,0)(0,0.2){12}{\line(0,1){0.12}}
+\linethickness{1pt}
+%
+%after 2.8, only three flows
+\put(2.8,0.8){\line(1,0){0.7}}
+\put(3,0.35){$\psi_{f_2} = 40$}
+\put(2.8,1.6){\line(1,0){0.7}}
+\put(3,1.15){$\psi_{f_3} = 40$}
+\put(2.8,2.4){\line(1,0){0.7}}
+\put(3,1.95){$\psi_{f_4} = 40$}
+\end{picture}
+}
+\caption{Fluid server example.}
+\label{fig:Fluid-Example}
+\end{figure}
+

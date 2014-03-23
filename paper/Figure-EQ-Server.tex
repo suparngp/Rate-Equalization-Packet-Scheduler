@@ -1,0 +1,30 @@
+\begin{figure}
+\noindent
+\rule{\columnwidth}{0.5mm}
+\centerline{\bf EQ Server}
+\begin{tabbing}
+\settabs
+let $B(t)$ be the set of backlogged flows at time $t$;\\
+for every flow $f$, \\
+\tea if $f \notin B(t)$, then\\
+\teb     $\psi_{f,EQ}(t) = 0$\\
+\tea else\\
+\teb     let $b_1,b_2,\ldots,b_m$ be the flows of $B(t)$\\
+\teb     \ \ ordered by increasing $R$;\\
+\teb     let $j$, $1\leq j \leq m$, be the largest index such that\\
+\tec          $\displaystyle R_{b_j} \leq
+                                 \frac{C - \sum_{k=j+1}^{m}R_{b_k}}{j}
+                           < R_{b_{j+1}}$;\\
+\teb     let $\displaystyle R_{EQ} = \frac{C - 
+\sum_{k=j+1}^{m}R_{b_k}}{j}$;\\
+\teb     for each $k$, $1 \leq k \leq j$, \\
+\tec          $\psi_{f,EQ}(t) = R_{EQ}$;\\
+\teb     for each $k$, $j+1 \leq k \leq m$,\\
+\tec          $\psi_{f,EQ}(t) = R_{b_k}$;
+
+\end{tabbing}
+\caption{Rate equalization fluid server}
+\rule{\columnwidth}{0.5mm}
+\label{fig:EQ-server}
+\end{figure}
+

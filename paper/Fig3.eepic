@@ -1,0 +1,23 @@
+\setlength{\unitlength}{0.00083333in}
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+{\renewcommand{\dashlinestretch}{30}
+\begin{picture}(3624,1074)(0,-10)
+\put(200,898){\makebox(0,0)[lb]{\smash{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}$t$}}}}
+\path(237,739)(237,514)
+\path(1474,739)(1474,514)
+\path(2742,739)(2742,514)
+\drawline(379,297)(379,297)
+\path(359.024,374.232)(259.000,447.000)(313.013,335.723)
+\path(259,447)(567,79)
+\put(612,64){\makebox(0,0)[lb]{\smash{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}forward packet $p_{g,j}$}}}}
+\put(2554,904){\makebox(0,0)[lb]{\smash{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}$E_{\hat{s},g,j}$}}}}
+\put(1324,912){\makebox(0,0)[lb]{\smash{{\SetFigFont{10}{12.0}{\rmdefault}{\mddefault}{\updefault}$E_{\hat{s},f,i}$}}}}
+\path(12,619)(3612,619)
+\end{picture}
+}

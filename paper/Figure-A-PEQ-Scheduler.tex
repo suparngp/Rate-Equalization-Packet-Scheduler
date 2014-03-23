@@ -1,0 +1,30 @@
+
+\begin{figure}
+\noindent
+\rule{\columnwidth}{0.5mm}
+\centerline{\bf A-PEQ Scheduler}
+\begin{tabbing}
+\settabs
+upon receiving a packet $p_{f,i}$,\\
+\tea add $p_{f,i}$ to the queue of $f$, $Q_f$;\\
+\\
+if output channel is idle at time $t$,\\
+\tea model the behavior of $\femph{PCR}$ to dequeue a packet;\\
+\tea let $p_{f,i}$ be the packet chosen by $\femph{PCR}$;\\
+\tea let $\rho_{min} = \mbox{min}\{\rho_g \,\,|\,\, Q_g \neq \emptyset\}$;\\
+\tea if $Q_f \neq \emptyset$ then\\
+\teb    dequeue and forward a packet from flow $f$;\\
+\teb    $\rho_f = \mbox{min}(\rho_f+1,\rho_{min}+\Delta)$;\\
+\tea else\\
+\teb    let $g$ satisfy $\rho_g = \rho_{min}$;\\
+\teb    forward the next packet of flow $g$;\\
+\teb    $\rho_g = \rho_g + 1$;\\
+
+
+\end{tabbing}
+\caption{Approximate packetized rate equalization scheduler}
+\label{fig:A-PEQ-Scheduler}
+\rule{\columnwidth}{0.5mm}
+\end{figure}
+
+

@@ -1,0 +1,167 @@
+\begin{thebibliography}{10}
+
+\bibitem{Hui-Hierarchical-WFQ}
+J.~C.R. Bennett and H.~Zhang.
+\newblock Hierarchical packet fair queueing algorithms.
+\newblock {\em IEEE/ACM Transactions on Networking}, 5(5):675--689, October
+  1997.
+
+\bibitem{Hui-WF2Q}
+Jon~C.R. Bennett and Hui Zhang.
+\newblock {WF2Q:} worst-case fair weighted fair queueing.
+\newblock In {\em IEEE INFOCOM Conference}, 1996.
+
+\bibitem{MPGPS-Ozden}
+J.M. Blanquer and B.~Ozden.
+\newblock Fair queuing for aggregated multiple links.
+\newblock In {\em Proc. of the ACM SIGCOMM Conference}, 2001.
+
+\bibitem{GRR}
+B.~Caprita, J.~Nieh, and W.~C. Chan.
+\newblock Group round robin: Improving the fairness and complexity of packet
+  scheduling.
+\newblock In {\em Proc. Symp. on Architecture for Netw. Commun. Syst.}, page
+  29–40, October 2005.
+
+\bibitem{Cobb-Universal-Timestamp-CN}
+Jorge Cobb.
+\newblock Universal timestamp scheduling for real-time networks.
+\newblock {\em Computer Networks}, {31}:2341--2360, 1999.
+\newblock {Elsevier}.
+
+\bibitem{Cobb-Flow-Theory-ToN}
+Jorge Cobb and Mohamed Gouda.
+\newblock Flow theory.
+\newblock {\em IEEE/ACM Transactions on Networking}, {5}(5):661--674, October
+  1997.
+
+\bibitem{Cobb-TS-Scheduling-ToN}
+Jorge Cobb, Mohamed Gouda, and Amal-El Nahas.
+\newblock Time-shift scheduling: Fair scheduling of flows in high-speed
+  networks.
+\newblock {\em IEEE/ACM Transactions on Networking}, {6}(3):274--285, June
+  1998.
+
+\bibitem{Cobb-Multi-Channel-IWQoS}
+Jorge Cobb and Miaohua Lin.
+\newblock End-to-end delay guarantees for multiple-channel schedulers.
+\newblock In {\em Proc. {IEEE} International Workshop on Quality of Service
+  (IWQoS)}, Miami, May 2002.
+
+\bibitem{Cobb-Multi-Channel-JHSN}
+Jorge Cobb and Miaohua Lin.
+\newblock A theory of multi-channel schedulers for quality of service.
+\newblock {\em Journal of High-Speed Networks}, {12}(1 and 2):61--86, November
+  2002.
+\newblock {IOS} Press.
+
+\bibitem{Cobb-REQ}
+Jorge~A. Cobb.
+\newblock Rate equalization: A new approach to fairness in deterministic
+  quality of service.
+\newblock {\em 37th Annual IEEE Conference on Local Computer Networks},
+  0:50--57, 2011.
+
+\bibitem{leaveintime}
+N.~Figueira and J.~Pasquale.
+\newblock Leave-in-time: A new service discipline for real-time communications
+  in a packet-switching data network.
+\newblock In {\em Proc. of the ACM SIGCOMM Conference}, 1995.
+
+\bibitem{SCFQ-Golestani}
+S.J. Golestani.
+\newblock A self-clocked fair queueing scheme for broadband applications.
+\newblock In {\em IEEE INFOCOM Conference}, 1994.
+
+\bibitem{NOSSDAV-95-Vin}
+P.~Goyal, S.~Lam, and H.~Vin.
+\newblock Determining end-to-end delay bounds in heterogeneous networks.
+\newblock In {\em Proc.of the NOSSDAV Workshop}, 1995.
+
+\bibitem{SRR}
+C.~Guo.
+\newblock Srr: an o(1) time-complexity packet scheduler for flows in
+  multiservice packet networks.
+\newblock {\em IEEE/ACM Transactions on Networking}, 12(6), December 2004.
+
+\bibitem{G-3}
+C.~Guo.
+\newblock G-3: An o(1) time complexity packet scheduler that provides bounded
+  end-to-end delay.
+\newblock In {\em Proc. of the {IEEE} INFOCOM Conf.}, 2007.
+
+\bibitem{Packet-Pair}
+Srinivasan Keshav.
+\newblock A control theoretic approach to flow control.
+\newblock In {\em Proc. ACM SIGCOMM Conference}, 1991.
+
+\bibitem{hopbyhop}
+Partho~P. Mishra and Hemant Kanakia.
+\newblock A hop by hop rate-based congestion control scheme.
+\newblock {\em SIGCOMM Comput. Commun. Rev.}, 22:112--123, October 1992.
+
+\bibitem{GPS-Parekh}
+A.~K.~J. Parekh and R.~Gallager.
+\newblock A generalized processor sharing approach to flow control in
+  integrated services networks: The single node case.
+\newblock {\em IEEE/ACM Transactions on Networking}, 1(3), June 1993.
+
+\bibitem{Stratified}
+S.~Ramabhadran and J.~Pasquale.
+\newblock Stratified round robin: A low com- plexity packet scheduler with
+  bandwidth fairness and bounded delay.
+\newblock {\em ACM Comput. Commun. Review}, 33(4):239–250, October 2003.
+
+\bibitem{DecBit}
+K.~K. Ramakrishnan and Raj Jain.
+\newblock A binary feedback scheme for congestion avoidance in computer
+  networks with a connectionless network layer.
+\newblock {\em SIGCOMM Comput. Commun. Rev.}, 18:303--313, August 1988.
+
+\bibitem{RP-Fair-Servers-ToN}
+D.~Stidialis and A.~Varma.
+\newblock Rate proportional servers: A design methodology for fair queuing
+  algorithms.
+\newblock {\em IEEE/ACM Transactions on Networking}, April 1998.
+
+\bibitem{leapforward}
+Subhash Suri, George Varghese, and Girish Chandranmenon.
+\newblock Leap forward virtual clock: A new fair queuing scheme with guaranteed
+  delays and throughput fairness.
+\newblock In {\em In Proceedings of INFOCOM'97}, 1997.
+
+\bibitem{WFQlogN}
+Paolo Valente.
+\newblock Exact gps simulation with logarithmic complexity, and its application
+  to an optimally fair scheduler.
+\newblock {\em SIGCOMM Comput. Commun. Rev.}, 34:269--280, August 2004.
+
+\bibitem{VC-Lam}
+G.~Xie and S.~Lam.
+\newblock Delay guarantee of the virtual clock server.
+\newblock {\em IEEE/ACM Transactions on Networking}, pages 683--689, December
+  1995.
+
+\bibitem{FRR}
+X.~Yuan and Z.~Duan.
+\newblock Frr: A proportional and worst-case fair round robin scheduler.
+\newblock In {\em Proc. IEEE INFOCOM}, page 831–842, March 2005.
+
+\bibitem{VC-Lixia}
+Lixia Zhang.
+\newblock Virtual clock: A new traffic control algorithm for packet-switched
+  networks.
+\newblock {\em ACM Transactions on Computer Systems}, 9(2):101--124, May 1991.
+
+\bibitem{KGShin94}
+Shin~K.G. Zheng~Q.
+\newblock On the ability of establishing real-time channels in point-to-point
+  packet-switched networks.
+\newblock {\em IEEE Transactions on Communications}, 42(2-4), 1994.
+
+\bibitem{VWQGRR}
+L.~Zhong, J.~Xu, and X.~Wang.
+\newblock Vwqgrr: A novel packet scheduler.
+\newblock In {\em Proc. of the IEEE ICN}, page 22–28, April 2007.
+
+\end{thebibliography}
