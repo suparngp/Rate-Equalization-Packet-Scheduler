@@ -2313,7 +2313,7 @@ i.e., packets exit by their finishing time in
 \end_inset
 
  plus at most the time to transmit the largest packet size.
- In this case, admission control is simple
+ This is because when p In this case, admission control is simple
 \begin_inset Foot
 status collapsed
 
